@@ -36,5 +36,9 @@
 		"sass": "^1.62.0",
 		"typescript": "^4.9.3",
 		"vite": "^4.2.0"
-	}
+	},
+	"main": "index.js",
+	"repository": "git@github.com:O-clock-Bao/projet-08-le-bon-geek-front.git",
+	"author": "<you@example.com>",
+	"license": "MIT"
 }
