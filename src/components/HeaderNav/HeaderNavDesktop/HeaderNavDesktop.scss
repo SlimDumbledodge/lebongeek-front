@@ -1,0 +1,28 @@
+@use '../../../styles/variables' as var;
+
+.logo {
+  color: black;
+  font-size: 1.3em;
+}
+
+.add__ad__desktop {
+  border: 1px solid rgb(174, 173, 173);
+  padding: 3px 55px;
+}
+
+.search__ad__form {
+  position: relative;
+}
+
+.search__ad__input {
+  padding: 5px 15px;
+  width: 250px;
+}
+
+.search__icon {
+  position: absolute;
+  display: inline-block;
+  width: 20px;
+  top: 1px;
+  right: 5px;
+}

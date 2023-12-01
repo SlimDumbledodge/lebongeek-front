@@ -1,0 +1,31 @@
+@use '../../styles/variables' as var;
+
+//Styles pour le footer
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: var.$thirdColor;
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+
+  .footer__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer__item__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer .footer__wrapper {
+    justify-content: space-around;
+  }
+}

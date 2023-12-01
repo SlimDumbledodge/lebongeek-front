@@ -1,0 +1,18 @@
+@use '../../../styles/variables' as var;
+
+@media screen and (min-width: 412px) {
+  .nav__icons {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .nav__icons {
+    font-size: 1.6rem;
+  }
+}
+
+.add__ad__mobile {
+  color: var.$secondColor;
+  background-color: var.$mainColor;
+}

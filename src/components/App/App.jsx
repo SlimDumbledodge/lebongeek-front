@@ -1,12 +1,14 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import logo from '../../assets/logo.svg';
+import HeaderNav from '../HeaderNav/HeaderNav';
+import Footer from '../Footer/Footer';
+import 'semantic-ui-css/semantic.min.css';
+
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <FontAwesomeIcon icon={faCoffee} />
+      <HeaderNav />
+      <Footer />
     </div>
   );
 }
