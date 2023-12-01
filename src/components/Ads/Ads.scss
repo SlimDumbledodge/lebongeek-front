@@ -1,0 +1,21 @@
+@use '../../styles/variables' as var;
+
+.ads{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .ad{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__image{
+      width: 400px;
+    }
+
+    &__title{
+      background-color: var.$thirdColor;
+    }
+  }
+}
