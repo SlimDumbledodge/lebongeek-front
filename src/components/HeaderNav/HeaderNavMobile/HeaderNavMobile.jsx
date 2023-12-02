@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import './HeaderNavMobile.scss';
+import { Link } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,7 +11,6 @@ import {
   faCircleArrowLeft,
   faArrowRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
-
 import { hide } from '../../../actions/headerNav';
 
 const HeaderNavMobile = () => {
@@ -19,17 +19,13 @@ const HeaderNavMobile = () => {
     left: 'auto',
     top: '25px',
   };
-
   const isOpen = useSelector((state) => state.headerNav.isOpen);
-
   const dispatch = useDispatch();
-
   const countryOptions = [
     { key: 'jv', value: 'jv', text: 'Jeux-vidéo' },
     { key: 'jdr', value: 'jdr', text: 'JDR' },
     { key: 'fig', value: 'fig', text: 'Figurine' },
   ];
-
   const styleDropDownSearch = {
     width: '250px',
   };
@@ -88,7 +84,7 @@ const HeaderNavMobile = () => {
         >
           <Dropdown.Menu style={dropDownStyle}>
             <Dropdown.Item text="Se connecter" />
-            <Dropdown.Item text="Hub" />
+            <Dropdown.Item text="Hub" as={Link} to="/hub" />
             <Dropdown.Item>
               Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
             </Dropdown.Item>
