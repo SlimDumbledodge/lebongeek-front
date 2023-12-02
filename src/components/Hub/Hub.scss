@@ -1,46 +1,5 @@
 @use '../../styles/variables' as var;
 
-.banner {
-  height: 200px;
-  width: 100%;
-}
-
-.description__container {
-  background-color: var.$mainColor;
-  display: flex;
-  padding: 15px 25px;
-  margin-bottom: 25px;
-}
-
-.avatar__pseudo {
-  text-align: center;
-}
-
-.description__text {
-  padding-top: 15px;
-  padding-left: 25px;
-  font-size: 0.9em;
-}
-
-.pseudo {
-  font-weight: bold;
-  font-size: 0.8em;
-  margin-bottom: 5px;
-}
-
-.avatar {
-  width: 75px;
-  box-shadow: 3px 3px 5px 3px var.$thirdColor;
-}
-.inventory__title {
-  font-weight: bold;
-}
-
-.inventory {
-  width: 70%;
-  margin: 0 auto;
-}
-
 .grid__wrapper {
   margin-top: 10px;
   display: grid;
