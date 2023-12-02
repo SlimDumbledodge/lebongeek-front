@@ -5,6 +5,7 @@ import {
   faCircleUser,
   faArrowRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const HeaderNavDesktop = () => {
   const dropDownStyle = {
@@ -46,7 +47,7 @@ const HeaderNavDesktop = () => {
       >
         <Dropdown.Menu style={dropDownStyle}>
           <Dropdown.Item text="Se connecter" />
-          <Dropdown.Item text="Hub" />
+          <Dropdown.Item text="Hub" as={Link} to="/hub" />
           <Dropdown.Item>
             Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
           </Dropdown.Item>
