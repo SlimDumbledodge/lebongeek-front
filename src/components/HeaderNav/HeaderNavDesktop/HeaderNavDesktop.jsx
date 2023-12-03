@@ -26,9 +26,11 @@ const HeaderNavDesktop = () => {
       <a href="/" className="logo">
         LeBonGeek
       </a>
-      <button type="button" className="add__ad__desktop">
-        Déposer une annonce +
-      </button>
+      <Link to="/depot_annonce">
+        <button type="button" className="add__ad__desktop">
+          Déposer une annonce +
+        </button>
+      </Link>
       <form action="">
         <Dropdown
           clearable

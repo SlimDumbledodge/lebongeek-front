@@ -38,7 +38,9 @@ const HeaderNavMobile = () => {
             <FontAwesomeIcon className="nav__icons" icon={faHouse} />
           </a>
           <button type="button" className="add__ad__mobile">
-            <FontAwesomeIcon className="nav__icons" icon={faSquarePlus} />
+            <Link to="/depot_annonce">
+              <FontAwesomeIcon className="nav__icons" icon={faSquarePlus} />
+            </Link>
           </button>
         </>
       )}
