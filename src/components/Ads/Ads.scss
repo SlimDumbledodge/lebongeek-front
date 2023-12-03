@@ -2,20 +2,30 @@
 
 .ads{
   display: flex;
+  max-width: 1800px;
+  width: 80%;
+  flex-wrap: wrap;
+  margin: 30px auto 0;
+  background-color: red;
   justify-content: center;
-  flex-direction: column;
 
   .ad{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 300px;
+    margin: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
 
     &__image{
-      width: 400px;
+      width: 100%;
+      height: auto;
     }
 
     &__title{
       background-color: var.$thirdColor;
+      margin-top: 10px;
     }
   }
 }

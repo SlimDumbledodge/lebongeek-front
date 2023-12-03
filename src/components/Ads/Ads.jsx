@@ -7,6 +7,8 @@ const Ads = () => {
     <div className="ads">
       <Ad />
       <Ad />
+      <Ad />
+      <Ad />
     </div>
   );
 };
