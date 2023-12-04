@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types';
 
-const AdsFilterCheckbox = ({ title }) => {
+const AdsFilterCheckbox = ({ title, system }) => {
   return (
-    <div className="ads__filter__checkbox">
+    <div className={`ads__filter__checkbox__${system}`}>
       <input
-        className="ads__filter__checkbox__input"
-        type="checkbox"
+        className={`ads__filter__checkbox__input__${system}`}
+        type="radio"
         id={title}
         name={title}
       />
-      <label className="ads__filter__checkbox_label" htmlFor={title}>
+      <label
+        className={`ads__filter__checkbox_label__${system}`}
+        htmlFor={title}
+      >
         {title.charAt(0).toUpperCase() + title.slice(1)}
       </label>
     </div>
@@ -18,6 +21,7 @@ const AdsFilterCheckbox = ({ title }) => {
 
 AdsFilterCheckbox.propTypes = {
   title: PropTypes.string.isRequired,
+  system: PropTypes.string.isRequired,
 };
 
 export default AdsFilterCheckbox;

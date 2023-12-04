@@ -1,10 +1,12 @@
-.ads__filter_container{
+@use '../../../styles/variables' as var;
+
+.ads__filter_container__desktop{
   width: 20%;
   padding: 30px;
   height: 1100px;
   border: 1px solid black;
 
-  .ads__filter__title{
+  .ads__filter__title__desktop{
     font-size: 20px;
     border-bottom: 1px solid black;
     padding-bottom: 5px;
@@ -12,21 +14,79 @@
     padding-left: 20px;
   }
 
-  .ads__filter__checkbox__container{
+  .ads__filter__checkbox__container__desktop{
     display: flex;
     flex-direction: column;
     gap: 25px;
     padding-left: 20px;
 
-    .ads__filter__checkbox{
+    .ads__filter__checkbox__desktop{
 
-      .ads__filter__checkbox__input{
+      .ads__filter__checkbox__input__desktop{
         margin-right: 10px;
       }
 
-      .ads__filter__checkbox_label{
+      .ads__filter__checkbox_label__desktop{
         font-size: 16px;
       }
     }
+  }
+}
+
+.ads__filter_container__mobile{
+  width: 30%;
+  padding: 30px;
+  height: 1100px;
+  border: 1px solid var.$thirdColor;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  opacity: 0.95;
+  z-index: 2; 
+
+  .ads__filter__title__mobile{
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    padding-left: 20px;
+  }
+
+  .ads__filter__checkbox__container__mobile{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-left: 20px;
+
+    .ads__filter__checkbox__mobile{
+
+      .ads__filter__checkbox__input__mobile{
+        margin-right: 10px;
+      }
+
+      .ads__filter__checkbox_label__mobile{
+        font-size: 16px;
+      }
+    }
+  }
+
+  .ads__filter__open{
+    z-index: 2; 
+    position: absolute;
+    top: 0;
+    left: 228px; 
+    height: 100%; 
+    width: 250%;
+    filter: brightness(75%);
+    background-color: white;
+  }
+  
+  .ads__filter__open__button{
+    background: var.$thirdColor;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 50px;
+    padding: 5px;
   }
 }

@@ -9,8 +9,12 @@ import Ad from './Ad';
 import AdsFilter from './AdsFilter/AdsFilter';
 
 const Ads = () => {
+  const table = ['desktop', 'mobile'];
+
   const dispatch = useDispatch();
   const isMobile = useSelector((state) => state.responsive.isMobile);
+  // TODO : mettre en place le state de isFilterOpen
+  const isFilterOpen = useSelector((state) => state.responsive.isMobile);
 
   const handleResize = () => {
     dispatch(switchScreenResponsive(window.innerWidth < 1024));
@@ -23,7 +27,7 @@ const Ads = () => {
 
   return (
     <div className="ads__container">
-      {isMobile ? '' : <AdsFilter />}
+      {isMobile ? '' : <AdsFilter type={table[0]} />}
       {isMobile ? (
         <button type="button" className="ads__filter__button">
           Filtrer
@@ -31,7 +35,10 @@ const Ads = () => {
       ) : (
         ''
       )}
+      {isFilterOpen ? <AdsFilter type={table[1]} /> : ''}
       <div className="ads">
+        <Ad />
+        <Ad />
         <Ad />
         <Ad />
         <Ad />
