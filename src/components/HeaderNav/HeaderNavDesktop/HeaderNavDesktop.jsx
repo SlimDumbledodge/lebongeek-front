@@ -1,9 +1,11 @@
 import './HeaderNavDesktop.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Dropdown } from 'semantic-ui-react';
+
 import {
   faCircleUser,
   faArrowRightToBracket,
+  faDice,
 } from '@fortawesome/free-solid-svg-icons';
 
 const HeaderNavDesktop = () => {
@@ -23,7 +25,7 @@ const HeaderNavDesktop = () => {
   return (
     <>
       <a href="/" className="logo">
-        LeBonGeek
+        LeBonGeek <FontAwesomeIcon icon={faDice} />
       </a>
       <button type="button" className="add__ad__desktop">
         Déposer une annonce +
