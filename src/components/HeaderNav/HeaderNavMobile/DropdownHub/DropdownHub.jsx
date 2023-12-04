@@ -7,8 +7,6 @@ import {
   faArrowRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
-import './Dropdown.scss';
-
 function DropdownHub() {
   return (
     <Dropdown

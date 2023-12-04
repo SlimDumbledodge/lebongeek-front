@@ -15,7 +15,6 @@ function App() {
   return (
     <div className="App">
       <HeaderNav />
-<<<<<<< HEAD
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hub" element={<Hub />} />
@@ -32,9 +31,6 @@ function App() {
         <Route path="*" element={<div>404</div>} />
       </Routes>
 
-=======
-      <Home />
->>>>>>> 836745cd59c9a659e8cc46d765298a204af327e7
       <Footer />
     </div>
   );
