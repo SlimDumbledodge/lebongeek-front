@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 const Ad = () => {
   return (
     <a href="/" className="ad">
@@ -7,7 +8,7 @@ const Ad = () => {
         className="ad__image"
       />
       <p href="/" className="ad__title">
-        Title - 40€
+        Ceci est le titre de l'annonce - 40€
       </p>
     </a>
   );
