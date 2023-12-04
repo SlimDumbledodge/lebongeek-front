@@ -7,6 +7,7 @@ import {
   faArrowRightToBracket,
   faDice,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const HeaderNavDesktop = () => {
   const dropDownStyle = {
@@ -27,9 +28,11 @@ const HeaderNavDesktop = () => {
       <a href="/" className="logo">
         LeBonGeek <FontAwesomeIcon icon={faDice} />
       </a>
-      <button type="button" className="add__ad__desktop">
-        Déposer une annonce +
-      </button>
+      <Link to="/depot_annonce">
+        <button type="button" className="add__ad__desktop">
+          Déposer une annonce +
+        </button>
+      </Link>
       <form action="">
         <Dropdown
           clearable
@@ -48,7 +51,7 @@ const HeaderNavDesktop = () => {
       >
         <Dropdown.Menu style={dropDownStyle}>
           <Dropdown.Item text="Se connecter" />
-          <Dropdown.Item text="Hub" />
+          <Dropdown.Item text="Hub" as={Link} to="/hub" />
           <Dropdown.Item>
             Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
           </Dropdown.Item>

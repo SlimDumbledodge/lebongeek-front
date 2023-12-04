@@ -11,6 +11,7 @@
   "files.exclude": {
     "USE_GITIGNORE": true
   },
+  "files.eol":"\n",
   "eslint.probe": [
     "javascript",
     "javascriptreact",
