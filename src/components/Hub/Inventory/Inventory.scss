@@ -1,8 +1,12 @@
-.inventory {
+.hub__inventory {
   width: 70%;
   margin: 0 auto;
 
-  .inventory__title {
+  .hub__inventory__title {
     font-weight: bold;
+  }
+
+  .hub__inventory__item {
+    border-radius: 8px;
   }
 }

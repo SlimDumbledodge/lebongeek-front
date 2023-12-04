@@ -1,55 +1,45 @@
 import { useSelector, useDispatch } from 'react-redux';
-import './HeaderNavMobile.scss';
 import { Link } from 'react-router-dom';
-import { Dropdown } from 'semantic-ui-react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHouse,
   faSquarePlus,
   faMagnifyingGlass,
-  faCircleUser,
   faCircleArrowLeft,
-  faArrowRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import { hide } from '../../../actions/headerNav';
+
+import { isHeaderNavOpen } from '../../../actions/headerNav';
+import DropdownHub from './DropdownHub/DropdownHub';
+import Form from './Form/Form';
+import './HeaderNavMobile.scss';
 
 const HeaderNavMobile = () => {
-  const dropDownStyle = {
-    right: '-15px',
-    left: 'auto',
-    top: '25px',
-  };
-  const isOpen = useSelector((state) => state.headerNav.isOpen);
+  const isHeaderNavOpenState = useSelector(
+    (state) => state.headerNav.isHeaderNavOpen
+  );
   const dispatch = useDispatch();
-  const countryOptions = [
-    { key: 'jv', value: 'jv', text: 'Jeux-vidéo' },
-    { key: 'jdr', value: 'jdr', text: 'JDR' },
-    { key: 'fig', value: 'fig', text: 'Figurine' },
-  ];
-  const styleDropDownSearch = {
-    width: '250px',
-  };
 
   return (
     <>
-      {isOpen && (
+      {isHeaderNavOpenState && (
         <>
-          <a href="/">
+          <Link to="/">
             <FontAwesomeIcon className="nav__icons" icon={faHouse} />
-          </a>
-          <button type="button" className="add__ad__mobile">
+          </Link>
+          <button type="button" className="header__mobile__icons">
             <Link to="/depot_annonce">
               <FontAwesomeIcon className="nav__icons" icon={faSquarePlus} />
             </Link>
           </button>
         </>
       )}
-      {isOpen ? (
+      {isHeaderNavOpenState ? (
         <button
           type="button"
-          className="add__ad__mobile"
+          className="header__mobile__icons"
           onClick={() => {
-            dispatch(hide());
+            dispatch(isHeaderNavOpen());
           }}
         >
           <FontAwesomeIcon className="nav__icons" icon={faMagnifyingGlass} />
@@ -57,42 +47,17 @@ const HeaderNavMobile = () => {
       ) : (
         <button
           type="button"
-          className="add__ad__mobile"
+          className="header__mobile__icons"
           onClick={() => {
-            dispatch(hide());
+            dispatch(isHeaderNavOpen());
           }}
         >
           <FontAwesomeIcon className="nav__icons" icon={faCircleArrowLeft} />
         </button>
       )}
 
-      {!isOpen && (
-        <form action="">
-          <Dropdown
-            clearable
-            fluid
-            search
-            selection
-            icon="search"
-            style={styleDropDownSearch}
-            options={countryOptions}
-            placeholder="Select Country"
-          />
-        </form>
-      )}
-      {isOpen && (
-        <Dropdown
-          text={<FontAwesomeIcon className="nav__icons" icon={faCircleUser} />}
-        >
-          <Dropdown.Menu style={dropDownStyle}>
-            <Dropdown.Item text="Se connecter" />
-            <Dropdown.Item text="Hub" as={Link} to="/hub" />
-            <Dropdown.Item>
-              Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      )}
+      {!isHeaderNavOpenState && <Form />}
+      {isHeaderNavOpenState && <DropdownHub />}
     </>
   );
 };

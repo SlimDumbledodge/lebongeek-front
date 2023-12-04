@@ -5,7 +5,7 @@ const Banner = () => {
     <img
       src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
       alt=""
-      className="banner"
+      className="hub__banner"
     />
   );
 };

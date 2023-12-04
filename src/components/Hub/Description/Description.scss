@@ -1,29 +1,29 @@
 @use '../../../styles/variables' as var;
 
-.description__container {
+.hub__description__container {
   background-color: var.$mainColor;
   display: flex;
   padding: 15px 25px;
   margin-bottom: 25px;
-}
 
-.avatar__pseudo {
-  text-align: center;
-}
+  .hub__avatar__pseudo {
+    text-align: center;
+  }
 
-.description__text {
-  padding-top: 15px;
-  padding-left: 25px;
-  font-size: 0.9em;
-}
+  .hub__description__text {
+    padding-top: 15px;
+    padding-left: 25px;
+    font-size: 0.9em;
+  }
 
-.pseudo {
-  font-weight: bold;
-  font-size: 0.8em;
-  margin-bottom: 5px;
-}
+  .hub__pseudo {
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+  }
 
-.avatar {
-  width: 75px;
-  box-shadow: 3px 3px 5px 3px var.$thirdColor;
+  .hub__avatar {
+    width: 75px;
+    box-shadow: 3px 3px 5px 3px var.$thirdColor;
+  }
 }

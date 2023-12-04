@@ -1,5 +1,5 @@
-export const HIDE = 'HIDE';
+export const IS_HEADER_NAV_OPEN = 'IS_HEADER_NAV_OPEN';
 
-export const hide = () => ({
-  type: HIDE,
+export const isHeaderNavOpen = () => ({
+  type: IS_HEADER_NAV_OPEN,
 });

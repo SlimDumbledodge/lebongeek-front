@@ -1,29 +1,17 @@
 @use '../../styles/variables' as var;
 
-.add__ad__page__title {
-  text-align: center;
-  margin: 35px 0;
-  font-size: 2em;
-  font-weight: bold;
-}
-
-.checkbox__add__ad {
-  margin-bottom: 15px;
-  margin-right: 25px;
-}
-
-.button__file {
-  float: right;
-}
-
-.wrapper__cancel__publish__buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
 .add__ad__container {
   width: 90%;
   background-color: var.$thirdColor;
   padding: 35px;
   margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.add__ad__page__title {
+  text-align: center;
+  margin: 35px 0;
+  font-size: 2em;
+  font-weight: bold;
 }

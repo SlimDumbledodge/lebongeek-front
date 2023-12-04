@@ -1,10 +1,11 @@
-import './Footer.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClipboardQuestion,
   faEnvelope,
   faScaleBalanced,
 } from '@fortawesome/free-solid-svg-icons';
+
+import './Footer.scss';
 
 const FooterDesktop = () => {
   return (

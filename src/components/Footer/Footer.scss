@@ -1,9 +1,9 @@
 @use '../../styles/variables' as var;
 
-//Styles pour le footer
 .footer {
+  position: sticky;
   bottom: 0;
-  margin-top: 100px;
+  margin-top: 200px;
   background-color: var.$thirdColor;
   width: 100%;
   padding: 10px 40px;

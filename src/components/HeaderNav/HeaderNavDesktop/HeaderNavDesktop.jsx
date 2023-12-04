@@ -1,60 +1,24 @@
-import './HeaderNavDesktop.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Dropdown } from 'semantic-ui-react';
-import {
-  faCircleUser,
-  faArrowRightToBracket,
-} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-const HeaderNavDesktop = () => {
-  const dropDownStyle = {
-    right: '-15px',
-    left: 'auto',
-  };
-  const countryOptions = [
-    { key: 'jv', value: 'jv', text: 'Jeux-vidéo' },
-    { key: 'jdr', value: 'jdr', text: 'JDR' },
-    { key: 'fig', value: 'fig', text: 'Figurine' },
-  ];
+import Form from './Form/Form';
+import DropdownHub from './DropdownHub/DropdownHub';
 
-  const styleDropDownSearch = {
-    width: '250px',
-  };
+import './HeaderNavDesktop.scss';
+
+const HeaderNavDesktop = () => {
   return (
     <>
-      <a href="/" className="logo">
+      <Link to="/" className="header__desktop__logo">
         LeBonGeek
-      </a>
+      </Link>
       <Link to="/depot_annonce">
-        <button type="button" className="add__ad__desktop">
+        <button type="button" className="header__desktop__add__ad__button">
           Déposer une annonce +
         </button>
       </Link>
-      <form action="">
-        <Dropdown
-          clearable
-          fluid
-          search
-          selection
-          icon="search"
-          style={styleDropDownSearch}
-          options={countryOptions}
-          placeholder="Jeux-vidéo..."
-        />
-      </form>
 
-      <Dropdown
-        text={<FontAwesomeIcon className="nav__icons" icon={faCircleUser} />}
-      >
-        <Dropdown.Menu style={dropDownStyle}>
-          <Dropdown.Item text="Se connecter" />
-          <Dropdown.Item text="Hub" as={Link} to="/hub" />
-          <Dropdown.Item>
-            Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <Form />
+      <DropdownHub />
     </>
   );
 };
