@@ -1,6 +1,5 @@
 @use '../../styles/variables' as var;
 
-
 // Titre de la page d'accueil
 .home__container__title {
   font-size: 20px;
@@ -13,12 +12,10 @@
   width: 80%;
   margin: 30px auto 30px auto;
   padding: 20px;
-  background-color: var.$fourthColor;
+  background-color:#fff;
   font-size: 15px;
   color: #666;
   line-height: 2;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  
 }
-
