@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
 import Home from '../Home/Home';
@@ -13,7 +14,6 @@ import Connexion from '../Connexion/Connexion';
 
 import './App.scss';
 import Register from '../Register/Register';
-import 'semantic-ui-css/semantic.min.css';
 
 function App() {
   return (
