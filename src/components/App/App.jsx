@@ -1,4 +1,3 @@
-import 'semantic-ui-css/semantic.min.css';
 /* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
 
@@ -19,13 +18,13 @@ function App() {
   return (
     <div className="App">
       <HeaderNav />
-      <Ads />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hub" element={<Hub />} />
         <Route path="/depot_annonce" element={<AddAd />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
+        <Route path="/recherche" element={<Ads />} />
 
         <Route path="/figurine/1" element={<AdDetails />} />
         <Route path="/connexion" element={<Connexion />} />
