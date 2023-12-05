@@ -1,4 +1,3 @@
-import 'semantic-ui-css/semantic.min.css';
 /* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
 
