@@ -7,7 +7,7 @@ const AdsFilterCheckbox = ({ title, system }) => {
         className={`ads__filter__checkbox__input__${system}`}
         type="radio"
         id={title}
-        name={title}
+        name="adsFilterCategoriesCheckbox"
       />
       <label
         className={`ads__filter__checkbox_label__${system}`}

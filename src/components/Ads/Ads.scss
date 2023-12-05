@@ -1,17 +1,13 @@
 @use '../../styles/variables' as var;
 
 .ads__container{
-  /*Va s'appliquer à tout, attention et besoin de gérer le bouton aussi*/
   display: flex;
   margin: 30px auto 0;
   flex-direction: column;
+  min-height: 2100px;
   
   @media screen and (min-width: 1024px) {
     flex-direction: row;
-  }
-
-  @media screen and (max-width: 1024px) {
-    margin-bottom: 100px;
   }
 
   .ads__filter__button{
@@ -19,6 +15,7 @@
     border-radius: 5px;
     align-self: center;
     padding: 10px;
+    margin-bottom: 10px;
   }
 
   .ads{
@@ -27,10 +24,14 @@
     width: 80%;
     flex-wrap: wrap;
     justify-content: center;
-    height: 500px;
+    margin: auto;
 
-    @media screen and (min-width: 765px) {
-      width: 100%;
+    @media screen and (min-width: 768px) {
+      width: 750px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 1200px;
     }
 
     @media screen and (min-width: 1600px) {
