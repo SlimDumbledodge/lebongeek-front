@@ -60,7 +60,6 @@
 .connexion__register__text {
   font-size: 15px;
   margin: 20px 0px 20px 0px;
-  color: #333;
   text-align: center;
 }
 
@@ -69,10 +68,11 @@
   font-weight: bold;
 }
 //MEDIAS QUERIES
-/* écrans de taille moyenne à grande*/
-.connexion__container {
-  width: 30%;
+.register {
+  color: var.$titlesColor;
+  font-weight: bold;
 }
+
 /* écrans de taille moyenne style tablette */
 @media screen and (max-width: 768px) {
   .connexion__container {
