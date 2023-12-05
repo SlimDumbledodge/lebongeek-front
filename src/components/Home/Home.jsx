@@ -6,8 +6,6 @@ import TopCategories from './TopCategories/TopCategories';
 import LastSells from './LastSells/LastSells';
 import './Home.scss';
 
-// Mise en page générale de la page d'accueil/Home
-
 const Home = () => {
   return (
     <div>
