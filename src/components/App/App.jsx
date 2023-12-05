@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
@@ -7,6 +6,7 @@ import Hub from '../Hub/Hub';
 import AddAd from '../AddAd/AddAd';
 import AdDetails from '../AdDetails/AdDetails';
 import Footer from '../Footer/Footer';
+import Connexion from '../Connexion/Connexion';
 
 import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
@@ -15,12 +15,12 @@ function App() {
   return (
     <div className="App">
       <HeaderNav />
-<<<<<<< HEAD
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hub" element={<Hub />} />
         <Route path="/depot_annonce" element={<AddAd />} />
         <Route path="/figurine/1" element={<AdDetails />} />
+        <Route path="/connexion" element={<Connexion />} />
         <Route
           path="categories"
           element={<div>Ici doit s'afficher toutes les catégories</div>}
@@ -32,9 +32,6 @@ function App() {
         <Route path="*" element={<div>404</div>} />
       </Routes>
 
-=======
-      <Home />
->>>>>>> 836745cd59c9a659e8cc46d765298a204af327e7
       <Footer />
     </div>
   );
