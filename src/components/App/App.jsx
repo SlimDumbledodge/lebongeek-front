@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
 import Home from '../Home/Home';
