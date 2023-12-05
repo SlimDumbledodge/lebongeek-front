@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
+
 import { Link } from 'react-router-dom';
 import Banner from './Banner/Banner';
 import Inventory from './Inventory/Inventory';
 import TopCategories from './TopCategories/TopCategories';
 import LastSells from './LastSells/LastSells';
+
 import './Home.scss';
 
 const Home = () => {

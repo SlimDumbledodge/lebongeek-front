@@ -3,7 +3,7 @@ import './Connexion.scss';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../../actions/authentification';
+import { loginUser } from '../../actions/user';
 
 const Connexion = () => {
   const dispatch = useDispatch();
