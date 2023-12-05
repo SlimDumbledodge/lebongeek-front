@@ -1,0 +1,22 @@
+@use '../../styles/variables' as var;
+
+.ad__details__container {
+  border: 1px solid var.$mainColor;
+  border-radius: 8px;
+  width: 85%;
+  margin: 0 auto;
+  padding: 15px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (min-width: 320px) {
+  .ad__details__container {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ad__details__container {
+    width: 700px;
+  }
+}

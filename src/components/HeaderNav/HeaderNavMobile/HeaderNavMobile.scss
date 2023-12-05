@@ -12,7 +12,17 @@
   }
 }
 
-.add__ad__mobile {
+.header__mobile__icons {
   color: var.$secondColor;
   background-color: var.$mainColor;
+}
+
+#header__mobile__dropdown__search {
+  width: 250px;
+}
+
+#header__mobile__dropdown__hub {
+  right: -15px;
+  left: auto;
+  top: 25px;
 }

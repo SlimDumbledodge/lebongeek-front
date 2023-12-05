@@ -1,15 +1,15 @@
-import { HIDE } from '../actions/headerNav';
+import { IS_HEADER_NAV_OPEN } from '../actions/headerNav';
 
 const initialState = {
-  isOpen: true,
+  isHeaderNavOpen: true,
 };
 
 const headerNavReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case HIDE:
+    case IS_HEADER_NAV_OPEN:
       return {
         ...state,
-        isOpen: !state.isOpen,
+        isHeaderNavOpen: !state.isHeaderNavOpen,
       };
     default:
       return state;
