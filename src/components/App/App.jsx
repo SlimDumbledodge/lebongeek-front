@@ -11,7 +11,6 @@ import Footer from '../Footer/Footer';
 import Ads from '../Ads/Ads';
 import Connexion from '../Connexion/Connexion';
 
-import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
 import Register from '../Register/Register';
 
@@ -19,13 +18,13 @@ function App() {
   return (
     <div className="App">
       <HeaderNav />
-      <Ads />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hub" element={<Hub />} />
         <Route path="/depot_annonce" element={<AddAd />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
+        <Route path="annonces" element={<Ads />} />
 
         <Route path="/figurine/1" element={<AdDetails />} />
         <Route path="/connexion" element={<Connexion />} />
