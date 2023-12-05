@@ -24,11 +24,6 @@ const Inventory = () => {
           alt=""
           className="home__inventory__item"
         />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="home__inventory__item"
-        />
 
         <img
           src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
