@@ -1,0 +1,87 @@
+@use '../../styles/variables' as var;
+
+.ads__container{
+  display: flex;
+  margin: 30px auto 0;
+  flex-direction: column;
+  min-height: 2100px;
+  
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+  }
+
+  .ads__filter__button{
+    background: var.$thirdColor;
+    border-radius: 5px;
+    align-self: center;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .ads{
+    display: flex;
+    max-width: 1500px;
+    width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+
+    @media screen and (min-width: 768px) {
+      width: 750px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 1200px;
+    }
+
+    @media screen and (min-width: 1600px) {
+      width: 1450px;
+    }
+
+    .ad{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px;
+      margin: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+
+      @media screen and (min-width: 375px) {
+        width: 350px;  
+      }
+
+      @media screen and (min-width: 425px) {
+        width: 375px;  
+      }
+
+      @media screen and (min-width: 765px) {
+        width: 325px;
+        margin: 20px;
+      }
+
+      @media screen and (min-width: 1024px) {
+        width: 400px;  
+        margin: 0 20px 20px 20px
+      }
+
+      &__image{
+        width: 100%;
+        height: auto;
+      }
+
+      &__title{
+        background-color: var.$thirdColor;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      &:last-child{
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
