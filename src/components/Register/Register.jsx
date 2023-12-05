@@ -26,13 +26,27 @@ const Register = () => {
           <input type="email" className="register__inputs" />
         </div>
         <div>
-          <label htmlFor="tel">Numéro de Tél.</label>
+          <label htmlFor="avatar">Avatar</label>
           <input type="text" className="register__inputs" />
         </div>
         <div>
           <label htmlFor="password">Mot de passe</label>
           <input type="password" className="register__inputs" />
         </div>
+        <div>
+          <label htmlFor="firstname">Prénom</label>
+          <input type="text" className="register__inputs" />
+        </div>
+        <div>
+          <label htmlFor="lastname">Nom</label>
+          <input type="text" className="register__inputs" />
+        </div>
+
+        <div>
+          <label htmlFor="tel">Numéro de Tél.</label>
+          <input type="text" className="register__inputs" />
+        </div>
+
         <button className="register__sign__in__button" type="submit">
           Crée mon compte
         </button>

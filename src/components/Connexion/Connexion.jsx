@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import './Connexion.scss';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -20,9 +21,10 @@ const Connexion = () => {
         }}
       >
         <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" className="connexion__inputs" />
+          <label htmlFor="username">Nom d'utilisateur</label>
+          <input type="text" className="connexion__inputs" />
         </div>
+
         <div>
           <label htmlFor="password">Mot de passe</label>
           <input type="password" className="connexion__inputs" />
