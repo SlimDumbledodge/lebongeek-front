@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import './HeaderNav.scss';
+
 import HeaderNavDesktop from './HeaderNavDesktop/HeaderNavDesktop';
 import HeaderNavMobile from './HeaderNavMobile/HeaderNavMobile';
+
 import { switchScreenResponsive } from '../../actions/responsive';
 
 const HeaderNav = () => {
