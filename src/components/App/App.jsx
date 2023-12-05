@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
@@ -10,6 +11,7 @@ import Connexion from '../Connexion/Connexion';
 
 import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
+import Register from '../Register/Register';
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/hub" element={<Hub />} />
         <Route path="/depot_annonce" element={<AddAd />} />
+        <Route path="/connexion" element={<Connexion />} />
+        <Route path="connexion/cree_un_compte" element={<Register />} />
+
         <Route path="/figurine/1" element={<AdDetails />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route
