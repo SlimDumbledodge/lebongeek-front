@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_USER } from '../actions/authentification';
+import { CREATE_USER, LOGIN_USER } from '../actions/authentification';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -12,6 +12,16 @@ const authMiddleware = (store) => (next) => (action) => {
           avatar: 'http://placehold.it/300x300',
           email: 'matthieu@ocdsdsqqdDkudsqSdsqQqleazeaock.com',
           phone_number: '14254584',
+          password: 'password',
+        })
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
+      break;
+
+    case LOGIN_USER:
+      axios
+        .post('http://amgad-gaafr.vpnuser.lan:8080/api/login_check', {
+          username: 'DSdsdsqqddhsqdQ',
           password: 'password',
         })
         .then((response) => console.log(response))
