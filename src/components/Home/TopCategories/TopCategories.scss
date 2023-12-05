@@ -17,7 +17,7 @@
 
   .top__categories__grid__wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     margin: 0 auto;
     max-width: calc(200px * 5 + 20px * 4); /* Limite à 5 colonnes */

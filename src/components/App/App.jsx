@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
@@ -7,6 +6,7 @@ import Hub from '../Hub/Hub';
 import AddAd from '../AddAd/AddAd';
 import AdDetails from '../AdDetails/AdDetails';
 import Footer from '../Footer/Footer';
+import Connexion from '../Connexion/Connexion';
 
 import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
@@ -20,6 +20,7 @@ function App() {
         <Route path="/hub" element={<Hub />} />
         <Route path="/depot_annonce" element={<AddAd />} />
         <Route path="/figurine/1" element={<AdDetails />} />
+        <Route path="/connexion" element={<Connexion />} />
         <Route
           path="categories"
           element={<div>Ici doit s'afficher toutes les catégories</div>}
