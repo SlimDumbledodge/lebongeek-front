@@ -1,8 +1,8 @@
-import { CHANGE_INPUT_VALUE, ADD_MESSAGE } from '../actions/input';
+import { CHANGE_INPUT_VALUE, SEARCH_TOGGLE_CATEGORIES } from '../actions/input';
 
 const initialState = {
-  inputContent: '',
-  tableMessages: [{ id: 0, content: "Y a quelqu'un ?" }],
+  inputSearch: '',
+  isSearchListOpen: false,
 };
 
 const inputReducer = (state = initialState, action = {}) => {
@@ -10,12 +10,13 @@ const inputReducer = (state = initialState, action = {}) => {
     case CHANGE_INPUT_VALUE:
       return {
         ...state,
-        inputContent: action.newContent,
+        inputSearch: action.search,
       };
-    case ADD_MESSAGE:
+
+    case SEARCH_TOGGLE_CATEGORIES:
       return {
         ...state,
-        tableMessages: action.newContentMessageArray,
+        isSearchListOpen: !state.isSearchListOpen,
       };
 
     default:
