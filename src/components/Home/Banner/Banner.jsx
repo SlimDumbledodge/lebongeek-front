@@ -3,7 +3,7 @@ import './Banner.scss';
 const Banner = () => {
   return (
     <img
-      src="src/assets/images/boutique 2.jpg "
+      src="src/assets/images/boutique.jpg "
       alt=""
       className="home__banner"
     />

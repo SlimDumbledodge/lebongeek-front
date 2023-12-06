@@ -1,7 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
-import { Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { fetchCategories } from '../../actions/category';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
 import Home from '../Home/Home';
@@ -16,6 +20,13 @@ import './App.scss';
 import Register from '../Register/Register';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="App">
       <HeaderNav />

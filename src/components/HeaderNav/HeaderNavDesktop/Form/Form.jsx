@@ -8,6 +8,8 @@ import {
   searchToggleCategories,
 } from '../../../../actions/input';
 
+import { fetchAdsCategories } from '../../../../actions/ads';
+
 function Form() {
   const inputSearch = useSelector((state) => state.input.inputSearch);
   const isSearchListOpen = useSelector((state) => state.input.isSearchListOpen);
@@ -32,7 +34,12 @@ function Form() {
       }}
       className="parentList"
     >
-      <form action="">
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          dispatch(fetchAdsCategories());
+        }}
+      >
         <input
           type="text"
           value={inputSearch}

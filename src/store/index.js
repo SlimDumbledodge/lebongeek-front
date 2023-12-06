@@ -5,9 +5,16 @@ import reducer from '../reducers';
 
 import loginMiddleware from '../middlewares/loginMiddleware';
 import registerMiddleware from '../middlewares/registerMiddleware';
+import categoryMiddleware from '../middlewares/categoryMiddleware';
+import adsMiddleware from '../middlewares/adsMiddleware';
 
 const enhancer = composeWithDevTools(
-  applyMiddleware(loginMiddleware, registerMiddleware)
+  applyMiddleware(
+    loginMiddleware,
+    registerMiddleware,
+    categoryMiddleware,
+    adsMiddleware
+  )
 );
 
 const store = createStore(reducer, enhancer);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_CATEGORIES, saveCategories } from '../actions/category';
 
-const adsMiddleware = (store) => (next) => (action) => {
+const categoryMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_CATEGORIES:
       axios
@@ -25,4 +25,4 @@ const adsMiddleware = (store) => (next) => (action) => {
   next(action);
 };
 
-export default adsMiddleware;
+export default categoryMiddleware;
