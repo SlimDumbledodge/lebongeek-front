@@ -1,7 +1,8 @@
-import { SAVE_CATEGORIES } from '../actions/category';
+import { SAVE_CATEGORIES, CATEGORIES_LOADED } from '../actions/category';
 
 const initialState = {
   list: [],
+  isCategoriesLoaded: false,
 };
 
 const categoryReducer = (state = initialState, action = {}) => {
@@ -10,6 +11,12 @@ const categoryReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         list: action.category,
+      };
+
+    case CATEGORIES_LOADED:
+      return {
+        ...state,
+        isCategoriesLoaded: !state.isCategoriesLoaded,
       };
 
     default:

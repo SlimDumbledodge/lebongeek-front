@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-const Ad = () => {
+import PropTypes from 'prop-types';
+
+const Ad = ({ title, price }) => {
   return (
     <a href="/" className="ad">
       <img
@@ -7,11 +9,16 @@ const Ad = () => {
         alt="Une annonce"
         className="ad__image"
       />
-      <p href="/" className="ad__title">
-        Ceci est le titre de l'annonce - 40€
+      <p className="ad__title">
+        {title} - {price}€
       </p>
     </a>
   );
+};
+
+Ad.propTypes = {
+  title: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
 };
 
 export default Ad;

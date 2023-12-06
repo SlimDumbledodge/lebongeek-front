@@ -16,6 +16,7 @@ const Ads = () => {
 
   const isMobile = useSelector((state) => state.responsive.isMobile);
   const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
+  const adsCategory = useSelector((state) => state.ads.list);
 
   const handleResize = () => {
     dispatch(switchScreenResponsive(window.innerWidth < 1024));
@@ -44,24 +45,9 @@ const Ads = () => {
           ''
         )}
         <div className="ads">
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
-          <Ad />
+          {adsCategory.map((ad) => (
+            <Ad title={ad.location} price={ad.price} key={ad.id} />
+          ))}
         </div>
       </div>
       {isFilterOpen && isMobile ? <AdsFilter type={table[1]} /> : ''}

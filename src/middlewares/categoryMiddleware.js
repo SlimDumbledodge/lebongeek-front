@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { FETCH_CATEGORIES, saveCategories } from '../actions/category';
+import {
+  FETCH_CATEGORIES,
+  saveCategories,
+  categoriesLoaded,
+} from '../actions/category';
 
 const categoryMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -11,6 +15,7 @@ const categoryMiddleware = (store) => (next) => (action) => {
           console.log('OK FETCH_CATEGORIES : ', response);
 
           store.dispatch(saveCategories(response.data));
+          store.dispatch(categoriesLoaded());
         })
         .catch((error) => {
           // eslint-disable-next-line no-console

@@ -6,8 +6,9 @@ export const adsFilter = () => ({
   type: ADS_FILTER,
 });
 
-export const fetchAdsCategories = () => ({
+export const fetchAdsCategories = (id) => ({
   type: FETCH_ADS_CATEGORIES,
+  id,
 });
 
 export const saveAdsCategories = (ads) => ({

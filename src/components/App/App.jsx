@@ -36,7 +36,7 @@ function App() {
         <Route path="/depot_annonce" element={<AddAd />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
-        <Route path="annonces" element={<Ads />} />
+        <Route path="/annonces/:id" element={<Ads />} />
 
         <Route path="/figurine/1" element={<AdDetails />} />
 
