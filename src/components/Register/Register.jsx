@@ -3,54 +3,56 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import './Register.scss';
 import {
-  changeInputUsername,
-  changeInputEmail,
-  changeInputPassword,
-  changeInputFirstname,
-  changeInputLastname,
-  changeInputPhone,
-  createUser,
-  closeCreateUserSuccessfullyPopUp,
-  closeCreateUserFailedPopUp,
-} from '../../actions/user';
+  changeRegisterUsername,
+  changeRegisterEmail,
+  changeRegisterPassword,
+  changeRegisterFirstname,
+  changeRegisterLastname,
+  changeRegisterPhone,
+  createRegisterUser,
+  closeRegisterSuccessfullyPopup,
+  closeRegisterFailedPopup,
+} from '../../actions/register';
 
 const Register = () => {
   const dispatch = useDispatch();
-  const usernameValue = useSelector((state) => state.user.username);
-  const emailValue = useSelector((state) => state.user.email);
-  const passwordValue = useSelector((state) => state.user.password);
-  const firstnameValue = useSelector((state) => state.user.firstname);
-  const lastnameValue = useSelector((state) => state.user.lastname);
-  const phoneValue = useSelector((state) => state.user.phone);
-  const isCreateUserSuccessfullyPopUpOpen = useSelector(
-    (state) => state.user.isCreateUserSuccessfullyPopUpOpen
+  const usernameValue = useSelector((state) => state.register.registerUsername);
+  const emailValue = useSelector((state) => state.register.registerEmail);
+  const passwordValue = useSelector((state) => state.register.registerPassword);
+  const firstnameValue = useSelector(
+    (state) => state.register.registerFirstname
   );
-  const isCreateUserFailedPopUpOpen = useSelector(
-    (state) => state.user.isCreateUserFailedPopUpOpen
+  const lastnameValue = useSelector((state) => state.register.RegisterLastname);
+  const phoneValue = useSelector((state) => state.register.RegisterPhone);
+  const isRegiterSuccessfullyPopupOpen = useSelector(
+    (state) => state.register.isRegisterSuccessfullyPopupOpen
+  );
+  const isRegisterFailedPopupOpen = useSelector(
+    (state) => state.register.isRegisterFailedPopupOpen
   );
 
   return (
     <>
-      {isCreateUserSuccessfullyPopUpOpen && (
+      {isRegiterSuccessfullyPopupOpen && (
         <Stack className="register__popup__container">
           <Alert
             id="register__popup__message__success"
             severity="success"
             onClose={() => {
-              dispatch(closeCreateUserSuccessfullyPopUp());
+              dispatch(closeRegisterSuccessfullyPopup());
             }}
           >
             Utilisateur crée avec succès !
           </Alert>
         </Stack>
       )}
-      {isCreateUserFailedPopUpOpen && (
+      {isRegisterFailedPopupOpen && (
         <Stack className="register__popup__container">
           <Alert
             id="register__popup__message__fail"
             severity="error"
             onClose={() => {
-              dispatch(closeCreateUserFailedPopUp());
+              dispatch(closeRegisterFailedPopup());
             }}
           >
             La création du compte à échoué !
@@ -66,7 +68,7 @@ const Register = () => {
           className="register__form"
           onSubmit={(event) => {
             event.preventDefault();
-            dispatch(createUser());
+            dispatch(createRegisterUser());
           }}
         >
           <div>
@@ -76,7 +78,7 @@ const Register = () => {
               className="register__inputs"
               value={usernameValue}
               onChange={(event) => {
-                dispatch(changeInputUsername(event.target.value));
+                dispatch(changeRegisterUsername(event.target.value));
               }}
             />
           </div>
@@ -87,7 +89,7 @@ const Register = () => {
               className="register__inputs"
               value={emailValue}
               onChange={(event) => {
-                dispatch(changeInputEmail(event.target.value));
+                dispatch(changeRegisterEmail(event.target.value));
               }}
             />
           </div>
@@ -99,7 +101,7 @@ const Register = () => {
               className="register__inputs"
               value={passwordValue}
               onChange={(event) => {
-                dispatch(changeInputPassword(event.target.value));
+                dispatch(changeRegisterPassword(event.target.value));
               }}
             />
           </div>
@@ -110,7 +112,7 @@ const Register = () => {
               className="register__inputs"
               value={firstnameValue}
               onChange={(event) => {
-                dispatch(changeInputFirstname(event.target.value));
+                dispatch(changeRegisterFirstname(event.target.value));
               }}
             />
           </div>
@@ -121,7 +123,7 @@ const Register = () => {
               className="register__inputs"
               value={lastnameValue}
               onChange={(event) => {
-                dispatch(changeInputLastname(event.target.value));
+                dispatch(changeRegisterLastname(event.target.value));
               }}
             />
           </div>
@@ -133,7 +135,7 @@ const Register = () => {
               className="register__inputs"
               value={phoneValue}
               onChange={(event) => {
-                dispatch(changeInputPhone(event.target.value));
+                dispatch(changeRegisterPhone(event.target.value));
               }}
             />
           </div>
