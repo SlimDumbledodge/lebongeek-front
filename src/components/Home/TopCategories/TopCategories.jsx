@@ -11,12 +11,12 @@ const TopCategories = () => {
       <h2 className="top__categories__title">TOP CATEGORIES</h2>
       <div className="top__categories__grid__wrapper">
         <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
+          src="src/assets/images/Figurines.jpg"
           alt=""
           className="top__categories__item"
         />
         <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
+          src="src/assets/images/Mario.jpg"
           alt=""
           className="top__categories__item"
         />
