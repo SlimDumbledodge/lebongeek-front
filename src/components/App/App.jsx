@@ -28,6 +28,7 @@ function App() {
         <Route path="annonces" element={<Ads />} />
 
         <Route path="/figurine/1" element={<AdDetails />} />
+
         <Route path="/connexion" element={<Connexion />} />
         <Route
           path="categories"

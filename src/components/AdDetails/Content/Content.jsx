@@ -1,5 +1,7 @@
 import './Content.scss';
+import React from 'react';
 import { Button, Image, Label } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const Content = () => {
   return (
@@ -35,7 +37,9 @@ const Content = () => {
       </section>
       <Label id="ad__details__state__tag">Neuf</Label>
       <Button size="mini" className="ad__details__button__buy">
-        Acheter
+        <Link className="transaction__page__link" to="/transaction">
+          Acheter
+        </Link>
       </Button>
     </div>
   );
