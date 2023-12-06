@@ -24,6 +24,7 @@ const Home = () => {
       <TopCategories />
       <LastSells />
       <Link to="figurine/1">Liens vers le détail d'une annonce</Link>
+      <Link to="annonces">Liens vers toutes les annonces</Link>
     </div>
   );
 };

@@ -1,19 +1,30 @@
+/* eslint-disable react/no-unescaped-entities */
 import './Connexion.scss';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { loginUser } from '../../actions/authentification';
 
 const Connexion = () => {
+  const dispatch = useDispatch();
   return (
     <div className="connexion__container">
       <h1 className="connexion__title">Bonjour !</h1>
       <p className="connexion__text">
         Connectez-vous pour découvrir nos annonces.
       </p>
-      <form className="connexion__form">
+      <form
+        className="connexion__form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          dispatch(loginUser());
+        }}
+      >
         <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" className="connexion__inputs" />
+          <label htmlFor="username">Nom d'utilisateur</label>
+          <input type="text" className="connexion__inputs" />
         </div>
+
         <div>
           <label htmlFor="password">Mot de passe</label>
           <input type="password" className="connexion__inputs" />
