@@ -17,7 +17,7 @@ function Form() {
         icon="search"
         id="header__desktop__dropdown__search"
         options={categoriesOptions}
-        placeholder="Jeux-vidéo..."
+        placeholder="Rechercher..."
       />
     </form>
   );
