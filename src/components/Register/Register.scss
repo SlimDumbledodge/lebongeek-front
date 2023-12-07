@@ -68,6 +68,27 @@
   color: var.$titlesColor;
   font-weight: bold;
 }
+
+.register__popup__container {
+  width: 100%;
+}
+
+#register__popup__message__success {
+  margin: 25px auto 0;
+  padding: 25px;
+  font-size: 1.1em;
+  width: 70%;
+  background-color: #b5ffb5;
+}
+
+#register__popup__message__fail {
+  margin: 25px auto 0;
+  padding: 25px;
+  font-size: 1.1em;
+  width: 70%;
+  background-color: #ffadad;
+}
+
 //MEDIAS QUERIES
 /* écrans de taille moyenne à grande*/
 .register__container {

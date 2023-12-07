@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
+
 import { Link } from 'react-router-dom';
 import Banner from './Banner/Banner';
 import Inventory from './Inventory/Inventory';
 import TopCategories from './TopCategories/TopCategories';
 import LastSells from './LastSells/LastSells';
+
 import './Home.scss';
 
 const Home = () => {
@@ -24,6 +26,7 @@ const Home = () => {
       <TopCategories />
       <LastSells />
       <Link to="figurine/1">Liens vers le détail d'une annonce</Link>
+      <Link to="annonces">Liens vers toutes les annonces</Link>
     </div>
   );
 };
