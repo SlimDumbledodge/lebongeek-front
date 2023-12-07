@@ -7,7 +7,7 @@ const adsMiddleware = (store) => (next) => (action) => {
     case FETCH_ADS_CATEGORIES: {
       const { id } = action;
       axios
-        .get(`http://amgad-gaafr.vpnuser.lan:8080/api/${id}/categories`)
+        .get(`http://matthieu-le-floch.vpnuser.lan:8080/api/${id}/categories`)
         .then((response) => {
           console.log('OK FETCH_ADS_CATEGORIES : ', response);
           store.dispatch(saveAdsCategories(response.data.ads));

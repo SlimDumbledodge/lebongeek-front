@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   LOGIN_USER,
@@ -11,7 +12,7 @@ const loginMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN_USER:
       axios
-        .post(`http://amgad-gaafr.vpnuser.lan:8080/api/login_check`, {
+        .post(`http://matthieu-le-floch.vpnuser.lan:8080/api/login_check`, {
           username: store.getState().login.username,
           password: store.getState().login.password,
         })

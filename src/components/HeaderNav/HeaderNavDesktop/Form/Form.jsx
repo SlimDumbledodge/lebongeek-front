@@ -11,11 +11,14 @@ import {
 } from '../../../../actions/input';
 
 import { fetchAdsCategories } from '../../../../actions/ads';
+import { saveCategoryName } from '../../../../actions/category';
 
 function Form() {
   const inputSearch = useSelector((state) => state.input.inputSearch);
   const isSearchListOpen = useSelector((state) => state.input.isSearchListOpen);
-  const categoriesListFromState = useSelector((state) => state.category.list);
+  const categoriesListFromState = useSelector(
+    (state) => state.category.listCategories
+  );
   const isCategoriesLoaded = useSelector(
     (state) => state.category.isCategoriesLoaded
   );
@@ -60,6 +63,7 @@ function Form() {
               <li
                 onClick={() => {
                   dispatch(fetchAdsCategories(category.id));
+                  dispatch(saveCategoryName(category.name));
                 }}
               >
                 {category.name}

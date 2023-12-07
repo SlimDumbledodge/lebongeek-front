@@ -62,7 +62,7 @@ const Register = () => {
       <div className="register__container">
         <h1 className="register__title">Bonjour !</h1>
         <p className="register__text">
-          Crée un compte pour découvrir nos annonces.
+          Créer un compte pour découvrir nos annonces.
         </p>
         <form
           className="register__form"
@@ -141,7 +141,7 @@ const Register = () => {
           </div>
 
           <button className="register__sign__in__button" type="submit">
-            Crée mon compte
+            Créer mon compte
           </button>
         </form>
       </div>

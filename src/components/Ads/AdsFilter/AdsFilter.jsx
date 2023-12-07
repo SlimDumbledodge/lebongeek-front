@@ -13,7 +13,9 @@ const AdsFilter = ({ type }) => {
 
   const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
   const isMobile = useSelector((state) => state.responsive.isMobile);
-  const categoriesListFromState = useSelector((state) => state.category.list);
+  const categoriesListFromState = useSelector(
+    (state) => state.category.listCategories
+  );
 
   const categoriesListFromAPI = categoriesListFromState.map((ad) => ({
     name: ad.name,
