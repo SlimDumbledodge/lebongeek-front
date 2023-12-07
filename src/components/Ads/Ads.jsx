@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { switchScreenResponsive } from '../../actions/responsive';
 import { adsFilter } from '../../actions/ads';
@@ -49,12 +50,14 @@ const Ads = () => {
         <div className="ads">
           {adsCategory.map((ad) =>
             ad.products.map((product) => (
-              <Ad
-                title={product.title}
-                price={ad.price}
-                key={ad.id}
-                image={product.picture}
-              />
+              <Link to={`/${categoryName}/${ad.id}`} key={product.id}>
+                <Ad
+                  title={product.title}
+                  price={ad.price}
+                  key={product.id}
+                  image={product.picture}
+                />
+              </Link>
             ))
           )}
         </div>

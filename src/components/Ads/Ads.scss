@@ -13,6 +13,7 @@
   margin: 30px auto 0;
   flex-direction: column;
   //min-height: 2100px;
+  align-items: flex-start;
   
   @media screen and (min-width: 1024px) {
     flex-direction: row;
@@ -32,6 +33,10 @@
     width: 80%;
     flex-wrap: wrap;
     justify-content: center;
+
+    @media screen and (max-width: 425px) {
+      width: 100%;
+    }
 
     @media screen and (min-width: 768px) {
       width: 750px;
