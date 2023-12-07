@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import { adsFilter } from '../../../actions/ads';
+import { adsFilter, fetchAdsCategories } from '../../../actions/ads';
+import { saveCategoryName } from '../../../actions/category';
 
 import './AdsFilter.scss';
 
@@ -28,11 +30,17 @@ const AdsFilter = ({ type }) => {
         <p className={`ads__filter__title__${type}`}>Catégories</p>
         <div className={`ads__filter__checkbox__container__${type}`}>
           {categoriesListFromAPI.map((category) => (
-            <AdsFilterCheckbox
-              key={category}
-              title={category.name}
-              system={type}
-            />
+            <Link to={`/annonces/${category.id}`} key={category.id}>
+              <AdsFilterCheckbox
+                key={category}
+                title={category.name}
+                system={type}
+                onClickProp={() => {
+                  dispatch(fetchAdsCategories(category.id));
+                  dispatch(saveCategoryName(category.name));
+                }}
+              />
+            </Link>
           ))}
         </div>
         {isFilterOpen && isMobile ? (
