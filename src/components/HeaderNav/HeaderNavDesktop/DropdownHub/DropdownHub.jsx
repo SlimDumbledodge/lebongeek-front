@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +13,7 @@ import { clearCookie } from '../../../../actions/login';
 
 const DropdownHub = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <Dropdown
       text={<FontAwesomeIcon className="nav__icons" icon={faCircleUser} />}
@@ -22,9 +23,9 @@ const DropdownHub = () => {
         <Dropdown.Item text="Hub" as={Link} to="/hub" />
         <Dropdown.Item
           onClick={() => {
-            console.log('click');
             dispatch(clearCookie());
             window.location.reload();
+            navigate('/connexion');
           }}
         >
           Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
