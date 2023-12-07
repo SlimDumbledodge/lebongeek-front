@@ -6,6 +6,7 @@ import adsReducer from './ads';
 import inputReducer from './input';
 import loginReducer from './login';
 import registerReducer from './register';
+import categoryReducer from './category';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   input: inputReducer,
   login: loginReducer,
   register: registerReducer,
+  category: categoryReducer,
 });
 
 export default rootReducer;

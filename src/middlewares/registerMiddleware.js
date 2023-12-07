@@ -9,7 +9,7 @@ const registerMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case CREATE_REGISTER_USER:
       axios
-        .post(`http://amgad-gaafr.vpnuser.lan:8080/api/users`, {
+        .post(`http://matthieu-le-floch.vpnuser.lan:8080/api/users`, {
           username: store.getState().register.username,
           firstname: store.getState().register.firstname,
           lastname: store.getState().register.lastname,

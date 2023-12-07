@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -8,22 +10,25 @@ import {
   searchToggleCategories,
 } from '../../../../actions/input';
 
+import { fetchAdsCategories } from '../../../../actions/ads';
+import { saveCategoryName } from '../../../../actions/category';
+
 function Form() {
   const inputSearch = useSelector((state) => state.input.inputSearch);
   const isSearchListOpen = useSelector((state) => state.input.isSearchListOpen);
+  const categoriesListFromState = useSelector(
+    (state) => state.category.listCategories
+  );
+  const isCategoriesLoaded = useSelector(
+    (state) => state.category.isCategoriesLoaded
+  );
+
   const dispatch = useDispatch();
 
-  const categoriesList = [
-    'Jeux vidéo',
-    'Figurine',
-    'JDR',
-    'Manga',
-    'Comics',
-    'Cosplay',
-    'Cartes',
-    'Guides',
-    'Décoration',
-  ];
+  const categoriesListFromAPI = categoriesListFromState.map((ad) => ({
+    name: ad.name,
+    id: ad.id,
+  }));
 
   return (
     <div
@@ -32,7 +37,12 @@ function Form() {
       }}
       className="parentList"
     >
-      <form action="">
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          dispatch(fetchAdsCategories());
+        }}
+      >
         <input
           type="text"
           value={inputSearch}
@@ -46,17 +56,19 @@ function Form() {
           className="theInput"
         />
       </form>
-      {isSearchListOpen && (
+      {isSearchListOpen && isCategoriesLoaded && (
         <ul className="list">
-          {categoriesList.map((category) => (
-            <li
-              key={category}
-              onClick={() => {
-                console.log('Yo');
-              }}
-            >
-              {category}
-            </li>
+          {categoriesListFromAPI.map((category) => (
+            <Link to={`/annonces/${category.id}`} key={category.id}>
+              <li
+                onClick={() => {
+                  dispatch(fetchAdsCategories(category.id));
+                  dispatch(saveCategoryName(category.name));
+                }}
+              >
+                {category.name}
+              </li>
+            </Link>
           ))}
         </ul>
       )}
