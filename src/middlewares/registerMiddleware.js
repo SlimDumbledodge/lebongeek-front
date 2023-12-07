@@ -5,18 +5,20 @@ import {
   openRegisterFailedPopup,
 } from '../actions/register';
 
+const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+
 const registerMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case CREATE_REGISTER_USER:
       axios
-        .post(`http://amgad-gaafr.vpnuser.lan:8080/api/users`, {
-          username: store.getState().register.username,
-          firstname: store.getState().register.firstname,
-          lastname: store.getState().register.lastname,
+        .post(`${baseUrl}/api/users`, {
+          username: store.getState().register.RegisterUsername,
+          firstname: store.getState().register.RegisterFirstname,
+          lastname: store.getState().register.RegisterLastname,
           avatar: 'http://placehold.it/300x300',
-          email: store.getState().register.email,
-          phone_number: store.getState().register.phone,
-          password: store.getState().register.password,
+          email: store.getState().register.RegisterEmail,
+          phone_number: store.getState().register.RegisterPhone,
+          password: store.getState().register.RegisterPassword,
         })
         .then((response) => {
           console.log(response);
