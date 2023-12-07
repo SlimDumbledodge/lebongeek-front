@@ -18,14 +18,15 @@ import './Connexion.scss';
 
 const Connexion = () => {
   const dispatch = useDispatch();
-  const usernameValue = useSelector((state) => state.login.username);
-  const passwordValue = useSelector((state) => state.login.password);
+  const usernameValue = useSelector((state) => state.login.LoginUsername);
+  const passwordValue = useSelector((state) => state.login.LoginPassword);
   const isSuccessfullyLoginPopupOpen = useSelector(
     (state) => state.login.isSuccessfullyLoginPopupOpen
   );
   const isFailedLoginPopupOpen = useSelector(
     (state) => state.login.isFailedLoginPopupOpen
   );
+
   return (
     <>
       {isSuccessfullyLoginPopupOpen && (
@@ -104,4 +105,5 @@ const Connexion = () => {
     </>
   );
 };
+
 export default Connexion;

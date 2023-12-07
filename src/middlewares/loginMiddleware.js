@@ -8,13 +8,14 @@ import {
   setCookie,
 } from '../actions/login';
 
+const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 const loginMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN_USER:
       axios
-        .post(`http://matthieu-le-floch.vpnuser.lan:8080/api/login_check`, {
-          username: store.getState().login.username,
-          password: store.getState().login.password,
+        .post(`${baseUrl}/api/login_check`, {
+          username: store.getState().login.LoginUsername,
+          password: store.getState().login.LoginPassword,
         })
         .then((response) => {
           console.log(response);

@@ -7,11 +7,12 @@ import {
   OPEN_LOGIN_FAILED_POPUP,
   CLOSE_LOGIN_SUCCESSFULLY_POPUP,
   CLOSE_LOGIN_FAILED_POPUP,
+  CLEAR_COOKIE,
 } from '../actions/login';
 
 const initialState = {
-  username: '',
-  password: '',
+  LoginUsername: '',
+  LoginPassword: '',
   isSuccessfullyLoginPopupOpen: false,
   isFailedLoginPopupOpen: false,
   token: null,
@@ -22,13 +23,13 @@ const loginReducer = (state = initialState, action = {}) => {
     case CHANGE_LOGIN_USERNAME:
       return {
         ...state,
-        username: action.newValue,
+        LoginUsername: action.newValue,
       };
 
     case CHANGE_LOGIN_PASSWORD:
       return {
         ...state,
-        password: action.newValue,
+        LoginPassword: action.newValue,
       };
 
     case SAVE_TOKEN:
@@ -39,6 +40,12 @@ const loginReducer = (state = initialState, action = {}) => {
 
     case SET_COOKIE:
       document.cookie = `token=${state.token}; path=/;`;
+      return {
+        ...state,
+      };
+
+    case CLEAR_COOKIE:
+      document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
       return {
         ...state,
       };
