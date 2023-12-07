@@ -18,8 +18,9 @@ import './Connexion.scss';
 
 const Connexion = () => {
   const dispatch = useDispatch();
-  const usernameValue = useSelector((state) => state.login.username);
-  const passwordValue = useSelector((state) => state.login.password);
+  const usernameValue = useSelector((state) => state.login.LoginUsername);
+  const passwordValue = useSelector((state) => state.login.LoginPassword);
+
   const isSuccessfullyLoginPopupOpen = useSelector(
     (state) => state.login.isSuccessfullyLoginPopupOpen
   );
@@ -54,6 +55,7 @@ const Connexion = () => {
           </Alert>
         </Stack>
       )}
+
       <div className="connexion__container">
         <h1 className="connexion__title">Bonjour !</h1>
         <p className="connexion__text">
