@@ -7,6 +7,7 @@ import {
   OPEN_LOGIN_FAILED_POPUP,
   CLOSE_LOGIN_SUCCESSFULLY_POPUP,
   CLOSE_LOGIN_FAILED_POPUP,
+  CLEAR_COOKIE,
 } from '../actions/login';
 
 const initialState = {
@@ -39,6 +40,12 @@ const loginReducer = (state = initialState, action = {}) => {
 
     case SET_COOKIE:
       document.cookie = `token=${state.token}; path=/;`;
+      return {
+        ...state,
+      };
+
+    case CLEAR_COOKIE:
+      document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
       return {
         ...state,
       };
