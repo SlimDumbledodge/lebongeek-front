@@ -1,5 +1,11 @@
 @use '../../../styles/variables' as var;
 
+.logo {
+  width: 250px;
+  height: 250px;
+  margin: auto;
+}
+
 #header__desktop__dropdown__search {
   width: 250px;
 }
