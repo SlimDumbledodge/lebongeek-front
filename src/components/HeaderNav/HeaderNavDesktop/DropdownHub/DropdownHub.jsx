@@ -8,17 +8,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import './DropdownHub.scss';
-<<<<<<< HEAD
 import { useDispatch } from 'react-redux';
 import { clearCookie } from '../../../../actions/login';
 
 const DropdownHub = () => {
   const dispatch = useDispatch();
-=======
-import { clearCookie } from '../../../../actions/login';
-
-const DropdownHub = () => {
->>>>>>> feature/clearCookie
   const navigate = useNavigate();
   return (
     <Dropdown
@@ -29,15 +23,9 @@ const DropdownHub = () => {
         <Dropdown.Item text="Hub" as={Link} to="/hub" />
         <Dropdown.Item
           onClick={() => {
-<<<<<<< HEAD
             dispatch(clearCookie());
             window.location.reload();
             navigate('/connexion');
-=======
-            clearCookie();
-            navigate('/connexion');
-            window.location.reload();
->>>>>>> feature/clearCookie
           }}
         >
           Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />

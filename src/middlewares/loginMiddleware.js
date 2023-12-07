@@ -7,7 +7,7 @@ import {
   setCookie,
 } from '../actions/login';
 
-const baseUrl = `http://matthieu-le-floch.vpnuser.lan:8080`;
+const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 const loginMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN_USER:

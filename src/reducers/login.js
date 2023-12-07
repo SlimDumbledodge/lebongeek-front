@@ -45,11 +45,7 @@ const loginReducer = (state = initialState, action = {}) => {
       };
 
     case CLEAR_COOKIE:
-<<<<<<< HEAD
       document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-=======
-      document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
->>>>>>> feature/clearCookie
       return {
         ...state,
       };
