@@ -11,8 +11,8 @@ import {
 } from '../actions/login';
 
 const initialState = {
-  username: '',
-  password: '',
+  LoginUsername: '',
+  LoginPassword: '',
   isSuccessfullyLoginPopupOpen: false,
   isFailedLoginPopupOpen: false,
   token: null,
@@ -23,13 +23,13 @@ const loginReducer = (state = initialState, action = {}) => {
     case CHANGE_LOGIN_USERNAME:
       return {
         ...state,
-        username: action.newValue,
+        LoginUsername: action.newValue,
       };
 
     case CHANGE_LOGIN_PASSWORD:
       return {
         ...state,
-        password: action.newValue,
+        LoginPassword: action.newValue,
       };
 
     case SAVE_TOKEN:
@@ -45,7 +45,11 @@ const loginReducer = (state = initialState, action = {}) => {
       };
 
     case CLEAR_COOKIE:
+<<<<<<< HEAD
       document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+=======
+      document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+>>>>>>> feature/clearCookie
       return {
         ...state,
       };
