@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { adsFilter, fetchAdsCategories } from '../../../actions/ads';
-import { saveCategoryName } from '../../../actions/category';
+import { saveCategoryNameAndSlug } from '../../../actions/category';
 
 import './AdsFilter.scss';
 
@@ -25,14 +25,16 @@ const AdsFilter = ({ type }) => {
         <p className={`ads__filter__title__${type}`}>Catégories</p>
         <div className={`ads__filter__checkbox__container__${type}`}>
           {categoriesListFromState.map((category) => (
-            <Link to={`/annonces/${category.id}`} key={category.id}>
+            <Link to={`/annonces/${category.slug}`} key={category.id}>
               <AdsFilterCheckbox
                 key={category}
                 title={category.name}
                 system={type}
                 onClickProp={() => {
                   dispatch(fetchAdsCategories(category.id));
-                  dispatch(saveCategoryName(category.name));
+                  dispatch(
+                    saveCategoryNameAndSlug(category.name, category.slug)
+                  );
                 }}
               />
             </Link>

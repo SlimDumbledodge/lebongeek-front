@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { FETCH_ADS_CATEGORIES, saveAdsCategories } from '../actions/ads';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+const baseUrl = `http://matthieu-le-floch.vpnuser.lan:8080`;
 const adsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_ADS_CATEGORIES: {

@@ -19,6 +19,7 @@ const Ads = () => {
   const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
   const adsCategory = useSelector((state) => state.ads.listAdsCategories);
   const categoryName = useSelector((state) => state.category.categoryName);
+  const categorySlug = useSelector((state) => state.category.categorySlug);
 
   const handleResize = () => {
     dispatch(switchScreenResponsive(window.innerWidth < 1024));
@@ -31,7 +32,9 @@ const Ads = () => {
 
   return (
     <>
-      <h1 className="categoryTitle">{categoryName}</h1>
+      <h1 className="categoryTitle">
+        {categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}
+      </h1>
       <div className="ads__container">
         {isMobile ? '' : <AdsFilter type={table[0]} />}
         {isMobile ? (
@@ -50,7 +53,7 @@ const Ads = () => {
         <div className="ads">
           {adsCategory.map((ad) =>
             ad.products.map((product) => (
-              <Link to={`/${categoryName}/${ad.id}`} key={product.id}>
+              <Link to={`/${categorySlug}/${ad.id}`} key={product.id}>
                 <Ad
                   title={product.title}
                   price={ad.price}

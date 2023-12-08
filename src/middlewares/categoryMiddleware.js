@@ -5,7 +5,7 @@ import {
   categoriesLoaded,
 } from '../actions/category';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+const baseUrl = `http://matthieu-le-floch.vpnuser.lan:8080`;
 const categoryMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_CATEGORIES:

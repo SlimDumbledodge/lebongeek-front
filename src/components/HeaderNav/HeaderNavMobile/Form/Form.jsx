@@ -11,7 +11,7 @@ import {
 } from '../../../../actions/input';
 
 import { fetchAdsCategories } from '../../../../actions/ads';
-import { saveCategoryName } from '../../../../actions/category';
+import { saveCategoryNameAndSlug } from '../../../../actions/category';
 
 function Form() {
   const inputSearch = useSelector((state) => state.input.inputSearch);
@@ -54,11 +54,13 @@ function Form() {
       {isSearchListOpen && isCategoriesLoaded && (
         <ul className="list">
           {categoriesListFromState.map((category) => (
-            <Link to={`/annonces/${category.id}`} key={category.id}>
+            <Link to={`/annonces/${category.slug}`} key={category.id}>
               <li
                 onClick={() => {
                   dispatch(fetchAdsCategories(category.id));
-                  dispatch(saveCategoryName(category.name));
+                  dispatch(
+                    saveCategoryNameAndSlug(category.name, category.slug)
+                  );
                 }}
               >
                 {category.name}
