@@ -19,17 +19,12 @@ const AdsFilter = ({ type }) => {
     (state) => state.category.listCategories
   );
 
-  const categoriesListFromAPI = categoriesListFromState.map((ad) => ({
-    name: ad.name,
-    id: ad.id,
-  }));
-
   return (
     <>
       <div className={`ads__filter_container__${type}`}>
         <p className={`ads__filter__title__${type}`}>Catégories</p>
         <div className={`ads__filter__checkbox__container__${type}`}>
-          {categoriesListFromAPI.map((category) => (
+          {categoriesListFromState.map((category) => (
             <Link to={`/annonces/${category.id}`} key={category.id}>
               <AdsFilterCheckbox
                 key={category}

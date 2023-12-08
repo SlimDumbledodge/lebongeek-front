@@ -25,11 +25,6 @@ function Form() {
 
   const dispatch = useDispatch();
 
-  const categoriesListFromAPI = categoriesListFromState.map((ad) => ({
-    name: ad.name,
-    id: ad.id,
-  }));
-
   return (
     <div
       onMouseLeave={() => {
@@ -58,7 +53,7 @@ function Form() {
       </form>
       {isSearchListOpen && isCategoriesLoaded && (
         <ul className="list">
-          {categoriesListFromAPI.map((category) => (
+          {categoriesListFromState.map((category) => (
             <Link to={`/annonces/${category.id}`} key={category.id}>
               <li
                 onClick={() => {
