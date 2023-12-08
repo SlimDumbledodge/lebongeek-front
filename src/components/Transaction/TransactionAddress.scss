@@ -1,0 +1,38 @@
+.transaction__address__container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+  border-bottom: 1px solid black;
+  padding-bottom: 25px;
+  justify-content: space-between;
+
+  .transaction__address__input__container{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 3px;
+
+    .transaction__label{
+      font-weight: bold;
+    }
+
+    .transaction__select{
+      border: 1px solid black;
+      border-radius: 3px;
+      padding: 5px;
+
+      .transaction__choice{
+        border-radius: 5px;
+      }
+    }
+
+    .transaction__input{
+      border: 1px solid black;
+      width: 100%;
+      border-radius: 3px;
+      padding: 5px;
+    }
+  }
+}

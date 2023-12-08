@@ -7,6 +7,10 @@
   padding: 10px;
   height: 100vh;
 
+  @media screen and (min-width: 375px) {
+    width: 375px;
+  }
+
   .transaction__title{
     font-size: 26px;
     text-align: center;
@@ -20,9 +24,15 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
 
     .transaction__product__image{
       width: 100px;
+
+      @media screen and (min-width: 375px) {
+        width: 125px;
+      }
     }
 
     .transaction__product__information__container{
@@ -59,7 +69,7 @@
 
   .transaction__terms__container{
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
     gap: 10px;
     padding-left: 5px;
 
@@ -80,7 +90,7 @@
   .transaction__footer__container{
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 30px;
     gap: 5px;
 
     .transaction__footer__information{
@@ -96,7 +106,7 @@
   .transaction__total__container{
     display: flex;
     justify-content: space-between;
-    margin-top: 25px;
+    margin-top: 30px;
 
     .transaction__total_element{
       font-size: 22px;
@@ -107,12 +117,14 @@
   .transaction__validation__button{
     display: flex;
     background: grey;
-    width: 180px;
+    width: auto;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: auto;
+    padding: 10px;
     text-align: center;
     align-self: center;
-    margin-top: 15px;
+    margin-top: 30px;
+    font-size: 18px;
   }
 }
