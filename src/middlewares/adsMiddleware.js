@@ -11,7 +11,7 @@ const adsMiddleware = (store) => (next) => (action) => {
         .get(`${baseUrl}/api/${id}/categories`)
         .then((response) => {
           console.log('OK FETCH_ADS_CATEGORIES : ', response);
-          store.dispatch(saveAdsCategories(response.data.ads));
+          store.dispatch(saveAdsCategories(response.data.product));
         })
         .catch((error) => {
           console.warn('Erreur FETCH_ADS_CATEGORIES : ', error);

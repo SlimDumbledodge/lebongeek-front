@@ -11,7 +11,7 @@ import {
 } from '../../../../actions/input';
 
 import { fetchAdsCategories } from '../../../../actions/ads';
-import { saveCategoryName } from '../../../../actions/category';
+import { saveCategoryNameAndSlug } from '../../../../actions/category';
 
 function Form() {
   const inputSearch = useSelector((state) => state.input.inputSearch);
@@ -24,11 +24,6 @@ function Form() {
   );
 
   const dispatch = useDispatch();
-
-  const categoriesListFromAPI = categoriesListFromState.map((ad) => ({
-    name: ad.name,
-    id: ad.id,
-  }));
 
   return (
     <div
@@ -58,15 +53,17 @@ function Form() {
       </form>
       {isSearchListOpen && isCategoriesLoaded && (
         <ul className="list">
-          {categoriesListFromAPI.map((category) => (
-            <Link to={`/annonces/${category.id}`} key={category.id}>
+          {categoriesListFromState.map((category) => (
+            <Link to={`/annonces/${category.slug}`} key={category.id}>
               <li
                 onClick={() => {
                   dispatch(fetchAdsCategories(category.id));
-                  dispatch(saveCategoryName(category.name));
+                  dispatch(
+                    saveCategoryNameAndSlug(category.name, category.slug)
+                  );
                 }}
               >
-                {category.name}
+                {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
               </li>
             </Link>
           ))}

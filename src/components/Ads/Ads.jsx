@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { switchScreenResponsive } from '../../actions/responsive';
 import { adsFilter } from '../../actions/ads';
@@ -18,6 +19,7 @@ const Ads = () => {
   const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
   const adsCategory = useSelector((state) => state.ads.listAdsCategories);
   const categoryName = useSelector((state) => state.category.categoryName);
+  const categorySlug = useSelector((state) => state.category.categorySlug);
 
   const handleResize = () => {
     dispatch(switchScreenResponsive(window.innerWidth < 1024));
@@ -30,7 +32,9 @@ const Ads = () => {
 
   return (
     <>
-      <h1 className="categoryTitle">{categoryName}</h1>
+      <h1 className="categoryTitle">
+        {categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}
+      </h1>
       <div className="ads__container">
         {isMobile ? '' : <AdsFilter type={table[0]} />}
         {isMobile ? (
@@ -47,16 +51,16 @@ const Ads = () => {
           ''
         )}
         <div className="ads">
-          {adsCategory.map((ad) =>
-            ad.products.map((product) => (
+          {adsCategory.map((product) => (
+            <Link to={`/${categorySlug}/${product.ad.id}`} key={product.id}>
               <Ad
                 title={product.title}
-                price={ad.price}
-                key={ad.id}
+                price={product.ad.price}
+                key={product.ad.id}
                 image={product.picture}
               />
-            ))
-          )}
+            </Link>
+          ))}
         </div>
       </div>
       {isFilterOpen && isMobile ? <AdsFilter type={table[1]} /> : ''}
