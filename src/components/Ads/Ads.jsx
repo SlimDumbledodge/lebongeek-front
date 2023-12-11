@@ -51,18 +51,16 @@ const Ads = () => {
           ''
         )}
         <div className="ads">
-          {adsCategory.map((ad) =>
-            ad.products.map((product) => (
-              <Link to={`/${categorySlug}/${ad.id}`} key={product.id}>
-                <Ad
-                  title={product.title}
-                  price={ad.price}
-                  key={product.id}
-                  image={product.picture}
-                />
-              </Link>
-            ))
-          )}
+          {adsCategory.map((product) => (
+            <Link to={`/${categorySlug}/${product.ad.id}`} key={product.id}>
+              <Ad
+                title={product.title}
+                price={product.ad.price}
+                key={product.ad.id}
+                image={product.picture}
+              />
+            </Link>
+          ))}
         </div>
       </div>
       {isFilterOpen && isMobile ? <AdsFilter type={table[1]} /> : ''}
