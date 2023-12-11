@@ -9,7 +9,7 @@ const HeaderNavDesktop = () => {
   return (
     <>
       <Link to="/" className="header__desktop__logo">
-        LeBonGeek
+        <img className="logo" src="src/assets/le bon geek.svg" alt="logo" />
       </Link>
       <Link to="/depot_annonce">
         <button type="button" className="header__desktop__add__ad__button">
