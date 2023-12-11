@@ -31,7 +31,6 @@ function App() {
   return (
     <div className="App">
       <HeaderNav />
-      <Transaction />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hub" element={<Hub />} />
@@ -41,6 +40,8 @@ function App() {
         <Route path="/annonces/:slug" element={<Ads />} />
 
         <Route path="/figurine/1" element={<AdDetails />} />
+
+        <Route path="/transaction" element={<Transaction />} />
 
         <Route path="/connexion" element={<Connexion />} />
         <Route
