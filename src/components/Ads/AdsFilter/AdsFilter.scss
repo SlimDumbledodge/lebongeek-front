@@ -41,7 +41,7 @@
 .ads__filter_container__mobile{
   width: 60%;
   padding: 30px;
-  height: 1100px;
+  height: auto;
   border: 1px solid var.$thirdColor;
   position: absolute;
   top: 0;
@@ -72,6 +72,10 @@
     gap: 25px;
     padding-left: 20px;
 
+    @media screen and (max-width: 320px) {
+      padding-left: 10px;
+    }
+
     .ads__filter__checkbox__mobile{
 
       .ads__filter__checkbox__input__mobile{
@@ -90,6 +94,10 @@
     margin-top: 15px;
     margin-left: 20px;
     padding: 5px;
+
+    @media screen and (max-width: 320px) {
+      margin-left: 35px;
+    }
 
     @media screen and (min-width: 375px) {
       margin-left: 50px;

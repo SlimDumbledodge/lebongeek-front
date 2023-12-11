@@ -24,9 +24,21 @@ const loginMiddleware = (store) => (next) => (action) => {
             store.dispatch(setCookie());
             store.dispatch(openLoginSuccessFullyPopup());
           }
+          axios
+            .get(`${baseUrl}/api/get_user`, {
+              headers: {
+                Authorization: `Bearer ${store.getState().login.token}`,
+              },
+            })
+            .then((secondResponse) => {
+              console.log(secondResponse);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch((error) => {
-          console.log(error);
+          console.error('fdsfd:', error);
           store.dispatch(openLoginFailedPopup());
         });
       break;
