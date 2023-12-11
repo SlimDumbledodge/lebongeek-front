@@ -39,7 +39,7 @@ function App() {
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />
 
-        <Route path="/figurine/1" element={<AdDetails />} />
+        <Route path="/figurines/:adId" element={<AdDetails />} />
 
         <Route path="/transaction" element={<Transaction />} />
 

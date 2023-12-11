@@ -12,7 +12,7 @@ const Title = () => {
       try {
         // requête GET pour récupérer les données de l'annonce
         const response = await fetch(
-          'http://matthieu-le-floch.vpnuser.lan:8080/api/12/products'
+          'http://amgad-gaafr.vpnuser.lan:8080/api/12/products'
         );
         if (response.ok) {
           // récupérer les données de la réponse
@@ -21,6 +21,7 @@ const Title = () => {
           if (adData && adData.title) {
             setAdTitle(adData.title);
           }
+          console.log(response);
         }
       } catch (error) {
         console.error(error); // afficher l'erreur dans la console

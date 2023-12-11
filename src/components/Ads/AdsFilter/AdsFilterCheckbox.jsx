@@ -29,7 +29,7 @@ const AdsFilterCheckbox = ({ title, system, onClickProp }) => {
 AdsFilterCheckbox.propTypes = {
   title: PropTypes.string.isRequired,
   system: PropTypes.string.isRequired,
-  onClickProp: PropTypes.string.isRequired,
+  onClickProp: PropTypes.func.isRequired,
 };
 
 export default AdsFilterCheckbox;
