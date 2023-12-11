@@ -5,7 +5,7 @@ import {
   openRegisterFailedPopup,
 } from '../actions/register';
 
-const baseUrl = `http://matthieu-le-floch.vpnuser.lan:8080`;
+const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 
 const registerMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

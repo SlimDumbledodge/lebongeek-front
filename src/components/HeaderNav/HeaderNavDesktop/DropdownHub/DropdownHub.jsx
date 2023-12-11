@@ -14,7 +14,7 @@ import { clearCookie } from '../../../../actions/login';
 const DropdownHub = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isUserLogged = useSelector((state) => state.login.token);
+  const isUserLogged = useSelector((state) => state.login.isCookieFilled);
   return (
     <Dropdown
       text={<FontAwesomeIcon className="nav__icons" icon={faCircleUser} />}

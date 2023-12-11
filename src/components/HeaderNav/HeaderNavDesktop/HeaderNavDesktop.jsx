@@ -6,7 +6,7 @@ import DropdownHub from './DropdownHub/DropdownHub';
 import './HeaderNavDesktop.scss';
 
 const HeaderNavDesktop = () => {
-  const isUserLogged = useSelector((state) => state.login.token);
+  const isUserLogged = useSelector((state) => state.login.isCookieFilled);
   return (
     <>
       <Link to="/" className="header__desktop__logo">

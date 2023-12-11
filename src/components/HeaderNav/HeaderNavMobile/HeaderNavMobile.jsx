@@ -18,7 +18,7 @@ const HeaderNavMobile = () => {
   const isHeaderNavOpenState = useSelector(
     (state) => state.headerNav.isHeaderNavOpen
   );
-  const isUserLogged = useSelector((state) => state.login.token);
+  const isUserLogged = useSelector((state) => state.login.isCookieFilled);
   const dispatch = useDispatch();
 
   return (

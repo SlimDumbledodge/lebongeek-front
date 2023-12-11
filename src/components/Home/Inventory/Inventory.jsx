@@ -6,7 +6,7 @@ import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import './Inventory.scss';
 
 const Inventory = () => {
-  const isUserLogged = useSelector((state) => state.login.token);
+  const isUserLogged = useSelector((state) => state.login.isCookieFilled);
   return isUserLogged ? (
     <section className="home__inventory">
       <h2 className="home__inventory__title">INVENTAIRE</h2>

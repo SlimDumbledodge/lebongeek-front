@@ -16,6 +16,7 @@ const initialState = {
   isSuccessfullyLoginPopupOpen: false,
   isFailedLoginPopupOpen: false,
   token: null,
+  isCookieFilled: false,
 };
 
 const loginReducer = (state = initialState, action = {}) => {
@@ -42,12 +43,14 @@ const loginReducer = (state = initialState, action = {}) => {
       document.cookie = `token=${state.token}; path=/;`;
       return {
         ...state,
+        isCookieFilled: true,
       };
 
     case CLEAR_COOKIE:
       document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
       return {
         ...state,
+        isCookieFilled: false,
       };
 
     case OPEN_LOGIN_SUCCESSFULLY_POPUP:
