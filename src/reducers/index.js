@@ -8,6 +8,7 @@ import loginReducer from './login';
 import registerReducer from './register';
 import categoryReducer from './category';
 import addAdFromHomeReducer from './addAdFromHome';
+import transactionReducer from './transaction';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   register: registerReducer,
   category: categoryReducer,
   addAdFromHome: addAdFromHomeReducer,
+  transaction: transactionReducer,
 });
 
 export default rootReducer;

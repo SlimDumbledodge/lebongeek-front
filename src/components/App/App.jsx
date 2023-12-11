@@ -15,6 +15,7 @@ import AdDetails from '../AdDetails/AdDetails';
 import Footer from '../Footer/Footer';
 import Ads from '../Ads/Ads';
 import Connexion from '../Connexion/Connexion';
+import Transaction from '../Transaction/Transaction';
 
 import './App.scss';
 import Register from '../Register/Register';
@@ -30,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <HeaderNav />
+      <Transaction />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hub" element={<Hub />} />
