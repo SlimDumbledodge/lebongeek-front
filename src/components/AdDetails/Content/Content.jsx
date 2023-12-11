@@ -1,6 +1,4 @@
-
 import './Content.scss';
-import React from 'react';
 import { Button, Image, Label } from 'semantic-ui-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -37,7 +35,6 @@ const AnnonceProduit = () => {
 
     fetchAdAndUser(); // Récupérer les données
   }, [endPoint, adId]);
-
 
   return (
     <div className="ad__details__container">
@@ -82,7 +79,6 @@ const AnnonceProduit = () => {
           )}
         </>
       )}
-
     </div>
   );
 };
