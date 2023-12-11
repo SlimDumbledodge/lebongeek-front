@@ -2,11 +2,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
+import { useDispatch, useSelector } from 'react-redux';
+
+import { buy } from '../../actions/transaction';
+
 import './Transaction.scss';
 
 import TransactionAddress from './TransactionAddress';
 
 const Transaction = () => {
+  const dispatch = useDispatch();
+
+  const isTransactionDone = useSelector(
+    (state) => state.transaction.isTransactionDone
+  );
+
   return (
     <div className="transaction__container">
       <h1 className="transaction__title">Ma transaction</h1>
@@ -34,9 +44,15 @@ const Transaction = () => {
           />
         </div>
       </div>
-      <form action="" className="transaction__form">
+      <form className="transaction__form">
         <TransactionAddress />
-        <button type="button" className="transaction__validation__button">
+        <button
+          type="button"
+          className="transaction__validation__button"
+          onClick={() => {
+            dispatch(buy());
+          }}
+        >
           Valider ma commande
         </button>
       </form>
@@ -63,9 +79,14 @@ const Transaction = () => {
         <p className="transaction__total_element">Total</p>
         <p className="transaction__total_element">15,99€</p>
       </div>
-      <div className="transaction__popup">
-        Bravo le sang! T'as acheté, wlh c'est ouf
-      </div>
+      {isTransactionDone && (
+        <>
+          <div className="transaction__popup">
+            Votre achat est bien confimé !
+          </div>
+          <div className="transaction__opacity" />
+        </>
+      )}
     </div>
   );
 };
