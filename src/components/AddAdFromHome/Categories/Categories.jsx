@@ -21,8 +21,11 @@ const Categories = () => {
       placeholder="Figurine"
       options={categoriesOptions}
       value={addAdCategory}
-      onChange={(event, data) => {
-        dispatch(changeAddAdFromHomeCategory(data.value));
+      onChange={(event) => {
+        const currentCategory = categoriesOptions.find(
+          (category) => event.currentTarget.value === category.name
+        );
+        dispatch(changeAddAdFromHomeCategory(currentCategory.key + 1));
       }}
     />
   );

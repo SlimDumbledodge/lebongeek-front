@@ -4,14 +4,6 @@ import { SEND_ADD_AD_FROM_HOME } from '../actions/addAdFromHome';
 const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 
 const addAdFromHomeMiddleware = (store) => (next) => (action) => {
-  const addAdFromHomeData = {
-    ad: {
-      description: store.getState().addAdFromHome.addAdFromHomeDescription,
-      price: store.getState().addAdFromHome.addAdFromHomePrice,
-      state: store.getState().addAdFromHome.addAdFromHomeState,
-      location: store.getState().addAdFromHome.addAdFromHomeLocation,
-    },
-  };
   switch (action.type) {
     case SEND_ADD_AD_FROM_HOME:
       axios
@@ -24,7 +16,7 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
             serial_number:
               store.getState().addAdFromHome.addAdFromHomeProductSerialNumber,
             category: {
-              name: store.getState().addAdFromHome.addAdFromHomeCategory,
+              id: store.getState().addAdFromHome.addAdFromHomeCategory,
             },
           },
           {
@@ -35,6 +27,33 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response);
+          const productIdFromBack = response.data.productId;
+          axios
+            .post(
+              `${baseUrl}/api/ads`,
+              {
+                description:
+                  store.getState().addAdFromHome.addAdFromHomeDescription,
+                price: store.getState().addAdFromHome.addAdFromHomePrice * 1,
+                state: store.getState().addAdFromHome.addAdFromHomeState,
+                location: store.getState().addAdFromHome.addAdFromHomeLocation,
+                productId: productIdFromBack,
+                category: {
+                  id: store.getState().addAdFromHome.addAdFromHomeCategory,
+                },
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${store.getState().login.token}`,
+                },
+              }
+            )
+            .then((secondResponse) => {
+              console.log(secondResponse);
+            })
+            .catch((error) => {
+              console.warn(error);
+            });
         })
         .catch((error) => {
           console.warn(error);

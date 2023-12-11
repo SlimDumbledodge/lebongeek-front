@@ -15,7 +15,17 @@ function DropdownHub() {
   const isUserLogged = useSelector((state) => state.login.isCookieFilled);
   return (
     <Dropdown
-      text={<FontAwesomeIcon className="nav__icons" icon={faCircleUser} />}
+      text={
+        isUserLogged ? (
+          <img
+            src="https://via.placeholder.com/640x480.png/00557"
+            alt=""
+            className="avatar"
+          />
+        ) : (
+          <FontAwesomeIcon className="nav__icons" icon={faCircleUser} />
+        )
+      }
     >
       <Dropdown.Menu id="header__mobile__dropdown__hub">
         <Dropdown.Item text="Se connecter" as={Link} to="/connexion" />

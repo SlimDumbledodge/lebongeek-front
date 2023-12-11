@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import {
   CHANGE_LOGIN_USERNAME,
   CHANGE_LOGIN_PASSWORD,
@@ -15,8 +16,8 @@ const initialState = {
   LoginPassword: '',
   isSuccessfullyLoginPopupOpen: false,
   isFailedLoginPopupOpen: false,
-  token: null,
-  isCookieFilled: false,
+  token: Cookies.get('token'),
+  isCookieFilled: document.cookie !== '',
 };
 
 const loginReducer = (state = initialState, action = {}) => {
@@ -40,7 +41,7 @@ const loginReducer = (state = initialState, action = {}) => {
       };
 
     case SET_COOKIE:
-      document.cookie = `token=${state.token}; path=/;`;
+      document.cookie = `token=${state.token}; path=/; `;
       return {
         ...state,
         isCookieFilled: true,

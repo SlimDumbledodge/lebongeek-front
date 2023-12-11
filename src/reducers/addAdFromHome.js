@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   addAdFromHomeProductTitle: '',
-  addAdFromHomeProductPhoto: '../src/assets/images/boutique.jpg',
+  addAdFromHomeProductPhoto: 'https://placehold.it/300x300',
   addAdFromHomeProductYear: '',
   addAdFromHomeProductSerialNumber: '',
 
