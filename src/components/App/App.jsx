@@ -10,7 +10,7 @@ import { fetchCategories } from '../../actions/category';
 import HeaderNav from '../HeaderNav/HeaderNav';
 import Home from '../Home/Home';
 import Hub from '../Hub/Hub';
-import AddAd from '../AddAd/AddAd';
+import AddAdFromHome from '../AddAdFromHome/AddAdFromHome';
 import AdDetails from '../AdDetails/AdDetails';
 import Footer from '../Footer/Footer';
 import Ads from '../Ads/Ads';
@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hub" element={<Hub />} />
-        <Route path="/depot_annonce" element={<AddAd />} />
+        <Route path="/depot_annonce" element={<AddAdFromHome />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:id" element={<Ads />} />

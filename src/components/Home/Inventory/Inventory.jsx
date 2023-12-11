@@ -1,11 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import './Inventory.scss';
 
 const Inventory = () => {
-  return (
+  const isUserLogged = useSelector((state) => state.login.token);
+  return isUserLogged ? (
     <section className="home__inventory">
       <h2 className="home__inventory__title">INVENTAIRE</h2>
       <div className="home__grid__wrapper">
@@ -41,7 +43,7 @@ const Inventory = () => {
         </Link>
       </div>
     </section>
-  );
+  ) : null;
 };
 
 export default Inventory;

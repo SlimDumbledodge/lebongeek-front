@@ -3,18 +3,18 @@ import './Inventory.scss';
 import axios from 'axios';
 
 const Inventory = () => {
-  const [userProducts, setUserProducts] = useState([]);
+  const [userProduct, setUserProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const endPoint = 'http://matthieu-le-floch.vpnuser.lan:8080/api/get_user';
 
   useEffect(() => {
-    const fetchUserProducts = async () => {
+    const fetchUserProduct = async () => {
       try {
-        const response = await axios.get(`${endPoint}`);
+        const response = await axios.get(endPoint);
 
-        if (response.data.products && response.data.products.length > 0) {
-          setUserProducts(response.data.products);
+        if (response.data.product && response.data.product.length > 0) {
+          setUserProduct(response.data.product);
         }
 
         setLoading(false);
@@ -27,7 +27,7 @@ const Inventory = () => {
       }
     };
 
-    fetchUserProducts();
+    fetchUserProduct();
   }, []);
 
   if (loading) {
@@ -41,28 +41,23 @@ const Inventory = () => {
     );
   }
 
-  if (userProducts.length === 0) {
-    return (
-      <section className="hub__inventory">
-        <h2 className="hub__inventory__title">INVENTAIRE</h2>
-        <div className="hub__grid__wrapper">
-          <p>Votre inventaire est vide!</p>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="hub__inventory">
       <h2 className="hub__inventory__title">INVENTAIRE</h2>
-      <div className="hub__grid__wrapper">
-        {userProducts.map((product) => (
-          <div key={product.id} className="hub__inventory__item">
-            <img src={product.picture} alt={product.title} />
-            <p>{product.title}</p>
-          </div>
-        ))}
-      </div>
+      {userProduct.length === 0 ? (
+        <div className="hub__grid__wrapper">
+          <p>Votre inventaire est vide!</p>
+        </div>
+      ) : (
+        <div className="hub__grid__wrapper">
+          {userProduct.map((product) => (
+            <div key={product.id} className="hub__inventory__item">
+              <img src={product.picture} alt={product.title} />
+              <p>{product.title}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
