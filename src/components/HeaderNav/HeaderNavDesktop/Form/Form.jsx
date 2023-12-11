@@ -1,25 +1,78 @@
-import { Dropdown } from 'semantic-ui-react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable no-console */
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import {
+  changeInputValue,
+  searchToggleCategories,
+} from '../../../../actions/input';
+
+import { fetchAdsCategories } from '../../../../actions/ads';
+import { saveCategoryName } from '../../../../actions/category';
 
 function Form() {
-  const categoriesOptions = [
-    { key: 'jv', value: 'jv', text: 'Jeux-vidéo' },
-    { key: 'jdr', value: 'jdr', text: 'JDR' },
-    { key: 'fig', value: 'fig', text: 'Figurine' },
-  ];
+  const inputSearch = useSelector((state) => state.input.inputSearch);
+  const isSearchListOpen = useSelector((state) => state.input.isSearchListOpen);
+  const categoriesListFromState = useSelector(
+    (state) => state.category.listCategories
+  );
+  const isCategoriesLoaded = useSelector(
+    (state) => state.category.isCategoriesLoaded
+  );
+
+  const dispatch = useDispatch();
+
+  const categoriesListFromAPI = categoriesListFromState.map((ad) => ({
+    name: ad.name,
+    id: ad.id,
+  }));
 
   return (
-    <form action="">
-      <Dropdown
-        clearable
-        fluid
-        search
-        selection
-        icon="search"
-        id="header__desktop__dropdown__search"
-        options={categoriesOptions}
-        placeholder="Jeux-vidéo..."
-      />
-    </form>
+    <div
+      onMouseLeave={() => {
+        dispatch(searchToggleCategories());
+      }}
+      className="parentList"
+    >
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          dispatch(fetchAdsCategories());
+        }}
+      >
+        <input
+          type="text"
+          value={inputSearch}
+          onChange={(event) => {
+            dispatch(changeInputValue(event.target.value));
+          }}
+          placeholder="Rechercher..."
+          onMouseEnter={() => {
+            dispatch(searchToggleCategories());
+          }}
+          className="theInput"
+        />
+      </form>
+      {isSearchListOpen && isCategoriesLoaded && (
+        <ul className="list">
+          {categoriesListFromAPI.map((category) => (
+            <Link to={`/annonces/${category.id}`} key={category.id}>
+              <li
+                onClick={() => {
+                  dispatch(fetchAdsCategories(category.id));
+                  dispatch(saveCategoryName(category.name));
+                }}
+              >
+                {category.name}
+              </li>
+            </Link>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 

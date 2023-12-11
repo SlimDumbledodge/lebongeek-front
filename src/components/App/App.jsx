@@ -1,5 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Route, Routes } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { fetchCategories } from '../../actions/category';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
 import Home from '../Home/Home';
@@ -7,13 +13,20 @@ import Hub from '../Hub/Hub';
 import AddAd from '../AddAd/AddAd';
 import AdDetails from '../AdDetails/AdDetails';
 import Footer from '../Footer/Footer';
+import Ads from '../Ads/Ads';
 import Connexion from '../Connexion/Connexion';
 
-import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
 import Register from '../Register/Register';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="App">
       <HeaderNav />
@@ -23,8 +36,10 @@ function App() {
         <Route path="/depot_annonce" element={<AddAd />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
+        <Route path="/annonces/:id" element={<Ads />} />
 
         <Route path="/figurine/1" element={<AdDetails />} />
+
         <Route path="/connexion" element={<Connexion />} />
         <Route
           path="categories"

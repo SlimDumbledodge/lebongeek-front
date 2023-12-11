@@ -1,24 +1,66 @@
-import { Dropdown } from 'semantic-ui-react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable no-console */
+import { useSelector, useDispatch } from 'react-redux';
+
+import {
+  changeInputValue,
+  searchToggleCategories,
+} from '../../../../actions/input';
 
 function Form() {
-  const categoriesOptions = [
-    { key: 'jv', value: 'jv', text: 'Jeux-vidéo' },
-    { key: 'jdr', value: 'jdr', text: 'JDR' },
-    { key: 'fig', value: 'fig', text: 'Figurine' },
+  const inputSearch = useSelector((state) => state.input.inputSearch);
+  const isSearchListOpen = useSelector((state) => state.input.isSearchListOpen);
+  const dispatch = useDispatch();
+
+  const categoriesList = [
+    'Jeux vidéo',
+    'Figurine',
+    'JDR',
+    'Manga',
+    'Comics',
+    'Cosplay',
+    'Cartes',
+    'Guides',
+    'Décoration',
   ];
+
   return (
-    <form action="">
-      <Dropdown
-        clearable
-        fluid
-        search
-        selection
-        icon="search"
-        id="header__mobile__dropdown__search"
-        options={categoriesOptions}
-        placeholder="Select Country"
-      />
-    </form>
+    <div
+      onMouseLeave={() => {
+        dispatch(searchToggleCategories());
+      }}
+      className="parentList"
+    >
+      <form action="">
+        <input
+          type="text"
+          value={inputSearch}
+          onChange={(event) => {
+            dispatch(changeInputValue(event.target.value));
+          }}
+          placeholder="Rechercher..."
+          onMouseEnter={() => {
+            dispatch(searchToggleCategories());
+          }}
+          className="theInput"
+        />
+      </form>
+      {isSearchListOpen && (
+        <ul className="list">
+          {categoriesList.map((category) => (
+            <li
+              key={category}
+              onClick={() => {
+                console.log('Yo');
+              }}
+            >
+              {category}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 
