@@ -12,9 +12,7 @@ import {
   closeLoginFailedPopup,
   closeLoginSuccessFullyPopup,
   loginUser,
-
-} from '../../actions/
-
+} from '../../actions/login';
 
 import './Connexion.scss';
 
