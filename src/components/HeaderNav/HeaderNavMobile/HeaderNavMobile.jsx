@@ -18,6 +18,7 @@ const HeaderNavMobile = () => {
   const isHeaderNavOpenState = useSelector(
     (state) => state.headerNav.isHeaderNavOpen
   );
+  const isUserLogged = useSelector((state) => state.login.token);
   const dispatch = useDispatch();
 
   return (
@@ -27,11 +28,13 @@ const HeaderNavMobile = () => {
           <Link to="/">
             <FontAwesomeIcon className="nav__icons" icon={faHouse} />
           </Link>
-          <button type="button" className="header__mobile__icons">
-            <Link to="/depot_annonce">
-              <FontAwesomeIcon className="nav__icons" icon={faSquarePlus} />
-            </Link>
-          </button>
+          {isUserLogged && (
+            <button type="button" className="header__mobile__icons">
+              <Link to="/depot_annonce">
+                <FontAwesomeIcon className="nav__icons" icon={faSquarePlus} />
+              </Link>
+            </button>
+          )}
         </>
       )}
       {isHeaderNavOpenState ? (

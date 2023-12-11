@@ -8,28 +8,31 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import './DropdownHub.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearCookie } from '../../../../actions/login';
 
 const DropdownHub = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isUserLogged = useSelector((state) => state.login.token);
   return (
     <Dropdown
       text={<FontAwesomeIcon className="nav__icons" icon={faCircleUser} />}
     >
       <Dropdown.Menu id="header__desktop__dropdown__hub">
         <Dropdown.Item text="Se connecter" as={Link} to="/connexion" />
-        <Dropdown.Item text="Hub" as={Link} to="/hub" />
-        <Dropdown.Item
-          onClick={() => {
-            dispatch(clearCookie());
-            window.location.reload();
-            navigate('/connexion');
-          }}
-        >
-          Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
-        </Dropdown.Item>
+        {isUserLogged && <Dropdown.Item text="Hub" as={Link} to="/hub" />}
+        {isUserLogged && (
+          <Dropdown.Item
+            onClick={() => {
+              dispatch(clearCookie());
+              window.location.reload();
+              navigate('/connexion');
+            }}
+          >
+            Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
+          </Dropdown.Item>
+        )}
       </Dropdown.Menu>
     </Dropdown>
   );
