@@ -15,6 +15,7 @@ import AdDetails from '../AdDetails/AdDetails';
 import Footer from '../Footer/Footer';
 import Ads from '../Ads/Ads';
 import Connexion from '../Connexion/Connexion';
+import Transaction from '../Transaction/Transaction';
 
 import './App.scss';
 import Register from '../Register/Register';
@@ -39,6 +40,8 @@ function App() {
         <Route path="/annonces/:slug" element={<Ads />} />
 
         <Route path="/figurine/1" element={<AdDetails />} />
+
+        <Route path="/transaction" element={<Transaction />} />
 
         <Route path="/connexion" element={<Connexion />} />
         <Route
