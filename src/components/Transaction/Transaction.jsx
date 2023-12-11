@@ -34,7 +34,12 @@ const Transaction = () => {
           />
         </div>
       </div>
-      <TransactionAddress />
+      <form action="" className="transaction__form">
+        <TransactionAddress />
+        <button type="button" className="transaction__validation__button">
+          Valider ma commande
+        </button>
+      </form>
       <div className="transaction__terms__container">
         <input className="transaction__terms__input" type="checkbox" />
         <p className="transaction__terms__text">
@@ -58,9 +63,9 @@ const Transaction = () => {
         <p className="transaction__total_element">Total</p>
         <p className="transaction__total_element">15,99€</p>
       </div>
-      <button type="button" className="transaction__validation__button">
-        Valider ma commande
-      </button>
+      <div className="transaction__popup">
+        Bravo le sang! T'as acheté, wlh c'est ouf
+      </div>
     </div>
   );
 };
