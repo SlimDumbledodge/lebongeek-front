@@ -6,15 +6,19 @@ const Description = () => {
       <div className="hub__avatar__pseudo">
         <h2 className="hub__pseudo">PSEUDO</h2>
         <img
-          src="https://cdn.icon-icons.com/icons2/2859/PNG/512/avatar_face_girl_female_woman_profile_smiley_happy_people_icon_181662.png"
+          src="src/assets/images/avatar.jpg"
           alt=""
           className="hub__avatar"
         />
       </div>
-      <p className="hub__description__text">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem cum
-        tempora incidunt eum consectet
-      </p>
+      <div className="hub__description__text">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+        illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+        explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+        odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+        voluptatem sequi nesciunt.
+      </div>
     </section>
   );
 };

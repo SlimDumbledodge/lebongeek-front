@@ -4,35 +4,36 @@
   height: 500px;
   width: 80%;
   border: 1px solid #a3a3a3;
-  border-radius:  0px 0px 8px 8px;  
- 
 
+  border-radius: 0px 0px 8px 8px;
+  object-fit: cover;
 }
 
+.logo {
+  width: 200px;
+  height: 200px;
+}
 /* Pour 320px (Téléphone mobile en portrait) */
 @media (max-width: 320px) {
   .home__banner {
-    width: 100%;
+    width: 110%;
     height: auto;
- 
-  }
+}
 }
 
 /* Pour 375px (Téléphone mobile en paysage ou grand téléphone) */
 @media (min-width: 375px) {
   .home__banner {
-    width: 100%;
+    width: 110%;
     height: auto;
-
   }
 }
 
 /* Pour 425px (Téléphone mobile en mode paysage) */
 @media (min-width: 425px) {
   .home__banner {
-    width: 100%;
+    width: 110%;
     height: auto;
-  
   }
 }
 
@@ -41,7 +42,6 @@
   .home__banner {
     width: 80%;
     height: auto;
-   
   }
 }
 
@@ -50,7 +50,6 @@
   .home__banner {
     width: 80%;
     height: auto;
-   
   }
 }
 
@@ -59,6 +58,5 @@
   .home__banner {
     width: 80%;
     height: 500px;
-   
   }
 }
