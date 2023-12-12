@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 import { useSelector } from 'react-redux';
 
-const AdsFilterCheckbox = ({ title, system, onClickProp }) => {
+const AdsFilterCheckbox = ({ title, system }) => {
+  /* IL FAUT CHANGER CATEGORYNAME qui ne s'utilise plus et trouver une solution pour le onchange */
   const categoryName = useSelector((state) => state.category.categoryName);
 
   return (
-    <div className={`ads__filter__checkbox__${system}`} onClick={onClickProp}>
+    <div className={`ads__filter__checkbox__${system}`}>
       <input
         className={`ads__filter__checkbox__input__${system}`}
         type="radio"
@@ -29,7 +30,6 @@ const AdsFilterCheckbox = ({ title, system, onClickProp }) => {
 AdsFilterCheckbox.propTypes = {
   title: PropTypes.string.isRequired,
   system: PropTypes.string.isRequired,
-  onClickProp: PropTypes.func.isRequired,
 };
 
 export default AdsFilterCheckbox;
