@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import {
   LOGIN_USER,
   openLoginFailedPopup,
   openLoginSuccessFullyPopup,
   saveToken,
   setCookie,
+  setCookieUser,
 } from '../actions/login';
 
 const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
@@ -32,6 +34,7 @@ const loginMiddleware = (store) => (next) => (action) => {
             })
             .then((secondResponse) => {
               console.log(secondResponse);
+              store.dispatch(setCookieUser(secondResponse.data));
             })
             .catch((error) => {
               console.log(error);

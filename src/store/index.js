@@ -8,6 +8,7 @@ import registerMiddleware from '../middlewares/registerMiddleware';
 import categoryMiddleware from '../middlewares/categoryMiddleware';
 import adsMiddleware from '../middlewares/adsMiddleware';
 import addAdFromHomeMiddleware from '../middlewares/addAdFromHomeMiddleware';
+import edithubMiddleware from '../middlewares/edithubMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -15,7 +16,8 @@ const enhancer = composeWithDevTools(
     registerMiddleware,
     categoryMiddleware,
     adsMiddleware,
-    addAdFromHomeMiddleware
+    addAdFromHomeMiddleware,
+    edithubMiddleware
   )
 );
 

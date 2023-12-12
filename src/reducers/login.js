@@ -9,6 +9,7 @@ import {
   CLOSE_LOGIN_SUCCESSFULLY_POPUP,
   CLOSE_LOGIN_FAILED_POPUP,
   CLEAR_COOKIE,
+  SET_COOKIE_USER,
 } from '../actions/login';
 
 const initialState = {
@@ -41,14 +42,21 @@ const loginReducer = (state = initialState, action = {}) => {
       };
 
     case SET_COOKIE:
-      document.cookie = `token=${state.token}; path=/; `;
+      document.cookie = `token=${state.token}; path=/;`;
       return {
         ...state,
         isCookieFilled: true,
       };
 
+    case SET_COOKIE_USER:
+      Cookies.set('user', JSON.stringify(action.cookie));
+      return {
+        ...state,
+      };
+
     case CLEAR_COOKIE:
       document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      document.cookie = `user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
       return {
         ...state,
         isCookieFilled: false,

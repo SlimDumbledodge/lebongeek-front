@@ -19,6 +19,7 @@ import Transaction from '../Transaction/Transaction';
 
 import './App.scss';
 import Register from '../Register/Register';
+import EditHub from '../EditHub/EditHub';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,11 +40,10 @@ function App() {
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />
 
-        <Route path="/figurine/1" element={<AdDetails />} />
-
         <Route path="/transaction" element={<Transaction />} />
 
         <Route path="/connexion" element={<Connexion />} />
+        <Route path="/modifier-mon-profil" element={<EditHub />} />
         <Route
           path="categories"
           element={<div>Ici doit s'afficher toutes les catégories</div>}

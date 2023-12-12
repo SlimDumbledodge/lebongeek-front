@@ -9,6 +9,7 @@ import registerReducer from './register';
 import categoryReducer from './category';
 import addAdFromHomeReducer from './addAdFromHome';
 import transactionReducer from './transaction';
+import edithubReducer from './edithub';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   addAdFromHome: addAdFromHomeReducer,
   transaction: transactionReducer,
+  edithub: edithubReducer,
 });
 
 export default rootReducer;
