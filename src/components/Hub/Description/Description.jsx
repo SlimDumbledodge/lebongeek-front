@@ -1,4 +1,6 @@
 import './Description.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 const Description = () => {
   return (
@@ -18,6 +20,9 @@ const Description = () => {
         explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
         odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
         voluptatem sequi nesciunt.
+      </div>
+      <div className="modify_profile">
+        <FontAwesomeIcon icon={faPenToSquare} />
       </div>
     </section>
   );
