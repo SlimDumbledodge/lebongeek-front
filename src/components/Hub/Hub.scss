@@ -14,6 +14,11 @@
   }
 }
 
+.hub__wrapper__buttons {
+  margin-top: 15px;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 300px) {
   .hub__grid__wrapper {
     grid-template-columns: repeat(2, 1fr);
