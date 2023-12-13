@@ -21,6 +21,7 @@ import './App.scss';
 import Register from '../Register/Register';
 import EditHub from '../EditHub/EditHub';
 import ForeignHub from '../ForeignHub/ForeignHub';
+import Categories from '../Categories/Categories';
 
 function App() {
   const dispatch = useDispatch();
@@ -55,10 +56,7 @@ function App() {
 
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/modifier-mon-profil" element={<EditHub />} />
-        <Route
-          path="/categories"
-          element={<div>Ici doit s'afficher toutes les catégories</div>}
-        />
+        <Route path="/categories" element={<Categories />} />
         <Route
           path="/derniere-ventes"
           element={<div>Ici doivent s'afficher les dernières ventes</div>}
