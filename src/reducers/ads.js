@@ -1,8 +1,15 @@
-import { ADS_FILTER, SAVE_ADS_CATEGORIES } from '../actions/ads';
+import {
+  ADS_FILTER,
+  SAVE_ADS_CATEGORIES,
+  SAVE_AD,
+  AD_LOADED,
+} from '../actions/ads';
 
 const initialState = {
   isAdsFilterOpen: false,
   listAdsCategories: [],
+  oneAd: [],
+  isAdLoaded: false,
 };
 
 const adsReducer = (state = initialState, action = {}) => {
@@ -17,6 +24,18 @@ const adsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         listAdsCategories: action.ads,
+      };
+
+    case SAVE_AD:
+      return {
+        ...state,
+        oneAd: action.ad,
+      };
+
+    case AD_LOADED:
+      return {
+        ...state,
+        isAdLoaded: !state.isAdLoaded,
       };
 
     default:

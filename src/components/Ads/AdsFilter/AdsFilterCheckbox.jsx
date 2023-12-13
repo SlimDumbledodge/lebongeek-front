@@ -1,20 +1,32 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
-const AdsFilterCheckbox = ({ title, system, onClickProp }) => {
-  const categoryName = useSelector((state) => state.category.categoryName);
+const AdsFilterCheckbox = ({ title, system }) => {
+  const { slug } = useParams();
+
+  const categoriesList = useSelector((state) => state.category.listCategories);
+
+  const currentCategory = categoriesList.find(
+    (category) => category.slug === slug
+  );
+
+  const handleChange = () => {
+    // Rien
+  };
 
   return (
-    <div className={`ads__filter__checkbox__${system}`} onClick={onClickProp}>
+    <div className={`ads__filter__checkbox__${system}`}>
       <input
         className={`ads__filter__checkbox__input__${system}`}
         type="radio"
         id={title}
         name="adsFilterCategoriesCheckbox"
-        checked={categoryName === title}
+        checked={currentCategory.name === title}
+        onChange={handleChange}
       />
       <label
         className={`ads__filter__checkbox_label__${system}`}
@@ -29,7 +41,6 @@ const AdsFilterCheckbox = ({ title, system, onClickProp }) => {
 AdsFilterCheckbox.propTypes = {
   title: PropTypes.string.isRequired,
   system: PropTypes.string.isRequired,
-  onClickProp: PropTypes.string.isRequired,
 };
 
 export default AdsFilterCheckbox;

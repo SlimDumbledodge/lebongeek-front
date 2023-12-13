@@ -1,7 +1,6 @@
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 export const SAVE_CATEGORIES = 'SAVE_CATEGORIES';
 export const CATEGORIES_LOADED = 'CATEGORIES_LOADED';
-export const SAVE_CATEGORY_NAME_AND_SLUG = 'SAVE_CATEGORY_NAME_AND_SLUG';
 
 export const fetchCategories = () => ({
   type: FETCH_CATEGORIES,
@@ -14,10 +13,4 @@ export const saveCategories = (category) => ({
 
 export const categoriesLoaded = () => ({
   type: CATEGORIES_LOADED,
-});
-
-export const saveCategoryNameAndSlug = (name, slug) => ({
-  type: SAVE_CATEGORY_NAME_AND_SLUG,
-  name,
-  slug,
 });

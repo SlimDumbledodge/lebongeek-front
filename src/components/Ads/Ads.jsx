@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { switchScreenResponsive } from '../../actions/responsive';
-import { adsFilter } from '../../actions/ads';
+import { adsFilter, fetchAdsCategories } from '../../actions/ads';
 
 import './Ads.scss';
 
@@ -11,6 +11,8 @@ import Ad from './Ad';
 import AdsFilter from './AdsFilter/AdsFilter';
 
 const Ads = () => {
+  const { slug } = useParams();
+
   const table = ['desktop', 'mobile'];
 
   const dispatch = useDispatch();
@@ -18,8 +20,11 @@ const Ads = () => {
   const isMobile = useSelector((state) => state.responsive.isMobile);
   const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
   const adsCategory = useSelector((state) => state.ads.listAdsCategories);
-  const categoryName = useSelector((state) => state.category.categoryName);
-  const categorySlug = useSelector((state) => state.category.categorySlug);
+  const categoriesList = useSelector((state) => state.category.listCategories);
+
+  const currentCategory = categoriesList.find(
+    (category) => category.slug === slug
+  );
 
   const handleResize = () => {
     dispatch(switchScreenResponsive(window.innerWidth < 1024));
@@ -27,13 +32,15 @@ const Ads = () => {
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
+    dispatch(fetchAdsCategories(currentCategory.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentCategory.id]);
 
   return (
     <>
       <h1 className="categoryTitle">
-        {categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}
+        {currentCategory.name.charAt(0).toUpperCase() +
+          currentCategory.name.slice(1)}
       </h1>
       <div className="ads__container">
         {isMobile ? '' : <AdsFilter type={table[0]} />}
@@ -52,7 +59,7 @@ const Ads = () => {
         )}
         <div className="ads">
           {adsCategory.map((product) => (
-            <Link to={`/${categorySlug}/${product.ad.id}`} key={product.id}>
+            <Link to={`/${slug}/${product.ad.id}`} key={product.id}>
               <Ad
                 title={product.title}
                 price={product.ad.price}

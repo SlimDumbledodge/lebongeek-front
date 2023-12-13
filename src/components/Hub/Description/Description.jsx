@@ -1,5 +1,7 @@
 import Cookies from 'js-cookie';
 import './Description.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 const Description = () => {
   const currentUser = Cookies.get('user');
@@ -15,6 +17,9 @@ const Description = () => {
         {parsedUser.description
           ? parsedUser.description
           : 'Modifier votre profil pour ajouter une description'}
+      </div>
+      <div className="modify_profile">
+        <FontAwesomeIcon icon={faPenToSquare} />
       </div>
     </section>
   );

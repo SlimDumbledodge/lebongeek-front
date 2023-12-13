@@ -1,9 +1,8 @@
 @use '../../styles/variables' as var;
 
 .footer {
-  position: sticky;
+  position: relative;
   bottom: 0;
-  margin: 50px auto auto auto;
   background-color: var.$mainColor;
   width: 100%;
   padding: 10px 40px;
