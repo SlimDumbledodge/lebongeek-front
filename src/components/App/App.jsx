@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchCategories } from '../../actions/category';
 
@@ -23,11 +23,18 @@ import EditHub from '../EditHub/EditHub';
 
 function App() {
   const dispatch = useDispatch();
+  const isCategoriesLoaded = useSelector(
+    (state) => state.category.isCategoriesLoaded
+  );
 
   useEffect(() => {
     dispatch(fetchCategories());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!isCategoriesLoaded) {
+    return <div>Chargement...</div>;
+  }
 
   return (
     <div className="App">
@@ -39,6 +46,8 @@ function App() {
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />
+
+        <Route path="/:slug/:id" element={<AdDetails />} />
 
         <Route path="/transaction" element={<Transaction />} />
 
