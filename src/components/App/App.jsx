@@ -20,6 +20,7 @@ import Transaction from '../Transaction/Transaction';
 import './App.scss';
 import Register from '../Register/Register';
 import EditHub from '../EditHub/EditHub';
+import ForeignHub from '../ForeignHub/ForeignHub';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
         <Route path="/annonces/:slug" element={<Ads />} />
 
         <Route path="/:slug/:id" element={<AdDetails />} />
+        <Route path="/hub/:id" element={<ForeignHub />} />
 
         <Route path="/transaction" element={<Transaction />} />
 
