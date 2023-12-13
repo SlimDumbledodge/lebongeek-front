@@ -3,38 +3,30 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 
+import { useSelector } from 'react-redux';
+
 import './TopCategories.scss';
 
 const TopCategories = () => {
+  const categoriesList = useSelector((state) => state.category.listCategories);
+
   return (
     <section className="top__categories__container">
       <h2 className="top__categories__title">TOP CATEGORIES</h2>
       <div className="top__categories__grid__wrapper">
-        <img
-          src="src/assets/images/Figurines.jpg"
-          alt=""
-          className="top__categories__item"
-        />
-        <img
-          src="src/assets/images/Mario.jpg"
-          alt=""
-          className="top__categories__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="top__categories__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="top__categories__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="top__categories__item"
-        />
+        {categoriesList.slice(0, 5).map((category) => (
+          <Link
+            to={`/annonces/${category.slug}`}
+            key={category.id}
+            type="button"
+          >
+            <img
+              src={category.image}
+              alt=""
+              className="top__categories__item"
+            />
+          </Link>
+        ))}
         <Link to="/categories">
           Voir les catégories
           <FontAwesomeIcon className="wrapper__icons" icon={faAnglesRight} />

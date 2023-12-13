@@ -56,11 +56,11 @@ function App() {
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/modifier-mon-profil" element={<EditHub />} />
         <Route
-          path="categories"
+          path="/categories"
           element={<div>Ici doit s'afficher toutes les catégories</div>}
         />
         <Route
-          path="derniere_ventes"
+          path="/derniere-ventes"
           element={<div>Ici doivent s'afficher les dernières ventes</div>}
         />
         <Route path="*" element={<div>404</div>} />
