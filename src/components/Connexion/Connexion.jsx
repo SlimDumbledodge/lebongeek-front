@@ -7,8 +7,8 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
 import {
-  changeLoginPassword,
   changeLoginUsername,
+  changeLoginPassword,
   closeLoginFailedPopup,
   closeLoginSuccessFullyPopup,
   loginUser,

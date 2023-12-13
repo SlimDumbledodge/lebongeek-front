@@ -9,6 +9,7 @@ import {
   setCookie,
   setCookieUser,
 } from '../actions/login';
+import { saveEdithubUserData } from '../actions/edithub';
 
 const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 const loginMiddleware = (store) => (next) => (action) => {
@@ -21,27 +22,27 @@ const loginMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           console.log(response);
-          if (response.status === 200) {
-            store.dispatch(saveToken(response.data.token));
-            store.dispatch(setCookie());
-            store.dispatch(openLoginSuccessFullyPopup());
-          }
+          store.dispatch(saveToken(response.data.token));
+          store.dispatch(setCookie());
+          store.dispatch(openLoginSuccessFullyPopup());
+
           axios
             .get(`${baseUrl}/api/get_user`, {
               headers: {
-                Authorization: `Bearer ${store.getState().login.token}`,
+                Authorization: `Bearer ${Cookies.get('token')}`,
               },
             })
             .then((secondResponse) => {
               console.log(secondResponse);
               store.dispatch(setCookieUser(secondResponse.data));
+              store.dispatch(saveEdithubUserData(secondResponse.data));
             })
             .catch((error) => {
               console.log(error);
             });
         })
         .catch((error) => {
-          console.error('fdsfd:', error);
+          console.error(error);
           store.dispatch(openLoginFailedPopup());
         });
       break;

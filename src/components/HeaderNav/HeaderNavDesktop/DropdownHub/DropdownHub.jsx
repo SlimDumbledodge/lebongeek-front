@@ -36,8 +36,8 @@ const DropdownHub = () => {
           <Dropdown.Item
             onClick={() => {
               dispatch(clearCookie());
-              window.location.reload();
               navigate('/connexion');
+              window.location.reload();
             }}
           >
             Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />

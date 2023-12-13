@@ -1,13 +1,13 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { SAVE_EDITHUB_CHANGES } from '../actions/edithub';
+import { SAVE_EDITHUB_CHANGES, saveEdithubChanges } from '../actions/edithub';
+import { clearCookie } from '../actions/login';
 
 const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 
 const edithubMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SAVE_EDITHUB_CHANGES: {
-      console.log(Cookies.get('token'));
       axios
         .put(
           `${baseUrl}/api/${store.getState().edithub.id}/users`,
@@ -29,6 +29,8 @@ const edithubMiddleware = (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response);
+          store.dispatch(clearCookie());
+          window.location.reload();
         })
         .catch((error) => {
           console.warn(error);

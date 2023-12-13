@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import './EditHub.scss';
-import { Form, Input, TextArea, Button } from 'semantic-ui-react';
+import { Form, Input, TextArea } from 'semantic-ui-react';
 import {
   changeEdithubDescription,
   changeEdithubEmail,
@@ -14,6 +15,7 @@ import {
 
 const EditHub = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const usernameValue = useSelector((state) => state.edithub.username);
   const emailValue = useSelector((state) => state.edithub.email);
@@ -22,8 +24,6 @@ const EditHub = () => {
   const lastnameValue = useSelector((state) => state.edithub.lastname);
   const descriptionValue = useSelector((state) => state.edithub.description);
 
-  useEffect(() => {}, []);
-
   return (
     <div className="edithub__container">
       <h2 className="edithub__title__section">Modifier mon profil</h2>
@@ -31,6 +31,7 @@ const EditHub = () => {
         className="edithub__form"
         onSubmit={() => {
           dispatch(saveEdithubChanges());
+          navigate('/connexion');
         }}
       >
         <Form.Field

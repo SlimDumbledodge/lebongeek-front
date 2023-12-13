@@ -6,6 +6,7 @@ import {
   CHANGE_EDITHUB_LASTNAME,
   CHANGE_EDITHUB_PHONE_NUMBER,
   CHANGE_EDITHUB_USERNAME,
+  SAVE_EDITHUB_USER_DATA,
 } from '../actions/edithub';
 
 const currentUser = Cookies.get('user');
@@ -20,6 +21,7 @@ const initialState = {
   firstname: parsedUser.firstname,
   lastname: parsedUser.lastname,
   description: parsedUser.description,
+  products: parsedUser.product,
 };
 
 const edithubReducer = (state = initialState, action = {}) => {
@@ -53,6 +55,18 @@ const edithubReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         description: action.newValue,
+      };
+
+    case SAVE_EDITHUB_USER_DATA:
+      return {
+        ...state,
+        id: action.userData.id,
+        username: action.userData.username,
+        email: action.userData.email,
+        phoneNumber: action.userData.phone_number,
+        firstname: action.userData.firstname,
+        lastname: action.userData.lastname,
+        description: action.userData.description,
       };
     default:
       return state;
