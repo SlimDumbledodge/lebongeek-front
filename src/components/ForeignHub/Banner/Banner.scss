@@ -1,0 +1,56 @@
+.hub__banner {
+  display: block;
+  margin: 0 auto;
+  height: 300px;
+  width: 80%;
+  border: 1px solid #a3a3a3;
+  object-fit: cover;
+}
+
+/* Pour 320px (Téléphone mobile en portrait) */
+@media (max-width: 320px) {
+  .hub__banner {
+    width: 110%;
+    height: auto;
+  }
+}
+
+/* Pour 375px (Téléphone mobile en paysage ou grand téléphone) */
+@media (min-width: 375px) {
+  .hub__banner {
+    width: 110%;
+    height: auto;
+  }
+}
+
+/* Pour 425px (Téléphone mobile en mode paysage) */
+@media (min-width: 425px) {
+  .hub__banner {
+    width: 110%;
+    height: auto;
+  }
+}
+
+/* Pour 768px (Tablette) */
+@media (min-width: 768px) {
+  .hub__banner {
+    width: 80%;
+    height: auto;
+  }
+}
+
+/* Pour 1024px (Petits ordinateurs portables et tablettes en mode paysage) */
+@media (min-width: 1024px) {
+  .hub__banner {
+    width: 80%;
+    height: auto;
+  }
+}
+
+/* Pour 1440px (Ordinateurs de bureau et grands ordinateurs portables) */
+@media (min-width: 1440px) {
+  .hub__banner {
+    width: 80%;
+    height: 500px;
+  }
+}

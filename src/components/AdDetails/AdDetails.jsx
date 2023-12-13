@@ -42,7 +42,7 @@ const AdDetails = () => {
           <Image src={user.avatar} size="mini" circular inline />
           <span className="ad__details__pseudo">{user.username}</span>
           <Button className="ad__details__button__profil" size="mini">
-            <Link to="/hub" className="profil_link">
+            <Link to={`/hub/${user.id}`} className="profil_link">
               Voir le profil
             </Link>
           </Button>
