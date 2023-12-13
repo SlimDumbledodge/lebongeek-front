@@ -10,7 +10,7 @@ const searchReducer = (state = initialState, action = {}) => {
     case SAVE_SEARCH_DATA:
       return {
         ...state,
-        searchResult: state.data,
+        searchResult: action.data,
         isAdLoaded: !state.isAdLoaded,
       };
 

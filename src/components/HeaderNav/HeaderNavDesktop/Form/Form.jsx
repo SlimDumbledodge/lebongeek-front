@@ -50,7 +50,7 @@ function Form() {
           className="theInput"
         />
       </form>
-      {isSearchListOpen && isCategoriesLoaded && (
+      {isSearchListOpen && isCategoriesLoaded && inputSearch === '' && (
         <ul className="list">
           {categoriesListFromState.map((category) => (
             <Link to={`/annonces/${category.slug}`} key={category.id}>

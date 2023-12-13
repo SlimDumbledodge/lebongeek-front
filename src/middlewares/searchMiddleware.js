@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_SEARCH, saveSearchData } from '../actions/search';
 
-const searchParam = 'mme';
+const searchParam = 'jeux';
 const pageNumber = 1;
 
 const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
@@ -14,7 +14,7 @@ const searchMiddleware = (store) => (next) => (action) => {
           // eslint-disable-next-line no-console
           console.log('OK FETCH_SEARCH : ', response);
 
-          store.dispatch(saveSearchData(response.data));
+          store.dispatch(saveSearchData(response.data.data));
         })
         .catch((error) => {
           // eslint-disable-next-line no-console
