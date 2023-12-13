@@ -9,7 +9,7 @@ import categoryMiddleware from '../middlewares/categoryMiddleware';
 import adsMiddleware from '../middlewares/adsMiddleware';
 import addAdFromHomeMiddleware from '../middlewares/addAdFromHomeMiddleware';
 import uploadMiddleware from '../middlewares/uploadMiddleware';
-
+import searchMiddleware from '../middlewares/searchMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -18,8 +18,8 @@ const enhancer = composeWithDevTools(
     categoryMiddleware,
     adsMiddleware,
     addAdFromHomeMiddleware,
-    uploadMiddleware
-
+    uploadMiddleware,
+    searchMiddleware
   )
 );
 

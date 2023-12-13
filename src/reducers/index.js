@@ -10,6 +10,7 @@ import categoryReducer from './category';
 import addAdFromHomeReducer from './addAdFromHome';
 import transactionReducer from './transaction';
 import edithubReducer from './edithub';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   addAdFromHome: addAdFromHomeReducer,
   transaction: transactionReducer,
   edithub: edithubReducer,
+  search: searchReducer,
 });
 
 export default rootReducer;
