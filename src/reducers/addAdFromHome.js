@@ -7,6 +7,7 @@ import {
   CHANGE_ADD_AD_FROM_HOME_LOCATION,
   CHANGE_ADD_AD_FROM_HOME_PRODUCT_YEAR,
   CHANGE_ADD_AD_FROM_HOME_PRODUCT_SERIAL_NUMBER,
+  CHANGE_ADD_AD_FROM_HOME_CATEGORY_VALUE,
 } from '../actions/addAdFromHome';
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   addAdFromHomeState: '',
   addAdFromHomeLocation: '',
   addAdFromHomeCategory: '',
+  addAdFromHomeCategoryValue: '',
 };
 
 const addAdFromHomeReducer = (state = initialState, action = {}) => {
@@ -46,6 +48,12 @@ const addAdFromHomeReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         addAdFromHomeCategory: action.newValue,
+      };
+
+    case CHANGE_ADD_AD_FROM_HOME_CATEGORY_VALUE:
+      return {
+        ...state,
+        addAdFromHomeCategoryValue: action.newValue,
       };
 
     case CHANGE_ADD_AD_FROM_HOME_PRICE:

@@ -6,7 +6,6 @@ import AddPhotoButton from './AddPhotoButton/AddPhotoButton';
 import TextAreaAd from './TextAreaAd/TextAreaAd';
 import States from './States/States';
 import Categories from './Categories/Categories';
-import Checkboxs from './Checkboxs/Checkboxs';
 import CancelPublishButtons from './CancelPublishButtons/CancelPublishButtons';
 import './AddAdFromHome.scss';
 import {
@@ -84,7 +83,6 @@ const AddAd = () => {
           </Form.Group>
           <States />
           <Categories />
-          <Checkboxs />
           <CancelPublishButtons />
         </Form>
       </section>

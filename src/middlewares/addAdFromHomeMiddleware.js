@@ -34,6 +34,7 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
               {
                 description:
                   store.getState().addAdFromHome.addAdFromHomeDescription,
+                title: store.getState().addAdFromHome.addAdFromHomeProductTitle,
                 price: store.getState().addAdFromHome.addAdFromHomePrice * 1,
                 state: store.getState().addAdFromHome.addAdFromHomeState,
                 location: store.getState().addAdFromHome.addAdFromHomeLocation,

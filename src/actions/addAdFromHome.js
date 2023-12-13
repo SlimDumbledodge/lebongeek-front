@@ -2,6 +2,8 @@ export const CHANGE_ADD_AD_FROM_HOME_PRODUCT_TITLE = 'CHANGE_ADD_AD_TITLE';
 export const CHANGE_ADD_AD_FROM_HOME_DESCRIPTION = 'CHANGE_ADD_AD_DESCRIPTION';
 export const CHANGE_ADD_AD_FROM_HOME_STATE = 'CHANGE_ADD_AD_STATE';
 export const CHANGE_ADD_AD_FROM_HOME_CATEGORY = 'CHANGE_ADD_AD_CATEGORY';
+export const CHANGE_ADD_AD_FROM_HOME_CATEGORY_VALUE =
+  'CHANGE_ADD_AD_FROM_HOME_CATEGORY_VALUE';
 export const CHANGE_ADD_AD_FROM_HOME_PRICE = 'CHANGE_ADD_AD_FROM_HOME_PRICE';
 export const CHANGE_ADD_AD_FROM_HOME_LOCATION =
   'CHANGE_ADD_AD_FROM_HOME_LOCATION';
@@ -29,6 +31,11 @@ export const changeAddAdFromHomeState = (newValue) => ({
 
 export const changeAddAdFromHomeCategory = (newValue) => ({
   type: CHANGE_ADD_AD_FROM_HOME_CATEGORY,
+  newValue,
+});
+
+export const changeAddAdFromHomeCategoryValue = (newValue) => ({
+  type: CHANGE_ADD_AD_FROM_HOME_CATEGORY_VALUE,
   newValue,
 });
 

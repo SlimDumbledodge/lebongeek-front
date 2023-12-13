@@ -4,6 +4,7 @@ import {
   CHANGE_EDITHUB_EMAIL,
   CHANGE_EDITHUB_FIRSTNAME,
   CHANGE_EDITHUB_LASTNAME,
+  CHANGE_EDITHUB_PASSWORD,
   CHANGE_EDITHUB_PHONE_NUMBER,
   CHANGE_EDITHUB_USERNAME,
   SAVE_EDITHUB_USER_DATA,
@@ -17,6 +18,7 @@ const initialState = {
   id: parsedUser.id,
   username: parsedUser.username,
   email: parsedUser.email,
+  password: '',
   phoneNumber: parsedUser.phone_number,
   firstname: parsedUser.firstname,
   lastname: parsedUser.lastname,
@@ -35,6 +37,12 @@ const edithubReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         email: action.newValue,
+      };
+
+    case CHANGE_EDITHUB_PASSWORD:
+      return {
+        ...state,
+        password: action.newValue,
       };
     case CHANGE_EDITHUB_PHONE_NUMBER:
       return {

@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Form } from 'semantic-ui-react';
-import { changeAddAdFromHomeCategory } from '../../../actions/addAdFromHome';
+import {
+  changeAddAdFromHomeCategory,
+  changeAddAdFromHomeCategoryValue,
+} from '../../../actions/addAdFromHome';
 import './Categories.scss';
 
 const Categories = () => {
@@ -11,8 +14,9 @@ const Categories = () => {
     text: category.name,
     value: category.name.toLowerCase(),
   }));
-  const addAdCategory = useSelector(
-    (state) => state.addAdFromHome.addAdFromHomeCategory
+
+  const addAdCategoryValue = useSelector(
+    (state) => state.addAdFromHome.addAdFromHomeCategoryValue
   );
 
   return (
@@ -20,12 +24,13 @@ const Categories = () => {
       label="Catégorie :"
       placeholder="Figurine"
       options={categoriesOptions}
-      value={addAdCategory}
-      onChange={(event) => {
+      value={addAdCategoryValue}
+      onChange={(event, data) => {
+        dispatch(changeAddAdFromHomeCategoryValue(data.value));
         const currentCategory = categoriesOptions.find(
-          (category) => event.currentTarget.value === category.name
+          (category) => data.value === category.value
         );
-        dispatch(changeAddAdFromHomeCategory(currentCategory.key + 1));
+        dispatch(changeAddAdFromHomeCategory(currentCategory.key));
       }}
     />
   );

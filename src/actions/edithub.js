@@ -1,5 +1,6 @@
 export const CHANGE_EDITHUB_USERNAME = 'CHANGE_EDITHUB_USERNAME';
 export const CHANGE_EDITHUB_EMAIL = 'CHANGE_EDITHUB_EMAIL';
+export const CHANGE_EDITHUB_PASSWORD = 'CHANGE_EDITHUB_PASSWORD';
 export const CHANGE_EDITHUB_PHONE_NUMBER = 'CHANGE_EDITHUB_PHONE_NUMBER';
 export const CHANGE_EDITHUB_FIRSTNAME = 'CHANGE_EDITHUB_FIRSTNAME';
 export const CHANGE_EDITHUB_LASTNAME = 'CHANGE_EDITHUB_LASTNAME';
@@ -9,6 +10,11 @@ export const SAVE_EDITHUB_USER_DATA = 'SAVE_EDITHUB_USER_DATA';
 
 export const changeEdithubUsername = (newValue) => ({
   type: CHANGE_EDITHUB_USERNAME,
+  newValue,
+});
+
+export const changeEdithubPassword = (newValue) => ({
+  type: CHANGE_EDITHUB_PASSWORD,
   newValue,
 });
 

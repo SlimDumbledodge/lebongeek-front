@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import './EditHub.scss';
 import { Form, Input, TextArea } from 'semantic-ui-react';
 import {
@@ -8,16 +7,19 @@ import {
   changeEdithubEmail,
   changeEdithubFirstname,
   changeEdithubLastname,
+  changeEdithubPassword,
   changeEdithubPhoneNumber,
   changeEdithubUsername,
   saveEdithubChanges,
 } from '../../actions/edithub';
+import { clearCookie } from '../../actions/login';
 
 const EditHub = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const usernameValue = useSelector((state) => state.edithub.username);
+  const passwordValue = useSelector((state) => state.edithub.password);
   const emailValue = useSelector((state) => state.edithub.email);
   const phoneNumberValue = useSelector((state) => state.edithub.phoneNumber);
   const firstnameValue = useSelector((state) => state.edithub.firstname);
@@ -64,6 +66,16 @@ const EditHub = () => {
               dispatch(changeEdithubPhoneNumber(data.value));
             }}
             placeholder="01010101"
+          />
+          <Form.Field
+            control={Input}
+            label="Mot de passe"
+            type="password"
+            value={passwordValue}
+            onChange={(event, data) => {
+              dispatch(changeEdithubPassword(data.value));
+            }}
+            placeholder=""
           />
         </Form.Group>
         <Form.Group widths="equal">
