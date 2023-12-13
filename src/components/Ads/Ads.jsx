@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 import { switchScreenResponsive } from '../../actions/responsive';
-import { adsFilter, fetchAd, fetchAdsCategories } from '../../actions/ads';
+import { adsFilter, fetchAdsCategories } from '../../actions/ads';
 
 import './Ads.scss';
 
@@ -65,9 +65,6 @@ const Ads = () => {
                 price={product.ad.price}
                 key={product.ad.id}
                 image={product.picture}
-                onClickPropAd={() => {
-                  dispatch(fetchAd(product.ad.id));
-                }}
               />
             </Link>
           ))}

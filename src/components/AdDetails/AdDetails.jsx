@@ -1,13 +1,20 @@
 /* eslint-disable prettier/prettier */
 
+import { useEffect } from 'react';
 import { Button, Image, Label } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { fetchAd } from '../../actions/ads';
 
 import './AdDetails.scss';
 
 const AdDetails = () => {
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+
   const ad = useSelector((state) => state.ads.oneAd);
   const adLoaded = useSelector((state) => state.ads.adLoaded);
 
@@ -23,7 +30,12 @@ const AdDetails = () => {
 
   const currentState = statesOptions.find((state) => ad.state === state.value);
 
-  return !adLoaded && ad && user ? (
+  useEffect(() => {
+    dispatch(fetchAd(id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  return !adLoaded && ad && user && currentState ? (
       ad.products.map((product) => (
         <div key={ad.id} className="ad__details__container">
           <h2 className="ad__details__title">{product.title}</h2>
