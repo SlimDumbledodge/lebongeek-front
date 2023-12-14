@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -93,12 +94,12 @@ const Connexion = () => {
             Se connecter
           </button>
 
-          <p className="connexion__register__text">
-            Envie de nous rejoindre ?
+          <div className="connexion__register__text">
+            <p>Envie de nous rejoindre ?</p>
             <Link className="connexion__register__link" to="cree_un_compte">
               Créer un compte
             </Link>
-          </p>
+          </div>
         </form>
       </div>
     </>
