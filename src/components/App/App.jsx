@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 
 import { useEffect } from 'react';
@@ -29,6 +29,7 @@ function App() {
   const isCategoriesLoaded = useSelector(
     (state) => state.category.isCategoriesLoaded
   );
+  const isUserLogged = useSelector((state) => state.login.isCookieFilled);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -44,8 +45,29 @@ function App() {
       <HeaderNav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/hub" element={<Hub />} />
-        <Route path="/depot_annonce" element={<AddAdFromHome />} />
+
+        {isUserLogged ? (
+          <>
+            <Route path="/hub" element={<Hub />} />
+            <Route path="/depot_annonce" element={<AddAdFromHome />} />
+            <Route path="/transaction" element={<Transaction />} />
+            <Route path="/modifier-mon-profil" element={<EditHub />} />
+          </>
+        ) : (
+          <>
+            <Route path="/hub" element={<Navigate to="/connexion" />} />
+            <Route
+              path="/depot_annonce"
+              element={<Navigate to="/connexion" />}
+            />
+            <Route path="/transaction" element={<Navigate to="/connexion" />} />
+            <Route
+              path="/modifier-mon-profil"
+              element={<Navigate to="/connexion" />}
+            />
+          </>
+        )}
+
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />
@@ -53,10 +75,7 @@ function App() {
         <Route path="/:slug/:id" element={<AdDetails />} />
         <Route path="/hub/:id" element={<ForeignHub />} />
 
-        <Route path="/transaction" element={<Transaction />} />
-
         <Route path="/connexion" element={<Connexion />} />
-        <Route path="/modifier-mon-profil" element={<EditHub />} />
         <Route path="/categories" element={<Categories />} />
         <Route
           path="/derniere-ventes"

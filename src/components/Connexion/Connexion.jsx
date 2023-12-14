@@ -95,7 +95,7 @@ const Connexion = () => {
           </button>
 
           <p className="connexion__register__text">
-            Envie de nous rejoindre ?
+            Envie de nous rejoindre ? &nbsp;
             <Link className="connexion__register__link" to="cree_un_compte">
               Créer un compte
             </Link>
