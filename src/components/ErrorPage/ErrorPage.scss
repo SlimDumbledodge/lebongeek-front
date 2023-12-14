@@ -1,0 +1,14 @@
+.error__page__container {
+  background-image: url('../../assets/images/error-page.jpg');
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  margin-top: 25px;
+
+  .error__page__text {
+    font-size: 3em;
+    text-align: center;
+    font-weight: bold;
+  }
+}

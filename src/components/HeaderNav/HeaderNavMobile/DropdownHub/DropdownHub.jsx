@@ -28,7 +28,9 @@ function DropdownHub() {
       }
     >
       <Dropdown.Menu id="header__mobile__dropdown__hub">
-        <Dropdown.Item text="Se connecter" as={Link} to="/connexion" />
+        {!isUserLogged && (
+          <Dropdown.Item text="Se connecter" as={Link} to="/connexion" />
+        )}
 
         {isUserLogged && <Dropdown.Item text="Hub" as={Link} to="/hub" />}
         {isUserLogged && (

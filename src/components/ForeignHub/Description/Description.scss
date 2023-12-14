@@ -1,0 +1,65 @@
+@use '../../../styles/variables' as var;
+
+.hub__description__container {
+  background-color: var.$mainColor;
+  display: flex;
+  padding: 15px 25px;
+  margin-bottom: 25px;
+  border-radius: 0px 0px 8px 8px;
+  width: 80%;
+  margin: 0 auto 15px;
+  .hub__avatar__pseudo {
+    text-align: center;
+  }
+
+  .hub__description__text {
+    padding-top: 15px;
+    padding-left: 50px;
+    font-size: 0.9em;
+    margin: auto;
+  }
+
+  .hub__pseudo {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+
+  .hub__avatar {
+    width: 150px;
+    box-shadow: 3px 3px 5px 3px var.$thirdColor;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}
+
+/* Pour les écrans inférieurs à 768px (320, 375, 425) */
+@media (max-width: 767px) {
+  .hub__description__container {
+    flex-direction: column; /*  texte positionné en dessous de l'avatar */
+    width: 110%;
+  }
+  .hub__avatar {
+    width: 10px;
+    box-shadow: 3px 3px 5px 3px var.$thirdColor;
+    border-radius: 8px;
+    object-fit: cover;
+
+    .hub__description__text {
+      padding-left: 0; /* Alignement centré du texte sous l'avatar */
+      text-align: center;
+    }
+  }
+}
+
+/* Pour les écrans à partir de 1024px */
+@media (min-width: 1024px) {
+  .hub__description__container {
+    flex-direction: row; /* Le texte est positionné à côté de l'avatar */
+
+    .hub__description__text {
+      padding-left: 50px; /* Repositionnement du texte à doite de l'avatar */
+      text-align: left;
+    }
+  }
+}
