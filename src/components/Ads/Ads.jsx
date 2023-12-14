@@ -58,16 +58,22 @@ const Ads = () => {
           ''
         )}
         <div className="ads">
-          {adsCategory.map((product) => (
-            <Link to={`/${slug}/${product.ad.id}`} key={product.id}>
-              <Ad
-                title={product.title}
-                price={product.ad.price}
-                key={product.ad.id}
-                image={product.picture}
-              />
-            </Link>
-          ))}
+          {adsCategory.map((product) => {
+            if (product.ad === null) {
+              return null;
+            }
+
+            return (
+              <Link to={`/${slug}/${product.ad.id}`} key={product.id}>
+                <Ad
+                  title={product.title}
+                  price={product.ad.price}
+                  key={product.ad.id}
+                  image={product.picture}
+                />
+              </Link>
+            );
+          })}
         </div>
       </div>
       {isFilterOpen && isMobile ? <AdsFilter type={table[1]} /> : ''}
