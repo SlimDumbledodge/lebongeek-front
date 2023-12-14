@@ -50,7 +50,7 @@ function App() {
           <>
             <Route path="/hub" element={<Hub />} />
             <Route path="/depot_annonce" element={<AddAdFromHome />} />
-            <Route path="/transaction" element={<Transaction />} />
+            <Route path="/transaction/:id" element={<Transaction />} />
             <Route path="/modifier-mon-profil" element={<EditHub />} />
           </>
         ) : (
@@ -60,7 +60,10 @@ function App() {
               path="/depot_annonce"
               element={<Navigate to="/connexion" />}
             />
-            <Route path="/transaction" element={<Navigate to="/connexion" />} />
+            <Route
+              path="/transaction/:id"
+              element={<Navigate to="/connexion" />}
+            />
             <Route
               path="/modifier-mon-profil"
               element={<Navigate to="/connexion" />}
