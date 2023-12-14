@@ -62,7 +62,7 @@ const Register = () => {
       <div className="register__container">
         <h1 className="register__title">Bonjour !</h1>
         <p className="register__text">
-          Créer un compte pour découvrir nos annonces.
+          Créez un compte pour découvrir nos annonces.
         </p>
         <form
           className="register__form"
