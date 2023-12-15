@@ -2,16 +2,17 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
   changeInputValue,
+  resetInputValue,
   searchToggleCategories,
 } from '../../../../actions/input';
 
 function Form() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const inputSearch = useSelector((state) => state.input.inputSearch);
   const isSearchListOpen = useSelector((state) => state.input.isSearchListOpen);
@@ -34,7 +35,8 @@ function Form() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          history.push(`/${inputSearch}/1`);
+          navigate(`/${inputSearch}/1`);
+          dispatch(resetInputValue());
         }}
       >
         <input

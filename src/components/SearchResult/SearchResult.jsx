@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 import { switchScreenResponsive } from '../../actions/responsive';
-import { adsFilter, fetchAdsCategories } from '../../actions/ads';
+import { adsFilter } from '../../actions/ads';
+import { fetchSearch } from '../../actions/search';
 
 import './SearchResult.scss';
 
@@ -11,7 +12,7 @@ import Result from './Result';
 import SearchFilter from './SearchFilter/SearchFilter';
 
 const SearchResult = () => {
-  const { slug } = useParams();
+  const { input, page } = useParams();
 
   const table = ['desktop', 'mobile'];
 
@@ -19,11 +20,9 @@ const SearchResult = () => {
 
   const isMobile = useSelector((state) => state.responsive.isMobile);
   const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
-  const adsCategory = useSelector((state) => state.ads.listAdsCategories);
-  const categoriesList = useSelector((state) => state.category.listCategories);
-
-  const currentCategory = categoriesList.find(
-    (category) => category.slug === slug
+  const searchResultData = useSelector((state) => state.search.searchResult);
+  const isSearchDataLoaded = useSelector(
+    (state) => state.search.isSearchDataLoaded
   );
 
   const handleResize = () => {
@@ -32,16 +31,13 @@ const SearchResult = () => {
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
-    dispatch(fetchAdsCategories(currentCategory.id));
+    dispatch(fetchSearch(input, page));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCategory.id]);
+  }, [input, page]);
 
   return (
     <>
-      <h1 className="categoryTitle">
-        {currentCategory.name.charAt(0).toUpperCase() +
-          currentCategory.name.slice(1)}
-      </h1>
+      <h1 className="categoryTitle">Nom de catégorie</h1>
       <div className="ads__container">
         {isMobile ? '' : <SearchFilter type={table[0]} />}
         {isMobile ? (
@@ -58,16 +54,20 @@ const SearchResult = () => {
           ''
         )}
         <div className="ads">
-          {adsCategory.map((product) => (
-            <Link to={`/${slug}/${product.ad.id}`} key={product.id}>
-              <Result
-                title={product.title}
-                price={product.ad.price}
+          {(!isSearchDataLoaded && 'Chargement du résultat...') ||
+            (!searchResultData && 'Aucun résultat trouvé') ||
+            searchResultData.map((product) => (
+              <Link
+                to={`/${product.category.slug}/${product.ad.id}`}
                 key={product.ad.id}
-                image={product.picture}
-              />
-            </Link>
-          ))}
+              >
+                <Result
+                  title={product.ad.title}
+                  price={product.ad.price}
+                  image={product.picture}
+                />
+              </Link>
+            ))}
         </div>
       </div>
       {isFilterOpen && isMobile ? <SearchFilter type={table[1]} /> : ''}

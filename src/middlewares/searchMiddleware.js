@@ -1,15 +1,13 @@
 import axios from 'axios';
 import { FETCH_SEARCH, saveSearchData } from '../actions/search';
 
-const searchParam = 'jeux';
-const pageNumber = 1;
-
 const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 const searchMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_SEARCH:
+    case FETCH_SEARCH: {
+      const { input, page } = action;
       axios
-        .get(`${baseUrl}/api/search?query=${searchParam}&page=${pageNumber}`)
+        .get(`${baseUrl}/api/search?query=${input}&page=${page}`)
         .then((response) => {
           // eslint-disable-next-line no-console
           console.log('OK FETCH_SEARCH : ', response);
@@ -21,6 +19,7 @@ const searchMiddleware = (store) => (next) => (action) => {
           console.warn('Erreur FETCH_SEARCH : ', error);
         });
       break;
+    }
 
     default:
       break;

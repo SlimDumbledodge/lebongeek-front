@@ -1,19 +1,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
-
-import { useSelector } from 'react-redux';
 
 const SearchFilterCheckbox = ({ title, system }) => {
-  const { slug } = useParams();
-
-  const categoriesList = useSelector((state) => state.category.listCategories);
-
-  const currentCategory = categoriesList.find(
-    (category) => category.slug === slug
-  );
-
   const handleChange = () => {
     // Rien
   };
@@ -25,7 +14,7 @@ const SearchFilterCheckbox = ({ title, system }) => {
         type="radio"
         id={title}
         name="adsFilterCategoriesCheckbox"
-        checked={currentCategory.name === title}
+        // checked={}
         onChange={handleChange}
       />
       <label

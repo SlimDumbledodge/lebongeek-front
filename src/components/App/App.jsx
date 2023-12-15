@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchCategories } from '../../actions/category';
-import { fetchSearch } from '../../actions/search';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
 import Home from '../Home/Home';
@@ -31,7 +30,6 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCategories());
-    dispatch(fetchSearch());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

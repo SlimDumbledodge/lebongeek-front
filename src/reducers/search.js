@@ -2,7 +2,7 @@ import { SAVE_SEARCH_DATA } from '../actions/search';
 
 const initialState = {
   searchResult: [],
-  isAdLoaded: false,
+  isSearchDataLoaded: false,
 };
 
 const searchReducer = (state = initialState, action = {}) => {
@@ -11,7 +11,7 @@ const searchReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchResult: action.data,
-        isAdLoaded: !state.isAdLoaded,
+        isSearchDataLoaded: !state.isSearchDataLoaded,
       };
 
     default:
