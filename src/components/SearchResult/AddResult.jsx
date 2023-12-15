@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import PropTypes from 'prop-types';
 
-const Result = ({ title, price, image }) => {
+const AddResult = ({ title, price, image }) => {
   return (
     <button type="button" className="ad">
       <img src={image} alt="Une annonce" className="ad__image" />
@@ -12,10 +12,10 @@ const Result = ({ title, price, image }) => {
   );
 };
 
-Result.propTypes = {
+AddResult.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
 };
 
-export default Result;
+export default AddResult;

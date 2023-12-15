@@ -12,7 +12,9 @@ const searchMiddleware = (store) => (next) => (action) => {
           // eslint-disable-next-line no-console
           console.log('OK FETCH_SEARCH : ', response);
 
-          store.dispatch(saveSearchData(response.data.data));
+          store.dispatch(
+            saveSearchData(response.data.data, response.data.message)
+          );
         })
         .catch((error) => {
           // eslint-disable-next-line no-console

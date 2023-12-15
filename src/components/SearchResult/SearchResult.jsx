@@ -8,7 +8,8 @@ import { fetchSearch } from '../../actions/search';
 
 import './SearchResult.scss';
 
-import Result from './Result';
+import AddResult from './AddResult';
+import ProfilResult from './ProfilResult';
 import SearchFilter from './SearchFilter/SearchFilter';
 
 const SearchResult = () => {
@@ -21,6 +22,9 @@ const SearchResult = () => {
   const isMobile = useSelector((state) => state.responsive.isMobile);
   const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
   const searchResultData = useSelector((state) => state.search.searchResult);
+  // Réactiver numberResult => demander back de recevoir un nombre
+  // const numberResult = useSelector((state) => state.search.message);
+  const numberResult = 8;
   const isSearchDataLoaded = useSelector(
     (state) => state.search.isSearchDataLoaded
   );
@@ -36,25 +40,33 @@ const SearchResult = () => {
   }, [input, page]);
 
   return (
-    <>
+    <div className="page__container">
       <h2 className="bigTitle">Profil(s)</h2>
       <div className="profil__container">
         {(!isSearchDataLoaded && 'Chargement du résultat...') ||
           (!searchResultData && 'Aucun résultat trouvé') ||
           searchResultData.map((product) => (
-            <Link
-              to={`/${product.category.slug}/${product.ad.id}`}
-              key={product.ad.id}
-            >
-              <Result
-                title={product.ad.title}
-                price={product.ad.price}
-                image={product.picture}
+            <Link to={`/hub/${product.user.id}`} key={product.ad.id}>
+              <ProfilResult
+                username={product.user.username}
+                avatar={product.user.avatar}
               />
             </Link>
           ))}
       </div>
       <h2 className="bigTitle">Annonce(s)</h2>
+      {numberResult > 0 && (
+        <>
+          <p className="numberResult">
+            {numberResult === 1
+              ? `${numberResult} résultat trouvé`
+              : `${numberResult} résultats trouvés`}
+          </p>
+          <p className="howMuchDisplay">
+            Affichage : 1 - {searchResultData && searchResultData.length}
+          </p>
+        </>
+      )}
       <h2 className="categoryTitle">Nom de catégorie</h2>
       <div className="ads__container">
         {isMobile ? '' : <SearchFilter type={table[0]} />}
@@ -79,7 +91,7 @@ const SearchResult = () => {
                 to={`/${product.category.slug}/${product.ad.id}`}
                 key={product.ad.id}
               >
-                <Result
+                <AddResult
                   title={product.ad.title}
                   price={product.ad.price}
                   image={product.picture}
@@ -89,7 +101,7 @@ const SearchResult = () => {
         </div>
       </div>
       {isFilterOpen && isMobile ? <SearchFilter type={table[1]} /> : ''}
-    </>
+    </div>
   );
 };
 
