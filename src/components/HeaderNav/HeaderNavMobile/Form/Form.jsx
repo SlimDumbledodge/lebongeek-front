@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -10,9 +10,9 @@ import {
   searchToggleCategories,
 } from '../../../../actions/input';
 
-import { fetchAdsCategories } from '../../../../actions/ads';
-
 function Form() {
+  const history = useHistory();
+
   const inputSearch = useSelector((state) => state.input.inputSearch);
   const isSearchListOpen = useSelector((state) => state.input.isSearchListOpen);
   const categoriesListFromState = useSelector(
@@ -34,7 +34,7 @@ function Form() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          dispatch(fetchAdsCategories());
+          history.push(`/${inputSearch}/1`);
         }}
       >
         <input
@@ -50,7 +50,7 @@ function Form() {
           className="theInput"
         />
       </form>
-      {isSearchListOpen && isCategoriesLoaded && (
+      {isSearchListOpen && isCategoriesLoaded && inputSearch === '' && (
         <ul className="list">
           {categoriesListFromState.map((category) => (
             <Link to={`/annonces/${category.slug}`} key={category.id}>
