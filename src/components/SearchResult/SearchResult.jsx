@@ -37,7 +37,25 @@ const SearchResult = () => {
 
   return (
     <>
-      <h1 className="categoryTitle">Nom de catégorie</h1>
+      <h2 className="bigTitle">Profil(s)</h2>
+      <div className="profil__container">
+        {(!isSearchDataLoaded && 'Chargement du résultat...') ||
+          (!searchResultData && 'Aucun résultat trouvé') ||
+          searchResultData.map((product) => (
+            <Link
+              to={`/${product.category.slug}/${product.ad.id}`}
+              key={product.ad.id}
+            >
+              <Result
+                title={product.ad.title}
+                price={product.ad.price}
+                image={product.picture}
+              />
+            </Link>
+          ))}
+      </div>
+      <h2 className="bigTitle">Annonce(s)</h2>
+      <h2 className="categoryTitle">Nom de catégorie</h2>
       <div className="ads__container">
         {isMobile ? '' : <SearchFilter type={table[0]} />}
         {isMobile ? (

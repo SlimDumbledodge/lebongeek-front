@@ -1,10 +1,22 @@
 @use '../../styles/variables' as var;
 
-.categoryTitle{
+.bigTitle{
   text-align: center;
   margin-top: 15px;
   font-weight: bold;
   font-size: 34px;
+  padding: 10px;
+}
+
+.profil__container{
+  display: flex;
+}
+
+.categoryTitle{
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 28px;
   padding: 10px;
 }
 
