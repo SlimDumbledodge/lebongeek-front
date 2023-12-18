@@ -8,9 +8,10 @@ import registerMiddleware from '../middlewares/registerMiddleware';
 import categoryMiddleware from '../middlewares/categoryMiddleware';
 import adsMiddleware from '../middlewares/adsMiddleware';
 import addAdFromHomeMiddleware from '../middlewares/addAdFromHomeMiddleware';
-import uploadMiddleware from '../middlewares/uploadMiddleware';
 import edithubMiddleware from '../middlewares/edithubMiddleware';
 import foreignUserMiddleware from '../middlewares/foreignUserMiddleware';
+import addProductMiddleware from '../middlewares/addProductMiddleware';
+import uploadImageMiddleware from '../middlewares/uploadImageMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -19,9 +20,10 @@ const enhancer = composeWithDevTools(
     categoryMiddleware,
     adsMiddleware,
     addAdFromHomeMiddleware,
-    uploadMiddleware,
+    uploadImageMiddleware,
     edithubMiddleware,
-    foreignUserMiddleware
+    foreignUserMiddleware,
+    addProductMiddleware
   )
 );
 

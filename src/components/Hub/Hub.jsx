@@ -13,11 +13,15 @@ const Hub = () => {
       <Description />
       <div className="hub__wrapper__buttons">
         <Link to="/modifier-mon-profil">
-          <Button className="hub__buttons">Modifier mon profil</Button>
+          <Button className="hub__buttons" id="hub__edit__hub">
+            Modifier mon profil
+          </Button>
         </Link>
-        <Button className="hub__buttons">
-          Ajouter un produit à l'inventaire
-        </Button>
+        <Link to="/ajouter-un-produit">
+          <Button className="hub__buttons" id="hub__add__product">
+            Ajouter un produit à l'inventaire
+          </Button>
+        </Link>
       </div>
 
       <Inventory />

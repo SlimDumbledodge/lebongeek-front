@@ -4,15 +4,15 @@ import './Inventory.scss';
 
 const Inventory = ({ product }) => {
   return (
-    <section className="hub__inventory">
-      <h2 className="hub__inventory__title">INVENTAIRE</h2>
-      <div className="hub__grid__wrapper">
+    <section className="hub__foreign__inventory">
+      <h2 className="hub__foreign__inventory__title">INVENTAIRE</h2>
+      <div className="hub__foreign__grid__wrapper">
         {product.map((currentProduct) => (
           <div key={currentProduct.id}>
             <img
               src={currentProduct.picture}
               alt={currentProduct.title}
-              className="hub__inventory__item"
+              className="hub__foreign__inventory__item"
             />
 
             <p>{currentProduct.title}</p>

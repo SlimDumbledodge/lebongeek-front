@@ -15,7 +15,7 @@ const edithubMiddleware = (store) => (next) => (action) => {
             username: store.getState().edithub.username,
             firstname: store.getState().edithub.firstname,
             lastname: store.getState().edithub.lastname,
-            avatar: '',
+            avatar: store.getState().uploadImage.uploadedImage,
             email: store.getState().edithub.email,
             phone_number: store.getState().edithub.phoneNumber,
             password: store.getState().edithub.password
@@ -26,6 +26,7 @@ const edithubMiddleware = (store) => (next) => (action) => {
           {
             headers: {
               Authorization: `Bearer ${Cookies.get('token')}`,
+              'Content-Type': 'multypart/form-data',
             },
           }
         )

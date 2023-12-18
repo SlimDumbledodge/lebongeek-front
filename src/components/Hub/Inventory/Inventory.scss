@@ -10,7 +10,7 @@
 
   .hub__inventory__title {
     font-size: 15px;
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 20px;
     color: #333;
     text-align: center;
@@ -23,6 +23,7 @@
 
   .hub__inventory__item {
     height: 200px;
+    width: 200px;
     border-radius: 8px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
@@ -30,5 +31,28 @@
     &:hover {
       transform: scale(1.05);
     }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .hub__grid__wrapper {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media screen and (max-width: 1168px) {
+  .hub__grid__wrapper {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .hub__grid__wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .hub__grid__wrapper {
+    grid-template-columns: repeat(1, 1fr) !important;
   }
 }

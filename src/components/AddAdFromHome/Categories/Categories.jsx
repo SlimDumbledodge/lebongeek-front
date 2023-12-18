@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Form } from 'semantic-ui-react';
+import { Form, Select } from 'semantic-ui-react';
 import {
   changeAddAdFromHomeCategory,
   changeAddAdFromHomeCategoryValue,
@@ -20,7 +20,8 @@ const Categories = () => {
   );
 
   return (
-    <Form.Select
+    <Form.Field
+      control={Select}
       label="Catégorie :"
       placeholder="Figurine"
       options={categoriesOptions}

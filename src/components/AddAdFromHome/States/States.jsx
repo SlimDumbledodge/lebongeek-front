@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './States.scss';
-import { Form } from 'semantic-ui-react';
+import { Form, Select } from 'semantic-ui-react';
 import { changeAddAdFromHomeState } from '../../../actions/addAdFromHome';
 
 function States() {
@@ -16,7 +16,8 @@ function States() {
     { key: 5, text: 'Mauvais', value: 5 },
   ];
   return (
-    <Form.Select
+    <Form.Field
+      control={Select}
       label="État :"
       placeholder="Neuf"
       options={statesOptions}

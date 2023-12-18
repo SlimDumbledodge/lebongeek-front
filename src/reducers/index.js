@@ -11,6 +11,8 @@ import addAdFromHomeReducer from './addAdFromHome';
 import transactionReducer from './transaction';
 import edithubReducer from './edithub';
 import foreignUserReducer from './foreignUser';
+import addProductReducer from './addProduct';
+import uploadImageReducer from './uploadImage';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -24,6 +26,8 @@ const rootReducer = combineReducers({
   transaction: transactionReducer,
   edithub: edithubReducer,
   foreignUser: foreignUserReducer,
+  addProduct: addProductReducer,
+  uploadImage: uploadImageReducer,
 });
 
 export default rootReducer;
