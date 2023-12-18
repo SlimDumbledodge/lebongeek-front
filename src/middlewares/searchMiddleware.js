@@ -13,7 +13,11 @@ const searchMiddleware = (store) => (next) => (action) => {
           console.log('OK FETCH_SEARCH : ', response);
 
           store.dispatch(
-            saveSearchData(response.data.data, response.data.message)
+            saveSearchData(
+              response.data.data,
+              response.data.message,
+              response.status
+            )
           );
         })
         .catch((error) => {

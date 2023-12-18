@@ -8,8 +8,9 @@ export const fetchSearch = (input, page) => ({
   page,
 });
 
-export const saveSearchData = (data, message) => ({
+export const saveSearchData = (data, message, status) => ({
   type: SAVE_SEARCH_DATA,
   data,
   message,
+  status,
 });

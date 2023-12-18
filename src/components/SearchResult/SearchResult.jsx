@@ -22,12 +22,15 @@ const SearchResult = () => {
   const isMobile = useSelector((state) => state.responsive.isMobile);
   const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
   const searchResultData = useSelector((state) => state.search.searchResult);
-  // Réactiver numberResult => demander back de recevoir un nombre
-  // const numberResult = useSelector((state) => state.search.message);
-  const numberResult = 8;
+  const numberResultFromState = useSelector((state) => state.search.message);
+  const status = useSelector((state) => state.search.status);
   const isSearchDataLoaded = useSelector(
     (state) => state.search.isSearchDataLoaded
   );
+
+  const numberResult = parseInt(numberResultFromState, 10);
+
+  const pageNumber = Math.ceil(numberResult / 9);
 
   const handleResize = () => {
     dispatch(switchScreenResponsive(window.innerWidth < 1024));
@@ -41,10 +44,16 @@ const SearchResult = () => {
 
   return (
     <div className="page__container">
-      <h2 className="bigTitle">Profil(s)</h2>
+      <h2 className="bigTitle">{numberResult > 1 ? 'Profils' : 'Profil'}</h2>
       <div className="profil__container">
         {(!isSearchDataLoaded && 'Chargement du résultat...') ||
           (!searchResultData && 'Aucun résultat trouvé') ||
+          (status === 202 &&
+            searchResultData.map((user) => (
+              <Link to={`/hub/${user.id}`} key={user.id}>
+                <ProfilResult username={user.username} avatar={user.avatar} />
+              </Link>
+            ))) ||
           searchResultData.map((product) => (
             <Link to={`/hub/${product.user.id}`} key={product.ad.id}>
               <ProfilResult
@@ -54,7 +63,7 @@ const SearchResult = () => {
             </Link>
           ))}
       </div>
-      <h2 className="bigTitle">Annonce(s)</h2>
+      <h2 className="bigTitle">{numberResult > 1 ? 'Annonces' : 'Annonce'}</h2>
       {numberResult > 0 && (
         <>
           <p className="numberResult">
@@ -86,6 +95,7 @@ const SearchResult = () => {
         <div className="ads">
           {(!isSearchDataLoaded && 'Chargement du résultat...') ||
             (!searchResultData && 'Aucun résultat trouvé') ||
+            (status === 202 && 'Aucun résultat trouvé') ||
             searchResultData.map((product) => (
               <Link
                 to={`/${product.category.slug}/${product.ad.id}`}
@@ -99,6 +109,18 @@ const SearchResult = () => {
               </Link>
             ))}
         </div>
+      </div>
+      <div className="page__number__container">
+        {pageNumber > 1 &&
+          Array.from({ length: pageNumber }, (_, index) => (
+            <Link
+              to={`/${input}/${index + 1}`}
+              key={index}
+              className="page_number"
+            >
+              {index + 1}
+            </Link>
+          ))}
       </div>
       {isFilterOpen && isMobile ? <SearchFilter type={table[1]} /> : ''}
     </div>
