@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -24,13 +24,13 @@ const SearchFilter = ({ type }) => {
         <p className={`ads__filter__title__${type}`}>Catégories</p>
         <div className={`ads__filter__checkbox__container__${type}`}>
           {categoriesListFromState.map((category) => (
-            <Link to={`/annonces/${category.slug}`} key={category.id}>
+            <p key={category.id}>
               <SearchFilterCheckbox
                 key={category.id}
                 title={category.name}
                 system={type}
               />
-            </Link>
+            </p>
           ))}
         </div>
         {isFilterOpen && isMobile ? (
