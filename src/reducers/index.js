@@ -13,6 +13,7 @@ import edithubReducer from './edithub';
 import foreignUserReducer from './foreignUser';
 import addProductReducer from './addProduct';
 import uploadImageReducer from './uploadImage';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   foreignUser: foreignUserReducer,
   addProduct: addProductReducer,
   uploadImage: uploadImageReducer,
+  search: searchReducer,
 });
 
 export default rootReducer;

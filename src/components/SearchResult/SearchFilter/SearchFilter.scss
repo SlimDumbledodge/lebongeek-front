@@ -1,0 +1,137 @@
+@use '../../../styles/variables' as var;
+
+.ads__filter_container__desktop{
+  width: 30%;
+  padding: 30px;
+  height: auto;
+  border: 1px solid black;
+
+  @media screen and (min-width: 1440px) {
+    width: 20%;
+    margin-right: 30px;
+  }
+
+  .ads__filter__title__desktop{
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    padding-left: 20px;
+  }
+
+  .ads__filter__checkbox__container__desktop{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-left: 20px;
+
+    .ads__filter__checkbox__desktop{
+
+      .ads__filter__checkbox__input__desktop{
+        margin-right: 10px;
+      }
+
+      .ads__filter__checkbox_label__desktop{
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.ads__filter_container__mobile{
+  width: 60%;
+  padding: 30px;
+  height: auto;
+  border: 1px solid var.$thirdColor;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  opacity: 0.95;
+  z-index: 3; 
+
+  @media screen and (min-width: 768px) {
+    width: 40%;
+  }
+
+  .ads__filter__title__mobile{
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    padding-left: 5px;
+
+    @media screen and (min-width: 375px) {
+      padding-left: 15px;
+    }
+  }
+
+  .ads__filter__checkbox__container__mobile{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-left: 20px;
+
+    @media screen and (max-width: 320px) {
+      padding-left: 10px;
+    }
+
+    .ads__filter__checkbox__mobile{
+
+      .ads__filter__checkbox__input__mobile{
+        margin-right: 10px;
+      }
+
+      .ads__filter__checkbox_label__mobile{
+        font-size: 16px;
+      }
+    }
+  }
+
+  .ads__filter__validation__button{
+    background: var.$thirdColor;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 20px;
+    padding: 5px;
+
+    @media screen and (max-width: 320px) {
+      margin-left: 35px;
+    }
+
+    @media screen and (min-width: 375px) {
+      margin-left: 50px;
+    }
+
+    @media screen and (min-width: 425px) {
+      margin-left: 65px;
+    }
+
+    @media screen and (min-width: 768px) {
+      margin-left: 90px;
+    }
+  }
+}
+
+.ads__filter__opacity{
+  z-index: 2; 
+  position: absolute;
+  top: 0;
+  left: 0; 
+  height: 5400px; 
+  width: 100%;
+  opacity: 0.8;
+  background-color: black;
+
+  @media screen and (min-width: 375px) {
+    height: 6000px;
+  }
+
+  @media screen and (min-width: 425px) {
+    height: 6300px;
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 3150px;
+  }
+}

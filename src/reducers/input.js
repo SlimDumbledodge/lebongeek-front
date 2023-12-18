@@ -1,4 +1,8 @@
-import { CHANGE_INPUT_VALUE, SEARCH_TOGGLE_CATEGORIES } from '../actions/input';
+import {
+  CHANGE_INPUT_VALUE,
+  SEARCH_TOGGLE_CATEGORIES,
+  RESET_INPUT_VALUE,
+} from '../actions/input';
 
 const initialState = {
   inputSearch: '',
@@ -11,6 +15,12 @@ const inputReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         inputSearch: action.search,
+      };
+
+    case RESET_INPUT_VALUE:
+      return {
+        ...state,
+        inputSearch: '',
       };
 
     case SEARCH_TOGGLE_CATEGORIES:

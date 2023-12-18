@@ -24,6 +24,7 @@ import ForeignHub from '../ForeignHub/ForeignHub';
 import Categories from '../Categories/Categories';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import AddProduct from '../AddProduct/AddProduct';
+import SearchResult from '../SearchResult/SearchResult';
 
 function App() {
   const dispatch = useDispatch();
@@ -77,6 +78,8 @@ function App() {
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />
+
+        <Route path="/:input/:page" element={<SearchResult />} />
 
         <Route path="/:slug/:id" element={<AdDetails />} />
         <Route path="/hub/:id" element={<ForeignHub />} />
