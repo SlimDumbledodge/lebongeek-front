@@ -35,7 +35,7 @@ function Form() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          navigate(`/${inputSearch}/1`);
+          navigate(`/recherche/${inputSearch}/1`);
           dispatch(resetInputValue());
         }}
       >

@@ -79,7 +79,7 @@ function App() {
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />
 
-        <Route path="/:input/:page" element={<SearchResult />} />
+        <Route path="/recherche/:input/:page" element={<SearchResult />} />
 
         <Route path="/:slug/:id" element={<AdDetails />} />
 

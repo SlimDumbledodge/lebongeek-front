@@ -114,7 +114,7 @@ const SearchResult = () => {
         {pageNumber > 1 &&
           Array.from({ length: pageNumber }, (_, index) => (
             <Link
-              to={`/${input}/${index + 1}`}
+              to={`/recherche/${input}/${index + 1}`}
               key={index}
               className="page_number"
             >
