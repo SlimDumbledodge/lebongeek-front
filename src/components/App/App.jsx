@@ -24,6 +24,8 @@ import ForeignHub from '../ForeignHub/ForeignHub';
 import Categories from '../Categories/Categories';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import AddProduct from '../AddProduct/AddProduct';
+import ProductPage from '../ProductPage/ProductPage';
+import TransformProductInAd from '../TransformProductInAd/TransformProductInAd';
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +56,11 @@ function App() {
             <Route path="/transaction" element={<Transaction />} />
             <Route path="/modifier-mon-profil" element={<EditHub />} />
             <Route path="/ajouter-un-produit" element={<AddProduct />} />
+            <Route path="/products/:id" element={<ProductPage />} />
+            <Route
+              path="/vendre-mon-produit/:id"
+              element={<TransformProductInAd />}
+            />
           </>
         ) : (
           <>
@@ -69,6 +76,14 @@ function App() {
             />
             <Route
               path="/ajouter-un-produit"
+              element={<Navigate to="/connexion" />}
+            />
+            <Route
+              path="/products/:id"
+              element={<Navigate to="/connexion" />}
+            />
+            <Route
+              path="/vendre-mon-produit/:id"
               element={<Navigate to="/connexion" />}
             />
           </>

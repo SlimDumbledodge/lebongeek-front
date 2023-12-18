@@ -1,94 +1,50 @@
+import React from 'react';
+import Cookies from 'js-cookie';
 import './ProductPage.scss';
 import { Button, Image, Label } from 'semantic-ui-react';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-const Product = () => {
-  const [userDetails, setUserDetails] = useState(null);
-  const [adDetails, setAdDetails] = useState(null);
+const ProductPage = () => {
+  let { id } = useParams();
+  id = parseInt(id, 10);
+  const currentUser = Cookies.get('user');
+  const parsedUser = currentUser ? JSON.parse(currentUser) : null;
 
-  // récupérer les détails de l'utilisateur
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const response = await fetch(
-          'http://matthieu-le-floch.vpnuser.lan:8080/api/8/users'
-        );
-        if (response.ok) {
-          const userData = await response.json();
-          setUserDetails(userData);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const currentProduct = parsedUser.product.find(
+    (product) => product.id === id
+  );
 
-    fetchUserDetails();
-  }, []);
-
-  // récupérer les détails de l'annonce une fois que les détails de l'utilisateur sont récupérés
-  useEffect(() => {
-    if (userDetails && userDetails.userId) {
-      const fetchAdDetails = async () => {
-        try {
-          const adResponse = await fetch(
-            `http://matthieu-le-floch.vpnuser.lan:8080/api/12/products?userId=${userDetails.userId}`
-          );
-          if (adResponse.ok) {
-            const adData = await adResponse.json();
-            setAdDetails(adData);
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      };
-
-      fetchAdDetails();
-    }
-  }, [userDetails]);
+  if (!currentProduct) {
+    return <div>Product not found</div>;
+  }
 
   return (
-    <div className="product__details__container">
-      <Image
-        src="https://react.semantic-ui.com/images/wireframe/square-image.png"
-        size="mini"
-        circular
-        inline
+    <div className="ad__details__container">
+      <h2 className="ad__details__title">{currentProduct.title}</h2>
+      <Image src={parsedUser.avatar} size="mini" circular inline />
+      <span className="ad__details__pseudo">{parsedUser.username}</span>
+
+      <img
+        src={currentProduct.picture}
+        alt=""
+        className="ad__details__picture"
       />
-      {userDetails && (
-        <>
-          <span className="ad__details__pseudo">{userDetails.username}</span>
-          <Button className="ad__details__button__profil" size="mini">
-            <Link to="/hub" className="profil_link">
-              Voir le profil
-            </Link>
-          </Button>
-          <img
-            src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-            alt=""
-            className="ad__details__picture"
-          />
-          <Label
-            content={userDetails.email}
-            icon="mail"
-            id="ad__details__mail"
-          />
-          <Label content={userDetails.phone_number} icon="phone" />
-          <section>
-            <p className="ad__details__description">
-              {adDetails && adDetails.description
-                ? adDetails.description
-                : 'Description non disponible'}
-            </p>
-          </section>
-          <Label id="ad__details__state__tag">Neuf</Label>
-          <Button size="mini" className="ad__details__button__buy">
-            Acheter
-          </Button>
-        </>
-      )}
+      <Label content={parsedUser.email} icon="mail" id="ad__details__mail" />
+      <Label content={parsedUser.phone_number} icon="phone" />
+      <Label id="ad__details__state__tag">
+        Numéro de série : {currentProduct.serial_number}
+      </Label>
+      <Label id="ad__details__state__tag">
+        Année de sortie :{currentProduct.year}
+      </Label>
+
+      <Link to={`/vendre-mon-produit/${id}`}>
+        <Button size="medium" className="ad__details__button__buy">
+          Vendre mon produit
+        </Button>
+      </Link>
     </div>
   );
 };
 
-export default Content;
+export default ProductPage;

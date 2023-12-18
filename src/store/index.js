@@ -12,6 +12,7 @@ import edithubMiddleware from '../middlewares/edithubMiddleware';
 import foreignUserMiddleware from '../middlewares/foreignUserMiddleware';
 import addProductMiddleware from '../middlewares/addProductMiddleware';
 import uploadImageMiddleware from '../middlewares/uploadImageMiddleware';
+import transformProductInAdMiddleware from '../middlewares/transformProductInAdMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -23,7 +24,8 @@ const enhancer = composeWithDevTools(
     uploadImageMiddleware,
     edithubMiddleware,
     foreignUserMiddleware,
-    addProductMiddleware
+    addProductMiddleware,
+    transformProductInAdMiddleware
   )
 );
 
