@@ -82,6 +82,7 @@ function App() {
         <Route path="/:input/:page" element={<SearchResult />} />
 
         <Route path="/:slug/:id" element={<AdDetails />} />
+
         <Route path="/hub/:id" element={<ForeignHub />} />
 
         <Route path="/connexion" element={<Connexion />} />
