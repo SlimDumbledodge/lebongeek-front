@@ -11,6 +11,7 @@ import addAdFromHomeMiddleware from '../middlewares/addAdFromHomeMiddleware';
 import uploadMiddleware from '../middlewares/uploadMiddleware';
 import edithubMiddleware from '../middlewares/edithubMiddleware';
 import foreignUserMiddleware from '../middlewares/foreignUserMiddleware';
+import transactionMiddleware from '../middlewares/transactionMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -21,7 +22,8 @@ const enhancer = composeWithDevTools(
     addAdFromHomeMiddleware,
     uploadMiddleware,
     edithubMiddleware,
-    foreignUserMiddleware
+    foreignUserMiddleware,
+    transactionMiddleware
   )
 );
 

@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { buy } from '../../actions/transaction';
+import { buy, fetchTransaction } from '../../actions/transaction';
 import { fetchAd } from '../../actions/ads';
 
 import './Transaction.scss';
@@ -13,6 +13,7 @@ import TransactionAddress from './TransactionAddress';
 
 const Transaction = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -79,6 +80,11 @@ const Transaction = () => {
               className="transaction__validation__button"
               onClick={() => {
                 dispatch(buy());
+                dispatch(fetchTransaction(id));
+                setTimeout(() => {
+                  navigate('/');
+                  dispatch(buy());
+                }, 5000);
               }}
             >
               Valider ma commande
@@ -116,7 +122,9 @@ const Transaction = () => {
       {isTransactionDone && (
         <>
           <div className="transaction__popup">
-            Votre achat est bien confimé !
+            Le vendeur à reçu votre demande. Une fois la vente confirmé, la
+            livraison aura lieu.{' '}
+            <span> Vous allez être redirigé dans 5 secondes.</span>
           </div>
           <div className="transaction__opacity" />
         </>
