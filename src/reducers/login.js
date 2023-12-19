@@ -2,7 +2,6 @@ import Cookies from 'js-cookie';
 import {
   CHANGE_LOGIN_USERNAME,
   CHANGE_LOGIN_PASSWORD,
-  SAVE_TOKEN,
   SET_COOKIE,
   OPEN_LOGIN_SUCCESSFULLY_POPUP,
   OPEN_LOGIN_FAILED_POPUP,
@@ -33,12 +32,6 @@ const loginReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         LoginPassword: action.newValue,
-      };
-
-    case SAVE_TOKEN:
-      return {
-        ...state,
-        token: action.newToken,
       };
 
     case SET_COOKIE:

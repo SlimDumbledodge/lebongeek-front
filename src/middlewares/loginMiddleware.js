@@ -5,7 +5,6 @@ import {
   LOGIN_USER,
   openLoginFailedPopup,
   openLoginSuccessFullyPopup,
-  saveToken,
   setCookie,
   setCookieUser,
 } from '../actions/login';
@@ -22,7 +21,6 @@ const loginMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           console.log(response);
-          store.dispatch(saveToken(response.data.token));
           store.dispatch(setCookie());
           store.dispatch(openLoginSuccessFullyPopup());
 

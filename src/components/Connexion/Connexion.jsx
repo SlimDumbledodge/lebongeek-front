@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
@@ -18,6 +18,8 @@ import './Connexion.scss';
 
 const Connexion = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const usernameValue = useSelector((state) => state.login.LoginUsername);
   const passwordValue = useSelector((state) => state.login.LoginPassword);
   const isSuccessfullyLoginPopupOpen = useSelector(
@@ -26,6 +28,14 @@ const Connexion = () => {
   const isFailedLoginPopupOpen = useSelector(
     (state) => state.login.isFailedLoginPopupOpen
   );
+  const isCookieFilled = useSelector((state) => state.login.isCookieFilled);
+
+  useEffect(() => {
+    if (isCookieFilled) {
+      navigate(-1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCookieFilled]);
 
   return (
     <>

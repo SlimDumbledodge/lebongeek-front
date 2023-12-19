@@ -10,6 +10,10 @@ import './TopCategories.scss';
 const TopCategories = () => {
   const categoriesList = useSelector((state) => state.category.listCategories);
 
+  if (!categoriesList) {
+    return <div>Chargement...</div>;
+  }
+
   return (
     <section className="top__categories__container">
       <h2 className="top__categories__title">TOP CATEGORIES</h2>
