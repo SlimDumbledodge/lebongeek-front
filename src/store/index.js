@@ -1,7 +1,7 @@
 import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
-import reducer from '../reducers';
+import reducer from '../reducers/index';
 
 import loginMiddleware from '../middlewares/loginMiddleware';
 import registerMiddleware from '../middlewares/registerMiddleware';
@@ -13,6 +13,7 @@ import foreignUserMiddleware from '../middlewares/foreignUserMiddleware';
 import addProductMiddleware from '../middlewares/addProductMiddleware';
 import uploadImageMiddleware from '../middlewares/uploadImageMiddleware';
 import transformProductInAdMiddleware from '../middlewares/transformProductInAdMiddleware';
+import searchMiddleware from '../middlewares/searchMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -25,7 +26,8 @@ const enhancer = composeWithDevTools(
     edithubMiddleware,
     foreignUserMiddleware,
     addProductMiddleware,
-    transformProductInAdMiddleware
+    transformProductInAdMiddleware,
+    searchMiddleware
   )
 );
 

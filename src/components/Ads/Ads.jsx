@@ -64,11 +64,10 @@ const Ads = () => {
             }
 
             return (
-              <Link to={`/${slug}/${product.ad.id}`} key={product.id}>
+              <Link to={`/${slug}/${product.ad.id}`} key={product.ad.id}>
                 <Ad
-                  title={product.title}
+                  title={product.ad.title}
                   price={product.ad.price}
-                  key={product.ad.id}
                   image={product.picture}
                 />
               </Link>

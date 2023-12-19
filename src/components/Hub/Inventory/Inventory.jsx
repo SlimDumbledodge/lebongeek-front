@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import './Inventory.scss';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Inventory = () => {
   const currentUser = Cookies.get('user');

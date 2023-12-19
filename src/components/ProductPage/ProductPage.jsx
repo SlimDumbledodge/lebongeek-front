@@ -1,6 +1,5 @@
 import React from 'react';
 import Cookies from 'js-cookie';
-import './ProductPage.scss';
 import { Button, Image, Label } from 'semantic-ui-react';
 import { Link, useParams } from 'react-router-dom';
 
