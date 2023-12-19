@@ -15,6 +15,7 @@ import imageUploadMiddleware from '../middlewares/imageUploadMiddleware';
 import transformProductInAdMiddleware from '../middlewares/transformProductInAdMiddleware';
 import searchMiddleware from '../middlewares/searchMiddleware';
 import transactionMiddleware from '../middlewares/transactionMiddleware';
+import contactMiddleware from '../middlewares/contactMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -29,7 +30,8 @@ const enhancer = composeWithDevTools(
     addProductMiddleware,
     transformProductInAdMiddleware,
     searchMiddleware,
-    transactionMiddleware
+    transactionMiddleware,
+    contactMiddleware
   )
 );
 
