@@ -62,6 +62,8 @@ function App() {
               path="/vendre-mon-produit/:id"
               element={<TransformProductInAd />}
             />
+            <Route path="/connexion" element={<Home />} />
+            <Route path="connexion/cree_un_compte" element={<Home />} />
           </>
         ) : (
           <>
