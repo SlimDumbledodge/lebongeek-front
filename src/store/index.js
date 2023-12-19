@@ -14,6 +14,7 @@ import addProductMiddleware from '../middlewares/addProductMiddleware';
 import uploadImageMiddleware from '../middlewares/uploadImageMiddleware';
 import transformProductInAdMiddleware from '../middlewares/transformProductInAdMiddleware';
 import searchMiddleware from '../middlewares/searchMiddleware';
+import editProductMiddleware from '../middlewares/editProductMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -27,7 +28,8 @@ const enhancer = composeWithDevTools(
     foreignUserMiddleware,
     addProductMiddleware,
     transformProductInAdMiddleware,
-    searchMiddleware
+    searchMiddleware,
+    editProductMiddleware
   )
 );
 

@@ -42,6 +42,11 @@ const ProductPage = () => {
           Vendre mon produit
         </Button>
       </Link>
+      <Link to={`/modifier-mon-produit/${id}`}>
+        <Button size="medium" className="ad__details__button__buy">
+          Modifier mon produit
+        </Button>
+      </Link>
     </div>
   );
 };

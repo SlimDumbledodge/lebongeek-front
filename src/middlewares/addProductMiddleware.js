@@ -13,7 +13,7 @@ const addProductMiddleware = (store) => (next) => (action) => {
           `${baseUrl}/api/products`,
           {
             title: store.getState().addProduct.productTitle,
-            picture: 'https://placehold.it/300x300',
+            picture: 'http://placehold.it/300x300',
             year: store.getState().addProduct.productYear,
             serial_number: store.getState().addProduct.productSerialNumber,
             category: {

@@ -7,20 +7,12 @@ import {
   changeTransformProductInAdLocation,
   changeTransformProductInAdPrice,
   changeTransformProductInAdTitle,
-  changeTransformProductInAdCategory,
-  changeTransformProductInAdCategoryValue,
   changeTransformProductInAdState,
   requestTransformProductInAd,
 } from '../../actions/transformProductInAd';
 
 const TransformProductInAd = () => {
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.category.listCategories);
-  const categoriesOptions = categories.map((category) => ({
-    key: category.id,
-    text: category.name,
-    value: category.name.toLowerCase(),
-  }));
 
   const adTitleValue = useSelector(
     (state) => state.transformProductInAd.transformProductInAdTitle
@@ -37,9 +29,6 @@ const TransformProductInAd = () => {
     (state) => state.transformProductInAd.transformProductInAdPrice
   );
 
-  const adCategoryValue = useSelector(
-    (state) => state.transformProductInAd.transformProductInAdCategoryValue
-  );
   const adStateValue = useSelector(
     (state) => state.transformProductInAd.transformProductInAdState
   );
@@ -100,19 +89,6 @@ const TransformProductInAd = () => {
           />
         </Form.Group>
 
-        <Form.Select
-          label="Catégorie :"
-          placeholder="Figurine"
-          options={categoriesOptions}
-          value={adCategoryValue}
-          onChange={(event, data) => {
-            dispatch(changeTransformProductInAdCategoryValue(data.value));
-            const currentCategory = categoriesOptions.find(
-              (category) => data.value === category.value
-            );
-            dispatch(changeTransformProductInAdCategory(currentCategory.key));
-          }}
-        />
         <Form.Field
           control={Select}
           label="État :"

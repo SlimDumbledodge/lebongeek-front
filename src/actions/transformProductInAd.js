@@ -6,12 +6,6 @@ export const CHANGE_TRANSFORM_PRODUCT_IN_AD_LOCATION =
 export const CHANGE_TRANSFORM_PRODUCT_IN_AD_PRICE =
   'CHANGE_TRANSFORM_PRODUCT_IN_AD_PRICE';
 
-export const CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY =
-  'CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY';
-
-export const CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY_VALUE =
-  'CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY_VALUE';
-
 export const CHANGE_TRANSFORM_PRODUCT_IN_AD_STATE =
   'CHANGE_TRANSFORM_PRODUCT_IN_AD_STATE';
 
@@ -43,14 +37,7 @@ export const changeTransformProductInAdState = (newValue) => ({
   type: CHANGE_TRANSFORM_PRODUCT_IN_AD_STATE,
   newValue,
 });
-export const changeTransformProductInAdCategory = (newValue) => ({
-  type: CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY,
-  newValue,
-});
-export const changeTransformProductInAdCategoryValue = (newValue) => ({
-  type: CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY_VALUE,
-  newValue,
-});
+
 export const changeTransformProductInAdDescription = (newValue) => ({
   type: CHANGE_TRANSFORM_PRODUCT_IN_AD_DESCRIPTION,
   newValue,

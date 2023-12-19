@@ -1,6 +1,4 @@
 import {
-  CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY,
-  CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY_VALUE,
   CHANGE_TRANSFORM_PRODUCT_IN_AD_DESCRIPTION,
   CHANGE_TRANSFORM_PRODUCT_IN_AD_LOCATION,
   CHANGE_TRANSFORM_PRODUCT_IN_AD_PRICE,
@@ -14,8 +12,6 @@ const initialState = {
   transformProductInAdPrice: '',
   transformProductInAdState: '',
   transformProductInAdLocation: '',
-  transformProductInAdCategory: '',
-  transformProductInAdCategoryValue: '',
 };
 
 const transformProductInAdReducer = (state = initialState, action = {}) => {
@@ -49,18 +45,6 @@ const transformProductInAdReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         transformProductInAdLocation: action.newValue,
-      };
-    }
-    case CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY: {
-      return {
-        ...state,
-        transformProductInAdCategory: action.newValue,
-      };
-    }
-    case CHANGE_TRANSFORM_PRODUCT_IN_AD_CATEGORY_VALUE: {
-      return {
-        ...state,
-        transformProductInAdCategoryValue: action.newValue,
       };
     }
 
