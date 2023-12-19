@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
@@ -20,13 +20,6 @@ import {
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const usernameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const firstnameRef = useRef(null);
-  const lastnameRef = useRef(null);
-  const phoneRef = useRef(null);
 
   const usernameValue = useSelector((state) => state.register.registerUsername);
   const emailValue = useSelector((state) => state.register.registerEmail);
@@ -94,7 +87,6 @@ const Register = () => {
           <div>
             <label htmlFor="pseudo">Pseudo</label>
             <input
-              ref={usernameRef}
               type="text"
               className="register__inputs"
               value={usernameValue}
@@ -106,7 +98,6 @@ const Register = () => {
           <div>
             <label htmlFor="email">Email</label>
             <input
-              ref={emailRef}
               type="email"
               className="register__inputs"
               value={emailValue}
@@ -119,7 +110,6 @@ const Register = () => {
           <div>
             <label htmlFor="password">Mot de passe</label>
             <input
-              ref={passwordRef}
               type="password"
               className="register__inputs"
               value={passwordValue}
@@ -131,7 +121,6 @@ const Register = () => {
           <div>
             <label htmlFor="firstname">Prénom</label>
             <input
-              ref={firstnameRef}
               type="text"
               className="register__inputs"
               value={firstnameValue}
@@ -143,7 +132,6 @@ const Register = () => {
           <div>
             <label htmlFor="lastname">Nom</label>
             <input
-              ref={lastnameRef}
               type="text"
               className="register__inputs"
               value={lastnameValue}
@@ -156,7 +144,6 @@ const Register = () => {
           <div>
             <label htmlFor="tel">Numéro de Tél.</label>
             <input
-              ref={phoneRef}
               type="text"
               className="register__inputs"
               value={phoneValue}

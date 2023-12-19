@@ -1,66 +1,52 @@
-import React, { useState } from 'react';
-import { Accordion, Icon } from 'semantic-ui-react';
-
 import './Contact.scss';
 
 const Contact = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-
   return (
-    <div className="faq__container">
-      <h1 className="faq__title">F.A.Q</h1>
-      <div className="faq__senteces__container">
-        <Accordion>
-          <Accordion.Title
-            active={activeIndex === 0}
-            onClick={() => {
-              setActiveIndex(0);
+    <div className="contact__container">
+      <h1 className="contact__title">Contact</h1>
+      <form
+        className="contact__form"
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+      >
+        <div>
+          <label htmlFor="pseudo">Pseudo</label>
+          <input
+            type="text"
+            className="register__inputs"
+            value={usernameValue}
+            onChange={(event) => {
+              dispatch(changeRegisterUsername(event.target.value));
             }}
-          >
-            <Icon name="dropdown" />
-            What is a dog?
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 0}>
-            <p>
-              A dog is a type of domesticated animal. Known for its loyalty and
-              faithfulness, it can be found as a welcome guest in many across
-              across the world.
-            </p>
-          </Accordion.Content>
-          <Accordion.Title
-            active={activeIndex === 1}
-            onClick={() => {
-              setActiveIndex(1);
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            className="register__inputs"
+            value={emailValue}
+            onChange={(event) => {
+              dispatch(changeRegisterEmail(event.target.value));
             }}
-          >
-            <Icon name="dropdown" />
-            What is a dog?
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 1}>
-            <p>
-              A dog is a type of domesticated animal. Known for its loyalty and
-              faithfulness, it can be found as a welcome guest in many across
-              across the world.
-            </p>
-          </Accordion.Content>
-          <Accordion.Title
-            active={activeIndex === 2}
-            onClick={() => {
-              setActiveIndex(2);
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Mot de passe</label>
+          <input
+            type="password"
+            className="register__inputs"
+            value={passwordValue}
+            onChange={(event) => {
+              dispatch(changeRegisterPassword(event.target.value));
             }}
-          >
-            <Icon name="dropdown" />
-            What is a dog?
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 2}>
-            <p>
-              A dog is a type of domesticated animal. Known for its loyalty and
-              faithfulness, it can be found as a welcome guest in many across
-              across the world.
-            </p>
-          </Accordion.Content>
-        </Accordion>
-      </div>
+          />
+        </div>
+        <button className="register__sign__in__button" type="submit">
+          Créer mon compte
+        </button>
+      </form>
     </div>
   );
 };
