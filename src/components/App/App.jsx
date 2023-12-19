@@ -24,6 +24,8 @@ import ForeignHub from '../ForeignHub/ForeignHub';
 import Categories from '../Categories/Categories';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import AddProduct from '../AddProduct/AddProduct';
+import ProductPage from '../ProductPage/ProductPage';
+import TransformProductInAd from '../TransformProductInAd/TransformProductInAd';
 import SearchResult from '../SearchResult/SearchResult';
 
 function App() {
@@ -52,9 +54,14 @@ function App() {
           <>
             <Route path="/hub" element={<Hub />} />
             <Route path="/depot_annonce" element={<AddAdFromHome />} />
-            <Route path="/transaction" element={<Transaction />} />
+            <Route path="/transaction/:id" element={<Transaction />} />
             <Route path="/modifier-mon-profil" element={<EditHub />} />
             <Route path="/ajouter-un-produit" element={<AddProduct />} />
+            <Route path="/products/:id" element={<ProductPage />} />
+            <Route
+              path="/vendre-mon-produit/:id"
+              element={<TransformProductInAd />}
+            />
           </>
         ) : (
           <>
@@ -63,13 +70,24 @@ function App() {
               path="/depot_annonce"
               element={<Navigate to="/connexion" />}
             />
-            <Route path="/transaction" element={<Navigate to="/connexion" />} />
+            <Route
+              path="/transaction/:id"
+              element={<Navigate to="/connexion" />}
+            />
             <Route
               path="/modifier-mon-profil"
               element={<Navigate to="/connexion" />}
             />
             <Route
               path="/ajouter-un-produit"
+              element={<Navigate to="/connexion" />}
+            />
+            <Route
+              path="/products/:id"
+              element={<Navigate to="/connexion" />}
+            />
+            <Route
+              path="/vendre-mon-produit/:id"
               element={<Navigate to="/connexion" />}
             />
           </>

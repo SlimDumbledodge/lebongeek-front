@@ -11,6 +11,10 @@ const Inventory = () => {
   const currentUser = Cookies.get('user');
   const parsedUser = currentUser ? JSON.parse(currentUser) : null;
 
+  if (isUserLogged && !parsedUser) {
+    return <div>Chargement...</div>;
+  }
+
   return isUserLogged ? (
     <section className="home__inventory">
       <h2 className="home__inventory__title">INVENTAIRE</h2>
