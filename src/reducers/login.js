@@ -45,6 +45,7 @@ const loginReducer = (state = initialState, action = {}) => {
       document.cookie = `token=${state.token}; path=/;`;
       return {
         ...state,
+        token: '',
         isCookieFilled: true,
       };
 

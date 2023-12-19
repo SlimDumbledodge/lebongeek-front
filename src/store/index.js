@@ -11,10 +11,11 @@ import addAdFromHomeMiddleware from '../middlewares/addAdFromHomeMiddleware';
 import edithubMiddleware from '../middlewares/edithubMiddleware';
 import foreignUserMiddleware from '../middlewares/foreignUserMiddleware';
 import addProductMiddleware from '../middlewares/addProductMiddleware';
-import uploadImageMiddleware from '../middlewares/uploadImageMiddleware';
+import imageUploadMiddleware from '../middlewares/imageUploadMiddleware';
 import transformProductInAdMiddleware from '../middlewares/transformProductInAdMiddleware';
 import searchMiddleware from '../middlewares/searchMiddleware';
 import editProductMiddleware from '../middlewares/editProductMiddleware';
+import transactionMiddleware from '../middlewares/transactionMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -23,13 +24,14 @@ const enhancer = composeWithDevTools(
     categoryMiddleware,
     adsMiddleware,
     addAdFromHomeMiddleware,
-    uploadImageMiddleware,
+    imageUploadMiddleware,
     edithubMiddleware,
     foreignUserMiddleware,
     addProductMiddleware,
     transformProductInAdMiddleware,
     searchMiddleware,
-    editProductMiddleware
+    editProductMiddleware,
+    transactionMiddleware
   )
 );
 

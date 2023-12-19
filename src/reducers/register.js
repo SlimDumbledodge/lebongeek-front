@@ -9,6 +9,7 @@ import {
   OPEN_REGISTER_FAILED_POPUP,
   CLOSE_REGISTER_SUCCESSFULLY_POPUP,
   CLOSE_REGISTER_FAILED_POPUP,
+  CLEAR_REGISTER_INPUTS,
 } from '../actions/register';
 
 const initialState = {
@@ -81,6 +82,18 @@ const registerReducer = (state = initialState, action = {}) => {
         ...state,
         RegisterPhone: action.newValue,
       };
+
+    case CLEAR_REGISTER_INPUTS:
+      return {
+        ...state,
+        RegisterUsername: '',
+        RegisterEmail: '',
+        RegisterPassword: '',
+        RegisterFirstname: '',
+        RegisterLastname: '',
+        RegisterPhone: '',
+      };
+
     default:
       return state;
   }
