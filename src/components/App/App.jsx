@@ -27,6 +27,9 @@ import AddProduct from '../AddProduct/AddProduct';
 import ProductPage from '../ProductPage/ProductPage';
 import TransformProductInAd from '../TransformProductInAd/TransformProductInAd';
 import SearchResult from '../SearchResult/SearchResult';
+import Faq from '../Faq/Faq';
+import Legals from '../Legals/Legals';
+import Contact from '../Contact/Contact';
 
 function App() {
   const dispatch = useDispatch();
@@ -95,6 +98,9 @@ function App() {
           </>
         )}
 
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/mentions-legales" element={<Legals />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />

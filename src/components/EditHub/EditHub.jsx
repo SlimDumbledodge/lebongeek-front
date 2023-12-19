@@ -13,7 +13,7 @@ import {
   saveEdithubChanges,
 } from '../../actions/edithub';
 import { clearCookie } from '../../actions/login';
-import { changeFormData, changeUploadedImage } from '../../actions/uploadImage';
+// import { changeFormData, changeUploadedImage } from '../../actions/uploadImage';
 
 const EditHub = () => {
   const dispatch = useDispatch();
@@ -65,9 +65,9 @@ const EditHub = () => {
             };
             formData.append('avatar', fileData);
             console.log(fileData);
-            dispatch(changeUploadedImage(fileData));
+            // dispatch(changeUploadedImage(fileData));
 
-            console.log(dispatch(changeFormData(formData)));
+            // console.log(dispatch(changeFormData(formData)));
           }}
         />
         <Form.Group widths="equal">
