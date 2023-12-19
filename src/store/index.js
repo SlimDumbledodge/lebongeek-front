@@ -11,7 +11,7 @@ import addAdFromHomeMiddleware from '../middlewares/addAdFromHomeMiddleware';
 import edithubMiddleware from '../middlewares/edithubMiddleware';
 import foreignUserMiddleware from '../middlewares/foreignUserMiddleware';
 import addProductMiddleware from '../middlewares/addProductMiddleware';
-import uploadImageMiddleware from '../middlewares/uploadImageMiddleware';
+import imageUploadMiddleware from '../middlewares/imageUploadMiddleware';
 import searchMiddleware from '../middlewares/searchMiddleware';
 
 const enhancer = composeWithDevTools(
@@ -21,7 +21,7 @@ const enhancer = composeWithDevTools(
     categoryMiddleware,
     adsMiddleware,
     addAdFromHomeMiddleware,
-    uploadImageMiddleware,
+    imageUploadMiddleware,
     edithubMiddleware,
     foreignUserMiddleware,
     addProductMiddleware,
