@@ -13,7 +13,6 @@ import {
   saveEdithubChanges,
 } from '../../actions/edithub';
 import { clearCookie } from '../../actions/login';
-import { changeFormData, changeUploadedImage } from '../../actions/uploadImage';
 
 const EditHub = () => {
   const dispatch = useDispatch();

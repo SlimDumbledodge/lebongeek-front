@@ -27,6 +27,7 @@ import AddProduct from '../AddProduct/AddProduct';
 import ProductPage from '../ProductPage/ProductPage';
 import TransformProductInAd from '../TransformProductInAd/TransformProductInAd';
 import SearchResult from '../SearchResult/SearchResult';
+import EditProduct from '../EditProduct/EditProduct';
 
 function App() {
   const dispatch = useDispatch();
@@ -62,8 +63,7 @@ function App() {
               path="/vendre-mon-produit/:id"
               element={<TransformProductInAd />}
             />
-            <Route path="/connexion" element={<Home />} />
-            <Route path="connexion/cree_un_compte" element={<Home />} />
+            <Route path="/modifier-mon-produit/:id" element={<EditProduct />} />
           </>
         ) : (
           <>
@@ -90,6 +90,10 @@ function App() {
             />
             <Route
               path="/vendre-mon-produit/:id"
+              element={<Navigate to="/connexion" />}
+            />
+            <Route
+              path="/modifier-mon-produit/:id"
               element={<Navigate to="/connexion" />}
             />
           </>
