@@ -1,6 +1,19 @@
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  changeObjectValue,
+  changeContentValue,
+  clearMessageInputs,
+} from '../../actions/contact';
+
 import './Contact.scss';
 
 const Contact = () => {
+  const dispatch = useDispatch();
+
+  const object = useSelector((state) => state.contact.inputObject);
+  const content = useSelector((state) => state.contact.inputContent);
+
   return (
     <div className="contact__container">
       <h1 className="contact__title">Contact</h1>
@@ -8,38 +21,28 @@ const Contact = () => {
         className="contact__form"
         onSubmit={(event) => {
           event.preventDefault();
+          dispatch(clearMessageInputs());
         }}
       >
-        <div>
-          <label htmlFor="pseudo">Pseudo</label>
-          <input
-            type="text"
-            className="contact__input"
-            value={usernameValue}
-            onChange={(event) => {
-              dispatch(changeRegisterUsername(event.target.value));
-            }}
-          />
-        </div>
-        <div>
+        <div className="input__container">
           <label htmlFor="objet">Objet</label>
           <input
             type="text"
             className="contact__input"
-            value={emailValue}
+            value={object}
             onChange={(event) => {
-              dispatch(changeRegisterEmail(event.target.value));
+              dispatch(changeObjectValue(event.target.value));
             }}
           />
         </div>
-        <div>
-          <label htmlFor="message">Message</label>
+        <div className="input__container">
+          <label htmlFor="content">Message</label>
           <input
             type="text"
             className="contact__input"
-            value={passwordValue}
+            value={content}
             onChange={(event) => {
-              dispatch(changeRegisterPassword(event.target.value));
+              dispatch(changeContentValue(event.target.value));
             }}
           />
         </div>
