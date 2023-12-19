@@ -8,7 +8,9 @@ import {
   adLoaded,
 } from '../actions/ads';
 
+
 import baseUrl from '../assets/baseUrl';
+
 
 const adsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

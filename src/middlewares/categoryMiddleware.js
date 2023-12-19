@@ -5,6 +5,7 @@ import {
   categoriesLoaded,
 } from '../actions/category';
 
+
 import baseUrl from '../assets/baseUrl';
 
 const categoryMiddleware = (store) => (next) => (action) => {
