@@ -6,7 +6,7 @@ import {
   openRegisterFailedPopup,
 } from '../actions/register';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
 
 const registerMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

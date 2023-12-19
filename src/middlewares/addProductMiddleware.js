@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { ADD_PRODUCT_SEND_REQUEST } from '../actions/addProduct';
 import { setCookieUser } from '../actions/login';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
 
 const addProductMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -13,7 +13,7 @@ const addProductMiddleware = (store) => (next) => (action) => {
           `${baseUrl}/api/products`,
           {
             title: store.getState().addProduct.productTitle,
-            picture: 'https://placehold.it/300x300',
+            picture: 'http://placehold.it/300x300',
             year: store.getState().addProduct.productYear,
             serial_number: store.getState().addProduct.productSerialNumber,
             category: {

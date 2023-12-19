@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { FETCH_SEARCH, saveSearchData } from '../actions/search';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
+
 const searchMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_SEARCH: {

@@ -14,6 +14,8 @@ import {
   loginUser,
 } from '../../actions/login';
 
+import { closeRegisterSuccessfullyPopup } from '../../actions/register';
+
 import './Connexion.scss';
 
 const Connexion = () => {
@@ -106,7 +108,13 @@ const Connexion = () => {
 
           <div className="connexion__register__text">
             <p>Envie de nous rejoindre ?</p>
-            <Link className="connexion__register__link" to="cree_un_compte">
+            <Link
+              className="connexion__register__link"
+              to="cree_un_compte"
+              onClick={() => {
+                dispatch(closeRegisterSuccessfullyPopup());
+              }}
+            >
               Créer un compte
             </Link>
           </div>

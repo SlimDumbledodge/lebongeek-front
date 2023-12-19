@@ -5,6 +5,7 @@ export const CHANGE_REGISTER_FIRSTNAME = 'CHANGE_REGISTER_FIRSTNAME';
 export const CHANGE_REGISTER_LASTNAME = 'CHANGE_REGISTER_LASTNAME';
 export const CHANGE_REGISTER_PHONE = 'CHANGE_REGISTER_PHONE';
 export const CREATE_REGISTER_USER = 'CREATE_REGISTER_USER';
+export const CLEAR_REGISTER_INPUTS = 'CLEAR_REGISTER_INPUTS';
 
 export const OPEN_REGISTER_SUCCESSFULLY_POPUP =
   'OPEN_REGISTER_SUCCESSFULLY_POPUP';
@@ -62,4 +63,8 @@ export const openRegisterFailedPopup = () => ({
 
 export const closeRegisterFailedPopup = () => ({
   type: CLOSE_REGISTER_FAILED_POPUP,
+});
+
+export const clearRegisterInputs = () => ({
+  type: CLEAR_REGISTER_INPUTS,
 });

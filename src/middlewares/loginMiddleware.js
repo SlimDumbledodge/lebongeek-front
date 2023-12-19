@@ -5,12 +5,15 @@ import {
   LOGIN_USER,
   openLoginFailedPopup,
   openLoginSuccessFullyPopup,
+  saveToken,
   setCookie,
   setCookieUser,
 } from '../actions/login';
 import { saveEdithubUserData } from '../actions/edithub';
 
-const baseUrl = `http://matthieu-le-floch.vpnuser.lan:8080`;
+
+import baseUrl from '../assets/baseUrl';
+
 const loginMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN_USER:
@@ -21,6 +24,7 @@ const loginMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           console.log(response);
+          store.dispatch(saveToken(response.data.token));
           store.dispatch(setCookie());
           store.dispatch(openLoginSuccessFullyPopup());
 
