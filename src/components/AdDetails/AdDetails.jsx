@@ -57,9 +57,11 @@ const AdDetails = () => {
             </p>
           </section>
           <Label id="ad__details__state__tag">{currentState.text}</Label>
-          <Button size="mini" className="ad__details__button__buy">
-            Acheter
-          </Button>
+          <Link to={`/transaction/${ad.id}`}>
+            <Button size="mini" className="ad__details__button__buy">
+              Acheter
+            </Button>
+          </Link>
         </div>
       ))
     ) : 'Chargement...';
