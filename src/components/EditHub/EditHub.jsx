@@ -13,7 +13,7 @@ import {
   saveEdithubChanges,
 } from '../../actions/edithub';
 import { clearCookie } from '../../actions/login';
-import { changeFormData, changeUploadedImage } from '../../actions/uploadImage';
+// import { changeFormData, changeUploadedImage } from '../../actions/uploadImage';
 
 const EditHub = () => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const EditHub = () => {
           type="text"
           placeholder="LilDinguo"
         />
-        <label htmlFor="file">Avatar :</label>
+        {/* <label htmlFor="file">Avatar :</label>
         <input
           type="file"
           className="input__file"
@@ -69,7 +69,7 @@ const EditHub = () => {
 
             console.log(dispatch(changeFormData(formData)));
           }}
-        />
+        /> */}
         <Form.Group widths="equal">
           <Form.Field
             control={Input}
