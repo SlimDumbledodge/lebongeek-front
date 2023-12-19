@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { SEND_ADD_AD_FROM_HOME } from '../actions/addAdFromHome';
 
 const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
@@ -21,7 +22,7 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
           },
           {
             headers: {
-              Authorization: `Bearer ${store.getState().login.token}`,
+              Authorization: `Bearer ${Cookies.get('token')}`,
             },
           }
         )
@@ -45,7 +46,7 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
               },
               {
                 headers: {
-                  Authorization: `Bearer ${store.getState().login.token}`,
+                  Authorization: `Bearer ${Cookies.get('token')}`,
                 },
               }
             )
