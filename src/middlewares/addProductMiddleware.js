@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { ADD_PRODUCT_SEND_REQUEST } from '../actions/addProduct';
 import { setCookieUser } from '../actions/login';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
 
 const addProductMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

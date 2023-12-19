@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { SAVE_EDITHUB_CHANGES } from '../actions/edithub';
 import { clearCookie } from '../actions/login';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
 
 const edithubMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
