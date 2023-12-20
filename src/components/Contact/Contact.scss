@@ -1,0 +1,53 @@
+@use '../../styles/variables' as var;
+
+.contact__container{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+
+  .contact__title{
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .contact__message__right, .contact__message__wrong{
+    text-align: center; 
+    padding: 10px;
+    border-radius: 3px;
+  }
+
+  .contact__message__right{
+    background: green;
+  }
+
+  .contact__message__wrong{
+    background: red;
+  }
+
+  .contact__form{
+    display: flex;
+    flex-direction: column;
+    background-color: var.$mainColor;
+    padding: 30px;
+    height: 300px;
+    border-radius: 5px;
+    justify-content: space-between;
+
+    .input__container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+
+      .contact__input{
+        border: 1px solid black;
+      }
+    }
+
+    .contact__form__button{
+      padding: 5px;
+    }
+  }
+}
+
