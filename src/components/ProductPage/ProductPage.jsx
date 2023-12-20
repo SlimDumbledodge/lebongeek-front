@@ -25,7 +25,6 @@ const ProductPage = () => {
       <h2 className="ad__details__title">{currentProduct.title}</h2>
       <Form
         onSubmit={() => {
-          console.log('submit');
           dispatch(deleteProduct(id));
         }}
       >
