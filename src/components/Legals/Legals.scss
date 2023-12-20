@@ -1,12 +1,39 @@
 .legals__container{
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 75px;
   align-items: center;
+  margin-top: 50px;
 
   .legals__title{
     font-size: 24px;
     font-weight: bold;
+  }
+
+  .legals__sentences__container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 60%;
+
+    .legals__sentence{
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .legals__sentences__title{
+        font-weight: bold;
+      }
+
+      .legals__content{
+        overflow: hidden;
+        text-align: justify;
+      }
+
+      .line__height__content{
+        line-height: 150%;
+      }
+    }
   }
 }
 

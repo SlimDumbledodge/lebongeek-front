@@ -67,6 +67,7 @@ function App() {
             />
             <Route path="/connexion" element={<Home />} />
             <Route path="connexion/cree_un_compte" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
           </>
         ) : (
           <>
@@ -79,6 +80,7 @@ function App() {
               path="/transaction/:id"
               element={<Navigate to="/connexion" />}
             />
+            <Route path="/contact" element={<Navigate to="/connexion" />} />
             <Route
               path="/modifier-mon-profil"
               element={<Navigate to="/connexion" />}
@@ -100,7 +102,6 @@ function App() {
 
         <Route path="/faq" element={<Faq />} />
         <Route path="/mentions-legales" element={<Legals />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="connexion/cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />

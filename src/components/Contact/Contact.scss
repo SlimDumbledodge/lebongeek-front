@@ -3,7 +3,7 @@
 .contact__container{
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 50px;
   align-items: center;
 
   .contact__title{
@@ -11,13 +11,28 @@
     font-weight: bold;
   }
 
+  .contact__message__right, .contact__message__wrong{
+    text-align: center; 
+    padding: 10px;
+    border-radius: 3px;
+  }
+
+  .contact__message__right{
+    background: green;
+  }
+
+  .contact__message__wrong{
+    background: red;
+  }
+
   .contact__form{
     display: flex;
     flex-direction: column;
     background-color: var.$mainColor;
-    padding: 50px;
-    gap: 10px;
+    padding: 30px;
+    height: 300px;
     border-radius: 5px;
+    justify-content: space-between;
 
     .input__container{
       display: flex;

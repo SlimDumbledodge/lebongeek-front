@@ -6,7 +6,7 @@ import {
   messageIsntSent,
 } from '../actions/contact';
 
-const baseUrl = `http://matthieu-le-floch.vpnuser.lan:8080`;
+const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 
 const contactMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -14,8 +14,8 @@ const contactMiddleware = (store) => (next) => (action) => {
       axios
         .post(`${baseUrl}/api/contact`, {
           from: JSON.parse(Cookies.get('user')).email,
-          subject: store.getState().contact.subject,
-          content: store.getState().contact.content,
+          subject: store.getState().contact.inputObject,
+          content: store.getState().contact.inputContent,
         })
         .then((response) => {
           // eslint-disable-next-line no-console
