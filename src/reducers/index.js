@@ -16,6 +16,7 @@ import uploadImageReducer from './uploadImage';
 import transformProductInAdReducer from './transformProductInAd';
 import searchReducer from './search';
 import editProductReducer from './editProduct';
+import contactReducer from './contact';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   transformProductInAd: transformProductInAdReducer,
   search: searchReducer,
   editProduct: editProductReducer,
+  contact: contactReducer,
 });
 
 export default rootReducer;
