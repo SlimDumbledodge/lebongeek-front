@@ -1,9 +1,12 @@
 import React from 'react';
 import Cookies from 'js-cookie';
-import { Button, Image, Label } from 'semantic-ui-react';
+import { Button, Form, Image, Label } from 'semantic-ui-react';
 import { Link, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { deleteProduct } from '../../actions/deleteProduct';
 
 const ProductPage = () => {
+  const dispatch = useDispatch();
   let { id } = useParams();
   id = parseInt(id, 10);
   const currentUser = Cookies.get('user');
@@ -20,33 +23,48 @@ const ProductPage = () => {
   return (
     <div className="ad__details__container">
       <h2 className="ad__details__title">{currentProduct.title}</h2>
-      <Image src={parsedUser.avatar} size="mini" circular inline />
-      <span className="ad__details__pseudo">{parsedUser.username}</span>
-
-      <img
-        src={currentProduct.picture}
-        alt=""
-        className="ad__details__picture"
-      />
-      <Label content={parsedUser.email} icon="mail" id="ad__details__mail" />
-      <Label content={parsedUser.phone_number} icon="phone" />
-      <Label id="ad__details__state__tag">
-        Numéro de série : {currentProduct.serial_number}
-      </Label>
-      <Label id="ad__details__state__tag">
-        Année de sortie :{currentProduct.year}
-      </Label>
-
-      <Link to={`/vendre-mon-produit/${id}`}>
-        <Button size="medium" className="ad__details__button__buy">
-          Vendre mon produit
+      <Form
+        onSubmit={() => {
+          console.log('submit');
+          dispatch(deleteProduct(id));
+        }}
+      >
+        <Image src={parsedUser.avatar} size="mini" circular inline />
+        <Button
+          size="medium"
+          type="submit"
+          className="ad__details__button__buy"
+        >
+          Supprimer mon produit
         </Button>
-      </Link>
-      <Link to={`/modifier-mon-produit/${id}`}>
-        <Button size="medium" className="ad__details__button__buy">
-          Modifier mon produit
-        </Button>
-      </Link>
+        <span className="ad__details__pseudo">{parsedUser.username}</span>
+
+        <img
+          src={currentProduct.picture}
+          alt=""
+          className="ad__details__picture"
+        />
+
+        <Label content={parsedUser.email} icon="mail" id="ad__details__mail" />
+        <Label content={parsedUser.phone_number} icon="phone" />
+        <Label id="ad__details__state__tag">
+          Numéro de série : {currentProduct.serial_number}
+        </Label>
+        <Label id="ad__details__state__tag">
+          Année de sortie :{currentProduct.year}
+        </Label>
+
+        <Link to={`/vendre-mon-produit/${id}`}>
+          <Button size="medium" className="ad__details__button__buy">
+            Vendre mon produit
+          </Button>
+        </Link>
+        <Link to={`/modifier-mon-produit/${id}`}>
+          <Button size="medium" className="ad__details__button__buy">
+            Modifier mon produit
+          </Button>
+        </Link>
+      </Form>
     </div>
   );
 };

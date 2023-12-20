@@ -12,7 +12,6 @@ import {
   changeEdithubUsername,
   saveEdithubChanges,
 } from '../../actions/edithub';
-import { clearCookie } from '../../actions/login';
 
 const EditHub = () => {
   const dispatch = useDispatch();
@@ -25,8 +24,6 @@ const EditHub = () => {
   const firstnameValue = useSelector((state) => state.edithub.firstname);
   const lastnameValue = useSelector((state) => state.edithub.lastname);
   const descriptionValue = useSelector((state) => state.edithub.description);
-
-  const uploadedImage = useSelector((state) => state.uploadImage.uploadedImage);
 
   return (
     <div className="edithub__container">
@@ -53,21 +50,6 @@ const EditHub = () => {
           type="file"
           className="input__file"
           id="input__file__edit__hub"
-          onChange={(e) => {
-            const selectedFile = e.target.files[0];
-            const formData = new FormData();
-            const fileData = {
-              name: selectedFile.name,
-              size: selectedFile.size,
-              type: selectedFile.type,
-              lastModified: selectedFile.lastModified,
-            };
-            formData.append('avatar', fileData);
-            console.log(fileData);
-            dispatch(changeUploadedImage(fileData));
-
-            console.log(dispatch(changeFormData(formData)));
-          }}
         />
         <Form.Group widths="equal">
           <Form.Field

@@ -16,6 +16,7 @@ import transformProductInAdMiddleware from '../middlewares/transformProductInAdM
 import searchMiddleware from '../middlewares/searchMiddleware';
 import editProductMiddleware from '../middlewares/editProductMiddleware';
 import transactionMiddleware from '../middlewares/transactionMiddleware';
+import deleteProductMiddleware from '../middlewares/deleteProductMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -31,7 +32,8 @@ const enhancer = composeWithDevTools(
     transformProductInAdMiddleware,
     searchMiddleware,
     editProductMiddleware,
-    transactionMiddleware
+    transactionMiddleware,
+    deleteProductMiddleware
   )
 );
 

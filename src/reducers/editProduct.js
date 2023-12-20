@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import {
   CHANGE_EDIT_PRODUCT_CATEGORY,
   CHANGE_EDIT_PRODUCT_CATEGORY_VALUE,

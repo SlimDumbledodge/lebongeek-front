@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 import Cookies from 'js-cookie';
 import { Button, Form, Input } from 'semantic-ui-react';
@@ -41,9 +42,6 @@ const EditProduct = () => {
   const editProductSerialNumberValue = useSelector(
     (state) => state.editProduct.editProductSerialNumber
   );
-  const editProductCategory = useSelector(
-    (state) => state.editProduct.editProductCategory
-  );
 
   const editProductCategoryValue = useSelector(
     (state) => state.editProduct.editProductCategoryValue
@@ -60,7 +58,7 @@ const EditProduct = () => {
       <h2 className="edit__product__title__section">Modifier mon produit</h2>
       <Form
         className="edit__product__form"
-        onSubmit={(e) => {
+        onSubmit={() => {
           dispatch(requestEditProduct(id));
         }}
       >
