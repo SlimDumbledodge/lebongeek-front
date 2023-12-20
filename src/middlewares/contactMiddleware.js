@@ -6,7 +6,7 @@ import {
   messageIsntSent,
 } from '../actions/contact';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
 
 const contactMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

@@ -6,6 +6,8 @@ import { Link, useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import baseUrl from '../../assets/baseUrl';
+
 import { fetchAd } from '../../actions/ads';
 
 import './AdDetails.scss';
@@ -46,7 +48,7 @@ const AdDetails = () => {
               Voir le profil
             </Link>
           </Button>
-          <img src={product.picture} alt="" className="ad__details__picture" />
+          <img src={`${baseUrl}/images/product/${product.picture}`} alt="" className="ad__details__picture" />
           <Label content={user.email} icon="mail" id="ad__details__mail" />
           <Label content={user.phone_number} icon="phone" />
           <section>
