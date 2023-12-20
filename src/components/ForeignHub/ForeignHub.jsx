@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchForeignUser } from '../../actions/foreignUser';
 
+import baseUrl from '../../assets/baseUrl';
+
 import Banner from './Banner/Banner';
 import Description from './Description/Description';
 import Inventory from './Inventory/Inventory';
@@ -36,7 +38,7 @@ const ForeignHub = () => {
       <Banner banner={foreignUser.banner} />
       <Description
         username={foreignUser.username}
-        avatar={foreignUser.avatar}
+        avatar={`${baseUrl}/images/product/${foreignUser.avatar}`}
         description={foreignUser.description}
       />
       <Inventory product={foreignUser.product} />

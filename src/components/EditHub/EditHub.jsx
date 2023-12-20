@@ -11,6 +11,7 @@ import {
   changeEdithubPhoneNumber,
   changeEdithubUsername,
   saveEdithubChanges,
+  changeEdithubAvatar,
 } from '../../actions/edithub';
 import { clearCookie } from '../../actions/login';
 // import { changeFormData, changeUploadedImage } from '../../actions/uploadImage';
@@ -132,6 +133,21 @@ const EditHub = () => {
           label="Description"
           placeholder="Description..."
         />
+        <Form.Field>
+          <label htmlFor="upload-photo">Parcourir :</label>
+          <input
+            type="file"
+            id="upload-photo"
+            className="add__product__piture__button"
+            onChange={(event) => {
+              const file = event.target.files[0];
+              const formData = new FormData();
+              formData.append('image', file);
+              console.log(formData.get('image'));
+              dispatch(changeEdithubAvatar(formData.get('image')));
+            }}
+          />
+        </Form.Field>
         <Form.Button id="edithub__confirm__button" type="submit">
           Confirmer
         </Form.Button>

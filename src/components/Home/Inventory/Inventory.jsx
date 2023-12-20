@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import './Inventory.scss';
 
+import baseUrl from '../../../assets/baseUrl';
+
 const Inventory = () => {
   const isUserLogged = useSelector((state) => state.login.isCookieFilled);
   const currentUser = Cookies.get('user');
@@ -22,7 +24,7 @@ const Inventory = () => {
         {parsedUser.product.map((currentInventoryItem) => (
           <div key={currentInventoryItem.id}>
             <img
-              src={currentInventoryItem.picture}
+              src={`${baseUrl}/images/product/${currentInventoryItem.picture}`}
               alt={currentInventoryItem.title}
               className="home__inventory__item"
             />

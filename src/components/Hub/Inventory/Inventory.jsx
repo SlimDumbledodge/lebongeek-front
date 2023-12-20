@@ -2,6 +2,8 @@ import Cookies from 'js-cookie';
 import './Inventory.scss';
 import { Link, useParams } from 'react-router-dom';
 
+import baseUrl from '../../../assets/baseUrl';
+
 const Inventory = () => {
   const currentUser = Cookies.get('user');
   const parsedUser = currentUser ? JSON.parse(currentUser) : null;
@@ -13,7 +15,10 @@ const Inventory = () => {
       <div className="hub__grid__wrapper">
         {parsedUser.product &&
           parsedUser.product.map((currentProduct) => (
-            <Link to={`/products/${currentProduct.id}`} key={currentProduct.id}>
+            <Link
+              to={`${baseUrl}/images/product/${currentProduct.picture}`}
+              key={currentProduct.id}
+            >
               <div>
                 <img
                   src={currentProduct.picture}
