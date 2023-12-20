@@ -12,7 +12,14 @@ export const CHANGE_ADD_AD_FROM_HOME_PRODUCT_YEAR =
 export const CHANGE_ADD_AD_FROM_HOME_PRODUCT_SERIAL_NUMBER =
   'CHANGE_ADD_AD_FROM_HOME_PRODUCT_SERIAL_NUMBER';
 
+export const CHANGE_ADD_AD_FROM_HOME_IMAGE = 'CHANGE_ADD_AD_FROM_HOME_IMAGE';
+
 export const SEND_ADD_AD_FROM_HOME = 'SEND_ADD_AD_FROM_HOME';
+
+export const changeAddAdFromHomeImage = (newValue) => ({
+  type: CHANGE_ADD_AD_FROM_HOME_IMAGE,
+  newValue,
+});
 
 export const changeAddAdFromHomeProductTitle = (newValue) => ({
   type: CHANGE_ADD_AD_FROM_HOME_PRODUCT_TITLE,

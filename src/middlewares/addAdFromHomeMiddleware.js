@@ -5,14 +5,17 @@ import { SEND_ADD_AD_FROM_HOME } from '../actions/addAdFromHome';
 import baseUrl from '../assets/baseUrl';
 
 const addAdFromHomeMiddleware = (store) => (next) => (action) => {
+  const formData = store.getState().addAdFromHome.addAdFromHomeProductPhoto;
   switch (action.type) {
     case SEND_ADD_AD_FROM_HOME:
+      console.log(store.getState().addAdFromHome.addAdFromHomeProductPhoto);
+
       axios
         .post(
           `${baseUrl}/api/products`,
           {
             title: store.getState().addAdFromHome.addAdFromHomeProductTitle,
-            picture: store.getState().addAdFromHome.addAdFromHomeProductPicture,
+            picture: formData,
             year: store.getState().addAdFromHome.addAdFromHomeProductYear,
             serial_number:
               store.getState().addAdFromHome.addAdFromHomeProductSerialNumber,
@@ -22,6 +25,7 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
           },
           {
             headers: {
+              'Content-Type': 'multipart/form-data',
               Authorization: `Bearer ${Cookies.get('token')}`,
             },
           }

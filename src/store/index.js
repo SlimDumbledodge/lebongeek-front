@@ -1,7 +1,7 @@
 import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
-import reducer from '../reducers/index';
+import reducers from '../reducers';
 
 import loginMiddleware from '../middlewares/loginMiddleware';
 import registerMiddleware from '../middlewares/registerMiddleware';
@@ -37,6 +37,6 @@ const enhancer = composeWithDevTools(
   )
 );
 
-const store = createStore(reducer, enhancer);
+const store = createStore(reducers, enhancer);
 
 export default store;

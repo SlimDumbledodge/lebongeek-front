@@ -11,10 +11,11 @@ const imageUploadMiddleware = (store) => (next) => async (action) => {
   if (action.type === UPLOAD_IMAGE_REQUEST) {
     try {
       const formData = action.payload;
+      console.log(formData);
       console.log('Contenu de FormData :', formData);
       const response = await axios.post(
-        'http://matthieu-le-floch.vpnuser.lan:8080/api/products',
-        formData,
+        'http://amgad-gaafr.vpnuser.lan:8080',
+        formData.get('image'),
         {
           headers: {
             'Content-Type': 'multipart/form-data',

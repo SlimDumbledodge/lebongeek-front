@@ -2,13 +2,14 @@
 import { Form } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import AdTitle from './AdTitle/AdTitle';
-import AddPhotoButton from './AddPhotoButton/AddPhotoButton';
 import TextAreaAd from './TextAreaAd/TextAreaAd';
 import States from './States/States';
 import Categories from './Categories/Categories';
 import CancelPublishButtons from './CancelPublishButtons/CancelPublishButtons';
+import { uploadImageRequest } from '../../actions/uploadImage';
 import './AddAdFromHome.scss';
 import {
+  changeAddAdFromHomeImage,
   changeAddAdFromHomeLocation,
   changeAddAdFromHomePrice,
   changeAddAdFromHomeProductSerialNumber,
@@ -30,6 +31,12 @@ const AddAd = () => {
   const addAdFromHomeProductSerialNumber = useSelector(
     (state) => state.addAdFromHome.addAdFromHomeProductSerialNumber
   );
+
+  // console.log('File selected:', event.target.files[0].name);
+  // console.log('Selected File:', event.target.files[0]);
+  // console.log('Content of FormData:', formData.get('image'));
+  // console.log('Contenu de FormData :', formData);
+
   return (
     <>
       <h2 className="add__ad__page__title">Déposer une annonce</h2>
@@ -40,7 +47,21 @@ const AddAd = () => {
           }}
         >
           <AdTitle />
-          <AddPhotoButton />
+          <Form.Field>
+            <label htmlFor="upload-photo">Parcourir :</label>
+            <input
+              type="file"
+              id="upload-photo"
+              className="add__ad__button__file"
+              onChange={(event) => {
+                const file = event.target.files[0];
+                const formData = new FormData();
+                formData.append('image', file);
+                console.log(formData.get('image'));
+                dispatch(changeAddAdFromHomeImage(formData.get('image')));
+              }}
+            />
+          </Form.Field>
           <TextAreaAd />
           <Form.Group widths="equal">
             <Form.Input

@@ -8,11 +8,12 @@ import {
   CHANGE_ADD_AD_FROM_HOME_PRODUCT_YEAR,
   CHANGE_ADD_AD_FROM_HOME_PRODUCT_SERIAL_NUMBER,
   CHANGE_ADD_AD_FROM_HOME_CATEGORY_VALUE,
+  CHANGE_ADD_AD_FROM_HOME_IMAGE,
 } from '../actions/addAdFromHome';
 
 const initialState = {
   addAdFromHomeProductTitle: '',
-  addAdFromHomeProductPhoto: 'https://placehold.it/300x300',
+  addAdFromHomeProductPhoto: '',
   addAdFromHomeProductYear: '',
   addAdFromHomeProductSerialNumber: '',
 
@@ -26,6 +27,12 @@ const initialState = {
 
 const addAdFromHomeReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case CHANGE_ADD_AD_FROM_HOME_IMAGE: {
+      return {
+        ...state,
+        addAdFromHomeProductPhoto: action.newValue,
+      };
+    }
     case CHANGE_ADD_AD_FROM_HOME_PRODUCT_TITLE:
       return {
         ...state,
