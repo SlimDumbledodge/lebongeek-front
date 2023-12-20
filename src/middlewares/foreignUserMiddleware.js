@@ -6,7 +6,8 @@ import {
   foreignUserLoaded,
 } from '../actions/foreignUser';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
+
 const foreignUserMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_FOREIGN_USER: {

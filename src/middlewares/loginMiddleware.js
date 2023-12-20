@@ -11,7 +11,9 @@ import {
 } from '../actions/login';
 import { saveEdithubUserData } from '../actions/edithub';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+
+import baseUrl from '../assets/baseUrl';
+
 const loginMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN_USER:

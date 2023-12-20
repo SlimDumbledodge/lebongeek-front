@@ -8,7 +8,10 @@ import {
   adLoaded,
 } from '../actions/ads';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+
+import baseUrl from '../assets/baseUrl';
+
+
 const adsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_ADS_CATEGORIES: {

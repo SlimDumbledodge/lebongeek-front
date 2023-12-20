@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { REQUEST_TRANSFORM_PRODUCT_IN_AD } from '../actions/transformProductInAd';
 import { setCookieUser } from '../actions/login';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
 
 const currentUser = Cookies.get('user');
 const parsedUser = currentUser ? JSON.parse(currentUser) : null;

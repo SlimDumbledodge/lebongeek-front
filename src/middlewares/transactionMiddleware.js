@@ -3,7 +3,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { FETCH_TRANSACTION } from '../actions/transaction';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
+
 const transactionMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_TRANSACTION: {

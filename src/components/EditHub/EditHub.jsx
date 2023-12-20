@@ -45,12 +45,28 @@ const EditHub = () => {
           type="text"
           placeholder="LilDinguo"
         />
-        <label htmlFor="file">Avatar :</label>
+        {/* <label htmlFor="file">Avatar :</label>
         <input
           type="file"
           className="input__file"
           id="input__file__edit__hub"
         />
+          onChange={(e) => {
+            const selectedFile = e.target.files[0];
+            const formData = new FormData();
+            const fileData = {
+              name: selectedFile.name,
+              size: selectedFile.size,
+              type: selectedFile.type,
+              lastModified: selectedFile.lastModified,
+            };
+            formData.append('avatar', fileData);
+            console.log(fileData);
+            dispatch(changeUploadedImage(fileData));
+
+            console.log(dispatch(changeFormData(formData)));
+          }}
+        /> */}
         <Form.Group widths="equal">
           <Form.Field
             control={Input}

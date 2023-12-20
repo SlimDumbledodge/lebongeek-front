@@ -10,12 +10,18 @@ const imageUploadMiddleware = (store) => (next) => async (action) => {
 
   if (action.type === UPLOAD_IMAGE_REQUEST) {
     try {
-      const { formData } = action.payload;
-      const response = await axios.post('votre_endpoint', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const formData = action.payload;
+      console.log('Contenu de FormData :', formData);
+      const response = await axios.post(
+        'http://matthieu-le-floch.vpnuser.lan:8080/api/products',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${store.getState().login.token}`,
+          },
+        }
+      );
 
       if (response && response.data && response.data.imageUrl) {
         store.dispatch(uploadImageSuccess(response.data.imageUrl));
