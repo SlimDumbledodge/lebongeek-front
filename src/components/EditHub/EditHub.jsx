@@ -153,7 +153,7 @@ const EditHub = () => {
           <label htmlFor="upload-photo">Bannière :</label>
           <input
             type="file"
-            id="upload-photo"
+            id="upload-photo2"
             className="add__product__piture__button"
             onChange={(event) => {
               const fileBis = event.target.files[0];
