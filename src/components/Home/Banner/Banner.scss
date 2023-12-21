@@ -4,18 +4,20 @@
   height: 300px;
   width: 100%;
   object-fit: cover;
+  
 }
 
 .logo {
   width: 200px;
   height: 200px;
+  
 }
 /* Pour 320px (Téléphone mobile en portrait) */
 @media (max-width: 320px) {
   .home__banner {
     width: 110%;
     height: auto;
-}
+  }
 }
 
 /* Pour 375px (Téléphone mobile en paysage ou grand téléphone) */
