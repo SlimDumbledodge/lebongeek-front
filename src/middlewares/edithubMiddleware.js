@@ -67,8 +67,8 @@ const edithubMiddleware = (store) => (next) => (action) => {
                 )
                 .then((thirdResponse) => {
                   console.log(thirdResponse);
-                  // store.dispatch(clearCookie());
-                  // window.location.reload();
+                  store.dispatch(clearCookie());
+                  window.location.reload();
                 })
                 .catch((error) => {
                   console.warn(error);
