@@ -56,7 +56,7 @@ function Form() {
         <ul className="list">
           {categoriesListFromState.map((category) => (
             <Link to={`/annonces/${category.slug}`} key={category.id}>
-              <li>
+              <li className="list__dropdown">
                 {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
               </li>
             </Link>

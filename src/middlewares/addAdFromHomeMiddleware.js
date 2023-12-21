@@ -2,6 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { SEND_ADD_AD_FROM_HOME } from '../actions/addAdFromHome';
 import baseUrl from '../assets/baseUrl';
+import { setCookieUser } from '../actions/login';
 
 const addAdFromHomeMiddleware = (store) => (next) => (action) => {
   const formData = store.getState().addAdFromHome.addAdFromHomeProductPhoto;
@@ -73,6 +74,19 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
                 )
                 .then((thirdResponse) => {
                   console.log(thirdResponse);
+                  axios
+                    .get(`${baseUrl}/api/get_user`, {
+                      headers: {
+                        Authorization: `Bearer ${Cookies.get('token')}`,
+                      },
+                    })
+                    .then((fourthResponse) => {
+                      console.log(fourthResponse);
+                      store.dispatch(setCookieUser(fourthResponse.data));
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    });
                 })
                 .catch((error) => {
                   console.warn(error);

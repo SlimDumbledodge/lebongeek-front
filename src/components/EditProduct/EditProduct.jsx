@@ -109,7 +109,6 @@ const EditProduct = () => {
               const file = event.target.files[0];
               const formData = new FormData();
               formData.append('image', file);
-              console.log(formData.get('image'));
               dispatch(changeEditProductImage(formData.get('image')), id);
             }}
           />

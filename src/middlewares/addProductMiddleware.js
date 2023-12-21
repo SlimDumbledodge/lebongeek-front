@@ -6,8 +6,6 @@ import { setCookieUser } from '../actions/login';
 import baseUrl from '../assets/baseUrl';
 
 const addProductMiddleware = (store) => (next) => (action) => {
-  const formData = store.getState().addProduct.productPhotoValue;
-
   switch (action.type) {
     case ADD_PRODUCT_SEND_REQUEST:
       axios
@@ -28,39 +26,18 @@ const addProductMiddleware = (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response);
-          const productIdFromBack = response.data.productId;
-
           axios
-            .post(
-              `${baseUrl}/api/${productIdFromBack}/product/picture`,
-              {
-                picture: formData,
+            .get(`${baseUrl}/api/get_user`, {
+              headers: {
+                Authorization: `Bearer ${Cookies.get('token')}`,
               },
-              {
-                headers: {
-                  'Content-Type': 'multipart/form-data',
-                  Authorization: `Bearer ${Cookies.get('token')}`,
-                },
-              }
-            )
+            })
             .then((secondResponse) => {
               console.log(secondResponse);
-              axios
-                .get(`${baseUrl}/api/get_user`, {
-                  headers: {
-                    Authorization: `Bearer ${Cookies.get('token')}`,
-                  },
-                })
-                .then((thirdResponse) => {
-                  console.log(thirdResponse);
-                  store.dispatch(setCookieUser(thirdResponse.data));
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
+              store.dispatch(setCookieUser(secondResponse.data));
             })
             .catch((error) => {
-              console.warn(error);
+              console.log(error);
             });
         })
         .catch((error) => {
