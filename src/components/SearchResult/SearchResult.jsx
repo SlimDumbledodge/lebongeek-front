@@ -12,6 +12,8 @@ import AddResult from './AddResult';
 import ProfilResult from './ProfilResult';
 import SearchFilter from './SearchFilter/SearchFilter';
 
+import baseUrl from '../../assets/baseUrl';
+
 const SearchResult = () => {
   const { input, page } = useParams();
 
@@ -51,14 +53,17 @@ const SearchResult = () => {
           (status === 202 &&
             searchResultData.map((user) => (
               <Link to={`/hub/${user.id}`} key={user.id}>
-                <ProfilResult username={user.username} avatar={user.avatar} />
+                <ProfilResult
+                  username={user.username}
+                  avatar={`${baseUrl}/images/user/avatar/${user.avatar}`}
+                />
               </Link>
             ))) ||
           searchResultData.map((product) => (
             <Link to={`/hub/${product.user.id}`} key={product.ad.id}>
               <ProfilResult
                 username={product.user.username}
-                avatar={product.user.avatar}
+                avatar={`${baseUrl}/images/user/avatar/${product.user.avatar}`}
               />
             </Link>
           ))}
@@ -104,7 +109,7 @@ const SearchResult = () => {
                 <AddResult
                   title={product.ad.title}
                   price={product.ad.price}
-                  image={product.picture}
+                  image={`${baseUrl}/images/product/${product.picture}`}
                 />
               </Link>
             ))}
