@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 
 import './Inventory.scss';
 
+import baseUrl from '../../../assets/baseUrl';
+
 const Inventory = ({ product }) => {
   return (
     <section className="hub__foreign__inventory">
@@ -10,7 +12,7 @@ const Inventory = ({ product }) => {
         {product.map((currentProduct) => (
           <div key={currentProduct.id}>
             <img
-              src={currentProduct.picture}
+              src={`${baseUrl}/images/product/${currentProduct.picture}`}
               alt={currentProduct.title}
               className="hub__foreign__inventory__item"
             />

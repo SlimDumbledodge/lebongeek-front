@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { buy, fetchTransaction } from '../../actions/transaction';
 import { fetchAd } from '../../actions/ads';
 
+import baseUrl from '../../assets/baseUrl';
+
 import './Transaction.scss';
 
 import TransactionAddress from './TransactionAddress';
@@ -47,7 +49,7 @@ const Transaction = () => {
           <div className="transaction__product__container">
             <img
               className="transaction__product__image"
-              src={product?.picture || ''}
+              src={`${baseUrl}/images/product/${product?.picture}` || ''}
               alt="produit"
             />
             <div className="transaction__product__information__container">

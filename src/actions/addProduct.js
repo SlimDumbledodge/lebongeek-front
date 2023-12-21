@@ -7,6 +7,7 @@ export const CHANGE_ADD_PRODUCT_CATEGORY_VALUE =
   'CHANGE_ADD_PRODUCT_CATEGORY_VALUE';
 
 export const ADD_PRODUCT_SEND_REQUEST = 'ADD_PRODUCT_SEND_REQUEST';
+export const CHANGE_ADD_PRODUCT = 'CHANGE_ADD_PRODUCT';
 
 export const changeAddProductTitle = (newValue) => ({
   type: CHANGE_ADD_PRODUCT_TITLE,
@@ -35,4 +36,9 @@ export const changeAddProductCategoryValue = (newValue) => ({
 
 export const addProductSendRequest = () => ({
   type: ADD_PRODUCT_SEND_REQUEST,
+});
+
+export const changeAddProduct = (newValue) => ({
+  type: CHANGE_ADD_PRODUCT,
+  newValue,
 });

@@ -7,6 +7,12 @@ export const CHANGE_EDIT_PRODUCT_CATEGORY_VALUE =
   'CHANGE_EDIT_PRODUCT_CATEGORY_VALUE';
 
 export const REQUEST_EDIT_PRODUCT = 'REQUEST_EDIT_PRODUCT';
+export const CHANGE_EDIT_PRODUCT_IMAGE = 'CHANGE_EDIT_PRODUCT_IMAGE';
+
+export const changeEditProductImage = (newValue) => ({
+  type: CHANGE_EDIT_PRODUCT_IMAGE,
+  newValue,
+});
 
 export const changeEditProductName = (newValue) => ({
   type: CHANGE_EDIT_PRODUCT_NAME,

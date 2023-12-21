@@ -67,7 +67,6 @@ function App() {
               element={<TransformProductInAd />}
             />
             <Route path="/modifier-mon-produit/:id" element={<EditProduct />} />
-            <Route path="/connexion" element={<Home />} />
             <Route path="connexion/cree_un_compte" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
           </>
