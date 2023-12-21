@@ -10,11 +10,7 @@ const HeaderNavDesktop = () => {
   return (
     <>
       <Link to="/" className="header__desktop__logo">
-        <img
-          className="logo"
-          src="../../src/assets/le bon geek.svg"
-          alt="logo"
-        />
+        LE BON GEEK
       </Link>
       {isUserLogged && (
         <Link to="/depot_annonce">

@@ -5,6 +5,10 @@ import Cookies from 'js-cookie';
 import baseUrl from '../../../assets/baseUrl';
 
 const Banner = () => {
+
+  return (
+    <img src="src/assets/images/bbhub.png" alt="" className="hub__banner" />
+
   const currentUser = Cookies.get('user');
   const parsedUser = currentUser ? JSON.parse(currentUser) : null;
 
@@ -14,6 +18,7 @@ const Banner = () => {
       alt=""
       className="hub__banner"
     />
+
   );
 };
 

@@ -22,7 +22,7 @@
 
 .list{
   position: absolute;
-  background: lightgray;
+  background: white;
   width: 100%;
   padding: 10px;
   display: flex;
@@ -32,6 +32,7 @@
   height: 140px;
   border-radius: 0 0 5px 5px;
   z-index: 10;
+  color: black;
 }
 
 .theInput{
