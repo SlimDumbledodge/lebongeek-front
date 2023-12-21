@@ -1,7 +1,5 @@
-import { Dropdown } from 'semantic-ui-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-
+import { Dropdown } from 'semantic-ui-react';
 import Cookies from 'js-cookie';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,17 +7,25 @@ import {
   faCircleUser,
   faArrowRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { clearCookie } from '../../../../actions/login';
 
 import baseUrl from '../../../../assets/baseUrl';
 
-function DropdownHub() {
+const DropdownHub = () => {
   const currentUser = Cookies.get('user');
   const parsedUser = currentUser ? JSON.parse(currentUser) : null;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isUserLogged = useSelector((state) => state.login.isCookieFilled);
+  const isDataLoaded = useSelector((state) => state.login.isDataLoaded);
+
+  if (isUserLogged && !isDataLoaded && !currentUser) {
+    return <div>Chargement...</div>;
+  }
+
   return (
     <Dropdown
       text={
@@ -34,18 +40,17 @@ function DropdownHub() {
         )
       }
     >
-      <Dropdown.Menu id="header__mobile__dropdown__hub">
+      <Dropdown.Menu id="header__desktop__dropdown__hub">
         {!isUserLogged && (
           <Dropdown.Item text="Se connecter" as={Link} to="/connexion" />
         )}
-
         {isUserLogged && <Dropdown.Item text="Hub" as={Link} to="/hub" />}
         {isUserLogged && (
           <Dropdown.Item
             onClick={() => {
               dispatch(clearCookie());
-              window.location.reload();
               navigate('/connexion');
+              window.location.reload();
             }}
           >
             Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
@@ -54,6 +59,6 @@ function DropdownHub() {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+};
 
 export default DropdownHub;
