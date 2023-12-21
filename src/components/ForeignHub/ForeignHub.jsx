@@ -35,10 +35,10 @@ const ForeignHub = () => {
 
   return (
     <>
-      <Banner banner={foreignUser.banner} />
+      <Banner banner={`${baseUrl}/images/user/banner/${foreignUser.banner}`} />
       <Description
         username={foreignUser.username}
-        avatar={`${baseUrl}/images/product/${foreignUser.avatar}`}
+        avatar={`${baseUrl}/images/user/avatar/${foreignUser.avatar}`}
         description={foreignUser.description}
       />
       <Inventory product={foreignUser.product} />

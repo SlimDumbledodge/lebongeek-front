@@ -14,7 +14,7 @@ const Description = () => {
       <div className="hub__avatar__pseudo">
         <h2 className="hub__pseudo">{parsedUser.username}</h2>
         <img
-          src={`${baseUrl}/images/product/${parsedUser.avatar}`}
+          src={`${baseUrl}/images/user/avatar/${parsedUser.avatar}`}
           alt=""
           className="hub__avatar"
         />

@@ -41,7 +41,7 @@ const AdDetails = () => {
       ad.products.map((product) => (
         <div key={ad.id} className="ad__details__container">
           <h2 className="ad__details__title">{product.title}</h2>
-          <Image src={user.avatar} size="mini" circular inline />
+          <Image src={`${baseUrl}/images/user/avatar/${user.avatar}`} size="mini" circular inline />
           <span className="ad__details__pseudo">{user.username}</span>
           <Button className="ad__details__button__profil" size="mini">
             <Link to={`/hub/${user.id}`} className="profil_link">

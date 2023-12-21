@@ -7,6 +7,7 @@ import baseUrl from '../assets/baseUrl';
 
 const edithubMiddleware = (store) => (next) => (action) => {
   const formData = store.getState().edithub.avatar;
+  const formDataBis = store.getState().edithub.banner;
 
   switch (action.type) {
     case SAVE_EDITHUB_CHANGES: {
@@ -18,6 +19,7 @@ const edithubMiddleware = (store) => (next) => (action) => {
             firstname: store.getState().edithub.firstname,
             lastname: store.getState().edithub.lastname,
             avatar: '',
+            banner: '',
             email: store.getState().edithub.email,
             phone_number: store.getState().edithub.phoneNumber,
             password: store.getState().edithub.password
@@ -33,13 +35,12 @@ const edithubMiddleware = (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response);
-          const productIdFromBack = response.data.productId;
 
           axios
             .post(
-              `${baseUrl}/api/${productIdFromBack}/product/picture`,
+              `${baseUrl}/api/user/avatar`,
               {
-                picture: formData,
+                avatar: formData,
               },
               {
                 headers: {
@@ -50,8 +51,28 @@ const edithubMiddleware = (store) => (next) => (action) => {
             )
             .then((secondResponse) => {
               console.log(secondResponse);
-              store.dispatch(clearCookie());
-              window.location.reload();
+
+              axios
+                .post(
+                  `${baseUrl}/api/user/banner`,
+                  {
+                    banner: formDataBis,
+                  },
+                  {
+                    headers: {
+                      'Content-Type': 'multipart/form-data',
+                      Authorization: `Bearer ${Cookies.get('token')}`,
+                    },
+                  }
+                )
+                .then((thirdResponse) => {
+                  console.log(thirdResponse);
+                  // store.dispatch(clearCookie());
+                  // window.location.reload();
+                })
+                .catch((error) => {
+                  console.warn(error);
+                });
             })
             .catch((error) => {
               console.warn(error);
