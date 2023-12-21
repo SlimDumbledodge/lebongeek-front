@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
+import Cookies from 'js-cookie';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,7 +12,12 @@ import './DropdownHub.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCookie } from '../../../../actions/login';
 
+import baseUrl from '../../../../assets/baseUrl';
+
 const DropdownHub = () => {
+  const currentUser = Cookies.get('user');
+  const parsedUser = currentUser ? JSON.parse(currentUser) : null;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isUserLogged = useSelector((state) => state.login.isCookieFilled);
@@ -20,7 +26,7 @@ const DropdownHub = () => {
       text={
         isUserLogged ? (
           <img
-            src="https://via.placeholder.com/640x480.png/00557"
+            src={`${baseUrl}/images/user/avatar/${parsedUser.avatar}`}
             alt=""
             className="avatar"
           />

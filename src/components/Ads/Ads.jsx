@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
+import baseUrl from '../../assets/baseUrl';
+
 import { switchScreenResponsive } from '../../actions/responsive';
 import { adsFilter, fetchAdsCategories } from '../../actions/ads';
 
@@ -68,7 +70,7 @@ const Ads = () => {
                 <Ad
                   title={product.ad.title}
                   price={product.ad.price}
-                  image={product.picture}
+                  image={`${baseUrl}/images/product/${product.picture}`}
                 />
               </Link>
             );

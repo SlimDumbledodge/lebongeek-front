@@ -5,6 +5,8 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteProduct } from '../../actions/deleteProduct';
 
+import baseUrl from '../../assets/baseUrl';
+
 const ProductPage = () => {
   const dispatch = useDispatch();
   let { id } = useParams();
@@ -39,7 +41,7 @@ const ProductPage = () => {
         <span className="ad__details__pseudo">{parsedUser.username}</span>
 
         <img
-          src={currentProduct.picture}
+          src={`${baseUrl}/images/product/${currentProduct.picture}`}
           alt=""
           className="ad__details__picture"
         />

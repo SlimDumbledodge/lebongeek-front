@@ -1,21 +1,20 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { SEND_ADD_AD_FROM_HOME } from '../actions/addAdFromHome';
-
 import baseUrl from '../assets/baseUrl';
 
 const addAdFromHomeMiddleware = (store) => (next) => (action) => {
   const formData = store.getState().addAdFromHome.addAdFromHomeProductPhoto;
+
   switch (action.type) {
     case SEND_ADD_AD_FROM_HOME:
       console.log(store.getState().addAdFromHome.addAdFromHomeProductPhoto);
-
       axios
         .post(
           `${baseUrl}/api/products`,
           {
             title: store.getState().addAdFromHome.addAdFromHomeProductTitle,
-            picture: formData,
+            picture: '',
             year: store.getState().addAdFromHome.addAdFromHomeProductYear,
             serial_number:
               store.getState().addAdFromHome.addAdFromHomeProductSerialNumber,
@@ -25,7 +24,6 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
           },
           {
             headers: {
-              'Content-Type': 'multipart/form-data',
               Authorization: `Bearer ${Cookies.get('token')}`,
             },
           }
@@ -35,27 +33,50 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
           const productIdFromBack = response.data.productId;
           axios
             .post(
-              `${baseUrl}/api/ads`,
+              `${baseUrl}/api/${productIdFromBack}/product/picture`,
               {
-                description:
-                  store.getState().addAdFromHome.addAdFromHomeDescription,
-                title: store.getState().addAdFromHome.addAdFromHomeProductTitle,
-                price: store.getState().addAdFromHome.addAdFromHomePrice * 1,
-                state: store.getState().addAdFromHome.addAdFromHomeState,
-                location: store.getState().addAdFromHome.addAdFromHomeLocation,
-                productId: productIdFromBack,
-                category: {
-                  id: store.getState().addAdFromHome.addAdFromHomeCategory,
-                },
+                picture: formData,
               },
               {
                 headers: {
+                  'Content-Type': 'multipart/form-data',
                   Authorization: `Bearer ${Cookies.get('token')}`,
                 },
               }
             )
             .then((secondResponse) => {
               console.log(secondResponse);
+
+              axios
+                .post(
+                  `${baseUrl}/api/ads`,
+                  {
+                    description:
+                      store.getState().addAdFromHome.addAdFromHomeDescription,
+                    title:
+                      store.getState().addAdFromHome.addAdFromHomeProductTitle,
+                    price:
+                      store.getState().addAdFromHome.addAdFromHomePrice * 1,
+                    state: store.getState().addAdFromHome.addAdFromHomeState,
+                    location:
+                      store.getState().addAdFromHome.addAdFromHomeLocation,
+                    productId: productIdFromBack,
+                    category: {
+                      id: store.getState().addAdFromHome.addAdFromHomeCategory,
+                    },
+                  },
+                  {
+                    headers: {
+                      Authorization: `Bearer ${Cookies.get('token')}`,
+                    },
+                  }
+                )
+                .then((thirdResponse) => {
+                  console.log(thirdResponse);
+                })
+                .catch((error) => {
+                  console.warn(error);
+                });
             })
             .catch((error) => {
               console.warn(error);
@@ -67,6 +88,7 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
       break;
     default:
   }
+
   next(action);
 };
 

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   changeEditProductCategory,
   changeEditProductCategoryValue,
+  changeEditProductImage,
   changeEditProductName,
   changeEditProductSerialNumber,
   changeEditProductYear,
@@ -98,9 +99,21 @@ const EditProduct = () => {
           }}
         />
 
-        <Button id="edit__product__piture__button" type="file">
-          Image
-        </Button>
+        <Form.Field>
+          <label htmlFor="upload-photo">Parcourir :</label>
+          <input
+            type="file"
+            id="upload-photo"
+            className="add__ad__button__file"
+            onChange={(event) => {
+              const file = event.target.files[0];
+              const formData = new FormData();
+              formData.append('image', file);
+              console.log(formData.get('image'));
+              dispatch(changeEditProductImage(formData.get('image')), id);
+            }}
+          />
+        </Form.Field>
         <Button id="edit__product__confirm__button" type="submit">
           Confirmer
         </Button>

@@ -9,6 +9,7 @@ import {
   changeAddProductSerialNumber,
   changeAddProductTitle,
   changeAddProductYear,
+  changeAddProduct,
 } from '../../actions/addProduct';
 
 const AddProduct = () => {
@@ -87,9 +88,22 @@ const AddProduct = () => {
           }}
         />
 
-        <Button id="add__product__piture__button" type="file">
-          Image
-        </Button>
+        <Form.Field>
+          <label htmlFor="upload-photo">Parcourir :</label>
+          <input
+            type="file"
+            id="upload-photo"
+            className="add__product__piture__button"
+            onChange={(event) => {
+              const file = event.target.files[0];
+              const formData = new FormData();
+              formData.append('image', file);
+              console.log(formData.get('image'));
+              dispatch(changeAddProduct(formData.get('image')));
+            }}
+          />
+        </Form.Field>
+
         <Button id="add__product__confirm__button" type="submit">
           Confirmer
         </Button>
