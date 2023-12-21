@@ -4,7 +4,7 @@ import {
   CHANGE_ADD_PRODUCT_SERIAL_NUMBER,
   CHANGE_ADD_PRODUCT_TITLE,
   CHANGE_ADD_PRODUCT_YEAR,
-  CHANGE_ADD_PRODUCT,
+  CHANGE_ADD_PRODUCT_IMAGE,
 } from '../actions/addProduct';
 
 const initialState = {
@@ -48,7 +48,7 @@ const addProductReducer = (state = initialState, action = {}) => {
         productCategoryValue: action.newValue,
       };
 
-    case CHANGE_ADD_PRODUCT: {
+    case CHANGE_ADD_PRODUCT_IMAGE: {
       return {
         ...state,
         productPhotoValue: action.newValue,

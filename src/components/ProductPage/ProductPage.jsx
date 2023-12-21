@@ -18,6 +18,8 @@ const ProductPage = () => {
     (product) => product.id === id
   );
 
+  console.log(parsedUser);
+
   if (!currentProduct) {
     return <div>Product not found</div>;
   }
@@ -30,7 +32,17 @@ const ProductPage = () => {
           dispatch(deleteProduct(id));
         }}
       >
-        <Image src={parsedUser.avatar} size="mini" circular inline />
+        {/* <Image
+          src={`${baseUrl}/images/user/avatar/${parsedUser.avatar}`}
+          size="mini"
+          circular
+          inline
+        /> */}
+        <img
+          src={`${baseUrl}/images/user/avatar/${parsedUser.avatar}`}
+          alt=""
+          className="avatar"
+        />
         <Button
           size="medium"
           type="submit"

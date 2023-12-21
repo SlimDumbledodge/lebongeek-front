@@ -69,6 +69,9 @@ const EditProduct = () => {
           type="text"
           placeholder="Figurine SpiderMan - 1988"
           value={editProductNameValue}
+          onChange={(e, data) => {
+            dispatch(changeEditProductName(data.value));
+          }}
         />
         <Form.Group widths="equal">
           <Form.Field
@@ -77,12 +80,18 @@ const EditProduct = () => {
             type="text"
             placeholder="1988"
             value={editProductYearValue}
+            onChange={(e, data) => {
+              dispatch(changeEditProductYear(data.value));
+            }}
           />
           <Form.Field
             control={Input}
             label="Numéro de série :"
             type="number"
             value={editProductSerialNumberValue}
+            onChange={(e, data) => {
+              dispatch(changeEditProductSerialNumber(data.value));
+            }}
           />
         </Form.Group>
         <Form.Select
@@ -95,6 +104,7 @@ const EditProduct = () => {
             const currentCategory = categoriesOptions.find(
               (category) => data.value === category.value
             );
+            console.log(currentCategory.key);
             dispatch(changeEditProductCategory(currentCategory.key));
           }}
         />

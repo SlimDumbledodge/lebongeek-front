@@ -11,7 +11,7 @@ const initialState = {
   editProductName: '',
   editProductYear: '',
   editProductSerialNumber: '',
-  editProductCategory: null,
+  editProductCategory: 0,
   editProductCategoryValue: '',
   editProductImage: '',
 };

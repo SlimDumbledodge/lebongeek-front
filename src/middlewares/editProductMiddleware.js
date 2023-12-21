@@ -4,6 +4,7 @@ import {
   CHANGE_EDIT_PRODUCT_IMAGE,
   REQUEST_EDIT_PRODUCT,
 } from '../actions/editProduct';
+import { setCookieUser } from '../actions/login';
 
 const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 
@@ -12,6 +13,8 @@ const editProductMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case REQUEST_EDIT_PRODUCT:
+      console.log(action.productId);
+      console.log(store.getState().editProduct);
       axios
         .put(
           `${baseUrl}/api/${action.productId}/products`,
@@ -45,6 +48,23 @@ const editProductMiddleware = (store) => (next) => (action) => {
             )
             .then((secondResponse) => {
               console.log(secondResponse);
+              axios
+                .get(
+                  `${baseUrl}/api/get_user`,
+
+                  {
+                    headers: {
+                      Authorization: `Bearer ${Cookies.get('token')}`,
+                    },
+                  }
+                )
+                .then((thirdResponse) => {
+                  console.log(thirdResponse);
+                  store.dispatch(setCookieUser(thirdResponse.data));
+                })
+                .catch((error) => {
+                  console.warn(error);
+                });
             })
             .catch((error) => {
               console.warn(error);

@@ -7,7 +7,7 @@ export const CHANGE_ADD_PRODUCT_CATEGORY_VALUE =
   'CHANGE_ADD_PRODUCT_CATEGORY_VALUE';
 
 export const ADD_PRODUCT_SEND_REQUEST = 'ADD_PRODUCT_SEND_REQUEST';
-export const CHANGE_ADD_PRODUCT = 'CHANGE_ADD_PRODUCT';
+export const CHANGE_ADD_PRODUCT_IMAGE = 'CHANGE_ADD_PRODUCT_IMAGE';
 
 export const changeAddProductTitle = (newValue) => ({
   type: CHANGE_ADD_PRODUCT_TITLE,
@@ -38,7 +38,7 @@ export const addProductSendRequest = () => ({
   type: ADD_PRODUCT_SEND_REQUEST,
 });
 
-export const changeAddProduct = (newValue) => ({
-  type: CHANGE_ADD_PRODUCT,
+export const changeAddProductImage = (newValue) => ({
+  type: CHANGE_ADD_PRODUCT_IMAGE,
   newValue,
 });

@@ -13,7 +13,8 @@ const Inventory = () => {
     <section className="hub__inventory">
       <h2 className="hub__inventory__title">INVENTAIRE</h2>
       <div className="hub__grid__wrapper">
-        {parsedUser.product &&
+        {
+          /* {parsedUser.product && */
           parsedUser.product.map((currentProduct) => (
             <Link to={`/products/${currentProduct.id}`} key={currentProduct.id}>
               <div>
@@ -25,7 +26,8 @@ const Inventory = () => {
                 <p>{currentProduct.title}</p>
               </div>
             </Link>
-          ))}
+          ))
+        }
       </div>
     </section>
   );

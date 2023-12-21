@@ -6,10 +6,10 @@ import {
   addProductSendRequest,
   changeAddProductCategory,
   changeAddProductCategoryValue,
+  changeAddProductImage,
   changeAddProductSerialNumber,
   changeAddProductTitle,
   changeAddProductYear,
-  changeAddProduct,
 } from '../../actions/addProduct';
 
 const AddProduct = () => {
@@ -99,7 +99,7 @@ const AddProduct = () => {
               const formData = new FormData();
               formData.append('image', file);
               console.log(formData.get('image'));
-              dispatch(changeAddProduct(formData.get('image')));
+              dispatch(changeAddProductImage(formData.get('image')));
             }}
           />
         </Form.Field>
