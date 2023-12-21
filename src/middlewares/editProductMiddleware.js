@@ -9,7 +9,7 @@ const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
 
 const editProductMiddleware = (store) => (next) => (action) => {
   const formData = store.getState().editProduct.editProductImage;
-  console.log(formData);
+
   switch (action.type) {
     case REQUEST_EDIT_PRODUCT:
       axios

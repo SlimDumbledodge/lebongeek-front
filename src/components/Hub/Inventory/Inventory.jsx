@@ -15,13 +15,10 @@ const Inventory = () => {
       <div className="hub__grid__wrapper">
         {parsedUser.product &&
           parsedUser.product.map((currentProduct) => (
-            <Link
-              to={`${baseUrl}/images/product/${currentProduct.picture}`}
-              key={currentProduct.id}
-            >
+            <Link to={`/products/${currentProduct.id}`} key={currentProduct.id}>
               <div>
                 <img
-                  src={currentProduct.picture}
+                  src={`${baseUrl}/images/product/${currentProduct.picture}`}
                   alt={currentProduct.title}
                   className="hub__inventory__item"
                 />
