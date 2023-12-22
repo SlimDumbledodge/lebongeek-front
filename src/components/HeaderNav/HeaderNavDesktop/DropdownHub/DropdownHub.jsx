@@ -21,8 +21,9 @@ const DropdownHub = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isUserLogged = useSelector((state) => state.login.isCookieFilled);
+  const isDataLoaded = useSelector((state) => state.login.isDataLoaded);
 
-  if (!currentUser) {
+  if (isUserLogged && !isDataLoaded && !currentUser) {
     return <div>Chargement...</div>;
   }
 

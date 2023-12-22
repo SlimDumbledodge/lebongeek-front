@@ -19,6 +19,7 @@ const initialState = {
   isFailedLoginPopupOpen: false,
   token: Cookies.get('token'),
   isCookieFilled: document.cookie !== '',
+  isDataLoaded: false,
 };
 
 const loginReducer = (state = initialState, action = {}) => {
@@ -53,6 +54,7 @@ const loginReducer = (state = initialState, action = {}) => {
       Cookies.set('user', JSON.stringify(action.cookie));
       return {
         ...state,
+        isDataLoaded: !state.isDataLoaded,
       };
 
     case CLEAR_COOKIE:

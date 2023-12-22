@@ -12,8 +12,9 @@ const Inventory = () => {
   const isUserLogged = useSelector((state) => state.login.isCookieFilled);
   const currentUser = Cookies.get('user');
   const parsedUser = currentUser ? JSON.parse(currentUser) : null;
+  const isDataLoaded = useSelector((state) => state.login.isDataLoaded);
 
-  if (isUserLogged && !parsedUser) {
+  if (isUserLogged && !isDataLoaded && !currentUser) {
     return <div>Chargement...</div>;
   }
 
