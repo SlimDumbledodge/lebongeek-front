@@ -38,6 +38,28 @@ const SearchResult = () => {
     dispatch(switchScreenResponsive(window.innerWidth < 1024));
   };
 
+  /* const userSet = new Set();
+
+  searchResultData.forEach((data) => {
+    userSet.add(data.user);
+  });
+
+  const userArray = Array.from(userSet);
+  console.log(userArray); */
+
+  const userObject = {};
+
+  if (searchResultData) {
+    searchResultData.forEach((object) => {
+      if (object.hasOwnProperty('user') === true) {
+        userObject[object.user.id] = object.user;
+      }
+    });
+  }
+
+  const userArray = Object.values(userObject);
+  console.log(userArray);
+
   useEffect(() => {
     window.addEventListener('resize', handleResize);
     dispatch(fetchSearch(input, page));
@@ -59,11 +81,11 @@ const SearchResult = () => {
                 />
               </Link>
             ))) ||
-          searchResultData.map((product) => (
-            <Link to={`/hub/${product.user.id}`} key={product.ad.id}>
+          userArray.map((user) => (
+            <Link to={`/hub/${user.id}`} key={user.id}>
               <ProfilResult
-                username={product.user.username}
-                avatar={`${baseUrl}/images/user/avatar/${product.user.avatar}`}
+                username={user.username}
+                avatar={`${baseUrl}/images/user/avatar/${user.avatar}`}
               />
             </Link>
           ))}
