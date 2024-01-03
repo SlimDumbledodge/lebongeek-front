@@ -67,7 +67,11 @@ function App() {
               element={<TransformProductInAd />}
             />
             <Route path="/modifier-mon-produit/:id" element={<EditProduct />} />
-            <Route path="connexion/cree_un_compte" element={<Home />} />
+            <Route
+              path="/connexion/cree_un_compte"
+              element={<Navigate to="/" />}
+            />
+            <Route path="/connexion" element={<Navigate to="/" />} />
             <Route path="/contact" element={<Contact />} />
           </>
         ) : (
@@ -117,7 +121,6 @@ function App() {
 
         <Route path="/hub/:id" element={<ForeignHub />} />
 
-        <Route path="/connexion" element={<Connexion />} />
         <Route path="/categories" element={<Categories />} />
         <Route
           path="/derniere-ventes"
