@@ -1,21 +1,18 @@
-import Cookies from 'js-cookie';
+import PropTypes from 'prop-types';
+
 import './Inventory.scss';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import baseUrl from '../../../assets/baseUrl';
 
-const Inventory = () => {
-  const currentUser = Cookies.get('user');
-  const parsedUser = currentUser ? JSON.parse(currentUser) : null;
-  console.log(parsedUser);
-
+const Inventory = ({ product }) => {
   return (
     <section className="hub__inventory">
       <h2 className="hub__inventory__title">INVENTAIRE</h2>
       <div className="hub__grid__wrapper">
         {
           /* {parsedUser.product && */
-          parsedUser.product.map((currentProduct) => (
+          product.map((currentProduct) => (
             <Link to={`/products/${currentProduct.id}`} key={currentProduct.id}>
               <div>
                 <img
@@ -31,6 +28,16 @@ const Inventory = () => {
       </div>
     </section>
   );
+};
+
+Inventory.propTypes = {
+  product: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      picture: PropTypes.string,
+      title: PropTypes.string,
+    }).isRequired
+  ).isRequired,
 };
 
 export default Inventory;

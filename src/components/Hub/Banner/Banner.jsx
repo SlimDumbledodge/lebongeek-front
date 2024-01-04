@@ -1,20 +1,13 @@
+import PropTypes from 'prop-types';
+
 import './Banner.scss';
 
-import Cookies from 'js-cookie';
+const Banner = ({ banner }) => {
+  return <img src={banner} alt="" className="hub__banner" />;
+};
 
-import baseUrl from '../../../assets/baseUrl';
-
-const Banner = () => {
-  const currentUser = Cookies.get('user');
-  const parsedUser = currentUser ? JSON.parse(currentUser) : null;
-
-  return (
-    <img
-      src={`${baseUrl}/images/user/banner/${parsedUser.banner}`}
-      alt=""
-      className="hub__banner"
-    />
-  );
+Banner.propTypes = {
+  banner: PropTypes.string.isRequired,
 };
 
 export default Banner;

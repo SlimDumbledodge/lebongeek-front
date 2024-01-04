@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchCategories } from '../../actions/category';
+import { getUser } from '../../actions/hub';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
 import Home from '../Home/Home';
@@ -44,6 +45,10 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    dispatch(getUser());
+  });
+
   if (!isCategoriesLoaded) {
     return <div>Chargement...</div>;
   }
@@ -71,7 +76,6 @@ function App() {
               path="/connexion/cree_un_compte"
               element={<Navigate to="/" />}
             />
-            <Route path="/connexion" element={<Navigate to="/" />} />
             <Route path="/contact" element={<Contact />} />
           </>
         ) : (

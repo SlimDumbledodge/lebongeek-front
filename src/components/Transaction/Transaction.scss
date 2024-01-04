@@ -3,9 +3,9 @@
   flex-direction: column;
   margin: 0 auto;
   width: 320px;
-  overflow: hidden;
   padding: 10px;
-  height: 100vh;
+  height: 100dvh;
+  margin-top: 20px;
 
   @media screen and (min-width: 375px) {
     width: 375px;
@@ -32,7 +32,7 @@
     font-size: 26px;
     text-align: center;
     border-bottom: 1px solid black;
-    padding-bottom: 15px;
+    padding-bottom: 40px;
     font-weight: bold;
 
     @media screen and (min-width: 768px) {
@@ -122,86 +122,72 @@
     }
 
     .transaction__validation__button{
-      display: flex;
       background: grey;
-      width: auto;
-      align-items: center;
-      justify-content: center;
+      width: 200px;
       height: auto;
-      padding: 10px;
-      text-align: center;
-      align-self: center;
       margin-top: 30px;
       font-size: 18px;
-      position: absolute;
-      bottom: 50px;
+      padding: 10px;
+      align-self: center;
+    }
 
-      @media screen and (min-width: 425px) {
-        bottom: 40px;
+    .transaction__terms__container{
+      display: flex;
+      margin-top: 30px;
+      gap: 10px;
+      padding-left: 5px;
+  
+      @media screen and (min-width: 768px) {
+        width: 90%;
       }
-
-      @media screen and (min-width: 1440px) {
-        bottom: 60px;
+  
+      .transaction__terms__input{
+        align-self: baseline;
       }
-    }
-  }
-
-  .transaction__terms__container{
-    display: flex;
-    margin-top: 30px;
-    gap: 10px;
-    padding-left: 5px;
-
-    @media screen and (min-width: 768px) {
-      width: 90%;
-    }
-
-    .transaction__terms__input{
-      align-self: baseline;
-    }
-
-    .transaction__terms__text{
-      overflow: hidden;
-
-      .transaction__terms__span{
-        font-weight: bold;
-        font-style: italic;
+  
+      .transaction__terms__text{
+        overflow: hidden;
+  
+        .transaction__terms__span{
+          font-weight: bold;
+          font-style: italic;
+        }
       }
     }
-  }
-
-  .transaction__footer__container{
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    gap: 5px;
-
-    @media screen and (min-width: 768px) {
-      width: 90%;
+  
+    .transaction__footer__container{
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+      gap: 5px;
+  
+      @media screen and (min-width: 768px) {
+        width: 90%;
+      }
+  
+      .transaction__footer__information{
+        display: flex;
+        justify-content: space-between;
+  
+        .transaction__footer__element{
+          color: grey;
+        }
+      }
     }
-
-    .transaction__footer__information{
+  
+    .transaction__total__container{
       display: flex;
       justify-content: space-between;
-
-      .transaction__footer__element{
-        color: grey;
+      margin-top: 30px;
+  
+      @media screen and (min-width: 768px) {
+        width: 90%;
       }
-    }
-  }
-
-  .transaction__total__container{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-
-    @media screen and (min-width: 768px) {
-      width: 90%;
-    }
-
-    .transaction__total_element{
-      font-size: 22px;
-      font-weight: bold;
+  
+      .transaction__total_element{
+        font-size: 22px;
+        font-weight: bold;
+      }
     }
   }
 

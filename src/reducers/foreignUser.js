@@ -16,7 +16,7 @@ const foreignUserReducer = (state = initialState, action = {}) => {
     case FOREIGN_USER_LOADED:
       return {
         ...state,
-        isForeignUserLoaded: !state.isForeignUserLoaded,
+        isForeignUserLoaded: true,
       };
 
     default:

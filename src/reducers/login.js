@@ -46,6 +46,8 @@ const loginReducer = (state = initialState, action = {}) => {
       document.cookie = `token=${state.token}; path=/;`;
       return {
         ...state,
+        LoginUsername: '',
+        LoginPassword: '',
         token: '',
         isCookieFilled: true,
       };
@@ -54,7 +56,7 @@ const loginReducer = (state = initialState, action = {}) => {
       Cookies.set('user', JSON.stringify(action.cookie));
       return {
         ...state,
-        isDataLoaded: !state.isDataLoaded,
+        isDataLoaded: true,
       };
 
     case CLEAR_COOKIE:

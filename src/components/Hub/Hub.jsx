@@ -1,4 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import Cookies from 'js-cookie';
+
 import { Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner/Banner';
@@ -6,11 +10,25 @@ import Description from './Description/Description';
 import Inventory from './Inventory/Inventory';
 import './Hub.scss';
 
+import baseUrl from '../../assets/baseUrl';
+
 const Hub = () => {
+  const currentUser = Cookies.get('user');
+  const parsedUser = currentUser ? JSON.parse(currentUser) : null;
+  const isUserDataLoaded = useSelector((state) => state.hub.isUserDataLoaded);
+
+  if (!isUserDataLoaded) {
+    return <div>Petit chargement...</div>;
+  }
+
   return (
     <>
-      <Banner />
-      <Description />
+      <Banner banner={`${baseUrl}/images/user/banner/${parsedUser.banner}`} />
+      <Description
+        username={parsedUser.username}
+        avatar={`${baseUrl}/images/user/avatar/${parsedUser.avatar}`}
+        description={parsedUser.description}
+      />
       <div className="hub__wrapper__buttons">
         <Link to="/modifier-mon-profil">
           <Button className="hub__buttons" id="hub__edit__hub">
@@ -24,7 +42,7 @@ const Hub = () => {
         </Link>
       </div>
 
-      <Inventory />
+      <Inventory product={parsedUser.product} />
     </>
   );
 };
