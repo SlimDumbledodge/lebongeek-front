@@ -12,11 +12,17 @@ const contactMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SEND_MESSAGE:
       axios
-        .post(`${baseUrl}/api/contact`, {
-          from: JSON.parse(Cookies.get('user')).email,
-          subject: store.getState().contact.inputObject,
-          content: store.getState().contact.inputContent,
-        })
+        .post(
+          `${baseUrl}/api/contact`,
+          {
+            from: JSON.parse(Cookies.get('user')).email,
+            subject: store.getState().contact.inputObject,
+            content: store.getState().contact.inputContent,
+          },
+          {
+            headers: { Authorization: `Bearer ${Cookies.get('token')}` },
+          }
+        )
         .then((response) => {
           // eslint-disable-next-line no-console
           console.log('OK SEND_MESSAGE : ', response);

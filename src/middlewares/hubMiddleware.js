@@ -3,6 +3,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { GET_USER, setUser } from '../actions/hub';
 
+import { saveEdithubUserData } from '../actions/edithub';
+
 import baseUrl from '../assets/baseUrl';
 
 const hubMiddleware = (store) => (next) => (action) => {
@@ -17,6 +19,7 @@ const hubMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log('OK GET_USER : ', response);
           store.dispatch(setUser(response.data));
+          store.dispatch(saveEdithubUserData(response.data));
         })
         .catch((error) => {
           console.warn('Erreur GET_USER : ', error);

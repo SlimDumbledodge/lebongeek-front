@@ -13,13 +13,14 @@ const Inventory = ({ product }) => {
         {
           /* {parsedUser.product && */
           product.map((currentProduct) => (
-            <Link to={`/products/${currentProduct.id}`} key={currentProduct.id}>
+            <Link to={`/produits/${currentProduct.id}`} key={currentProduct.id}>
               <div>
                 <img
                   src={`${baseUrl}/images/product/${currentProduct.picture}`}
                   alt={currentProduct.title}
                   className="hub__inventory__item"
                 />
+                {currentProduct.ad === null ? '' : <p>En vente</p>}
                 <p>{currentProduct.title}</p>
               </div>
             </Link>

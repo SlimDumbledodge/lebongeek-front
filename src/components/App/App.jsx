@@ -46,7 +46,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    dispatch(getUser());
+    if (isUserLogged) {
+      dispatch(getUser());
+    }
   });
 
   if (!isCategoriesLoaded) {
@@ -66,7 +68,7 @@ function App() {
             <Route path="/transaction/:id" element={<Transaction />} />
             <Route path="/modifier-mon-profil" element={<EditHub />} />
             <Route path="/ajouter-un-produit" element={<AddProduct />} />
-            <Route path="/products/:id" element={<ProductPage />} />
+            <Route path="/produits/:id" element={<ProductPage />} />
             <Route
               path="/vendre-mon-produit/:id"
               element={<TransformProductInAd />}
@@ -99,7 +101,7 @@ function App() {
               element={<Navigate to="/connexion" />}
             />
             <Route
-              path="/products/:id"
+              path="/produits/:id"
               element={<Navigate to="/connexion" />}
             />
             <Route

@@ -19,14 +19,17 @@ const ProductPage = () => {
   );
 
   console.log(parsedUser);
+  console.log(currentProduct);
 
   if (!currentProduct) {
-    return <div>Product not found</div>;
+    return <div>Produit inexistant</div>;
   }
 
   return (
     <div className="ad__details__container">
-      <h2 className="ad__details__title">{currentProduct.title}</h2>
+      <h2 className="ad__details__title">
+        {currentProduct.title} {currentProduct.ad === null ? '' : '- En vente'}
+      </h2>
       <Form
         onSubmit={() => {
           dispatch(deleteProduct(id));
@@ -64,14 +67,21 @@ const ProductPage = () => {
           Numéro de série : {currentProduct.serial_number}
         </Label>
         <Label id="ad__details__state__tag">
-          Année de sortie :{currentProduct.year}
+          Année de sortie : {currentProduct.year}
         </Label>
-
-        <Link to={`/vendre-mon-produit/${id}`}>
-          <Button size="medium" className="ad__details__button__buy">
-            Vendre mon produit
-          </Button>
-        </Link>
+        {currentProduct.ad === null ? (
+          <Link to={`/vendre-mon-produit/${id}`}>
+            <Button size="medium" className="ad__details__button__buy">
+              Vendre mon produit
+            </Button>
+          </Link>
+        ) : (
+          <Link to={`/${currentProduct.category.name}/${currentProduct.ad.id}`}>
+            <Button size="medium" className="ad__details__button__buy">
+              Voir mon annonce
+            </Button>
+          </Link>
+        )}
         <Link to={`/modifier-mon-produit/${id}`}>
           <Button size="medium" className="ad__details__button__buy">
             Modifier mon produit

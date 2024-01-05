@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './EditHub.scss';
@@ -13,6 +14,8 @@ import {
   saveEdithubChanges,
   changeEdithubAvatar,
   changeEdithubBanner,
+  saveEdithubAvatar,
+  saveEdithubBanner,
 } from '../../actions/edithub';
 import { clearCookie } from '../../actions/login';
 // import { changeFormData, changeUploadedImage } from '../../actions/uploadImage';
@@ -36,7 +39,6 @@ const EditHub = () => {
         className="edithub__form"
         onSubmit={() => {
           dispatch(saveEdithubChanges());
-          navigate('/connexion');
         }}
       >
         <Form.Field
@@ -134,6 +136,16 @@ const EditHub = () => {
           label="Description"
           placeholder="Description..."
         />
+        <Form.Button className="edithub__confirm__button" type="submit">
+          Confirmer
+        </Form.Button>
+      </Form>
+      <Form
+        className="edithub__form"
+        onSubmit={() => {
+          dispatch(saveEdithubAvatar());
+        }}
+      >
         <Form.Field>
           <label htmlFor="upload-photo">Avatar :</label>
           <input
@@ -149,6 +161,16 @@ const EditHub = () => {
             }}
           />
         </Form.Field>
+        <Form.Button className="edithub__confirm__button" type="submit">
+          Confirmer
+        </Form.Button>
+      </Form>
+      <Form
+        className="edithub__form"
+        onSubmit={() => {
+          dispatch(saveEdithubBanner());
+        }}
+      >
         <Form.Field>
           <label htmlFor="upload-photo">Bannière :</label>
           <input
@@ -164,7 +186,7 @@ const EditHub = () => {
             }}
           />
         </Form.Field>
-        <Form.Button id="edithub__confirm__button" type="submit">
+        <Form.Button className="edithub__confirm__button" type="submit">
           Confirmer
         </Form.Button>
       </Form>

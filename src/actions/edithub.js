@@ -9,6 +9,9 @@ export const SAVE_EDITHUB_CHANGES = 'SAVE_EDITHUB_CHANGES';
 export const SAVE_EDITHUB_USER_DATA = 'SAVE_EDITHUB_USER_DATA';
 export const CHANGE_EDITHUB_AVATAR = 'CHANGE_EDITHUB_AVATAR';
 export const CHANGE_EDITHUB_BANNER = 'CHANGE_EDITHUB_BANNER';
+export const SAVE_INITIAL_USER_STATE = 'SAVE_INITIAL_USER_STATE';
+export const SAVE_EDITHUB_AVATAR = 'SAVE_EDITHUB_AVATAR';
+export const SAVE_EDITHUB_BANNER = 'SAVE_EDITHUB_BANNER';
 
 export const changeEdithubUsername = (newValue) => ({
   type: CHANGE_EDITHUB_USERNAME,
@@ -49,6 +52,14 @@ export const saveEdithubChanges = () => ({
   type: SAVE_EDITHUB_CHANGES,
 });
 
+export const saveEdithubAvatar = () => ({
+  type: SAVE_EDITHUB_AVATAR,
+});
+
+export const saveEdithubBanner = () => ({
+  type: SAVE_EDITHUB_BANNER,
+});
+
 export const saveEdithubUserData = (userData) => ({
   type: SAVE_EDITHUB_USER_DATA,
   userData,
@@ -62,4 +73,8 @@ export const changeEdithubAvatar = (newValue) => ({
 export const changeEdithubBanner = (newValue) => ({
   type: CHANGE_EDITHUB_BANNER,
   newValue,
+});
+
+export const saveInitialUserState = () => ({
+  type: SAVE_INITIAL_USER_STATE,
 });

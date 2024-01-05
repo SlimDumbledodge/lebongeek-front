@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 
 import { Button } from 'semantic-ui-react';
