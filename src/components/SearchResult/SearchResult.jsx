@@ -3,26 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 import { switchScreenResponsive } from '../../actions/responsive';
-import { adsFilter } from '../../actions/ads';
 import { fetchSearch } from '../../actions/search';
 
 import './SearchResult.scss';
 
 import AddResult from './AddResult';
 import ProfilResult from './ProfilResult';
-import SearchFilter from './SearchFilter/SearchFilter';
 
 import baseUrl from '../../assets/baseUrl';
 
 const SearchResult = () => {
   const { input, page } = useParams();
 
-  const table = ['desktop', 'mobile'];
-
   const dispatch = useDispatch();
 
-  const isMobile = useSelector((state) => state.responsive.isMobile);
-  const isFilterOpen = useSelector((state) => state.ads.isAdsFilterOpen);
   const searchResultData = useSelector((state) => state.search.searchResult);
   const numberResultFromState = useSelector((state) => state.search.message);
   const status = useSelector((state) => state.search.status);
@@ -47,10 +41,19 @@ const SearchResult = () => {
   const userArray = Array.from(userSet);
   console.log(userArray); */
 
+  /* const filtredArray = searchResultData.filter((item) => item.user.id !== 2); */
+  const filtredUserAloneArray = searchResultData.filter(
+    (item) => item.id !== 2
+  );
+  console.log('searchResultData : ', searchResultData);
+  console.log('filtredUserAloneArray : ', filtredUserAloneArray);
+  /* console.log('tableauFiltre : ', filtredArray); */
+
   const userObject = {};
 
   if (searchResultData) {
     searchResultData.forEach((object) => {
+      // eslint-disable-next-line no-prototype-builtins
       if (object.hasOwnProperty('user') === true) {
         userObject[object.user.id] = object.user;
       }
@@ -105,20 +108,6 @@ const SearchResult = () => {
       )}
       <h2 className="categoryTitle">Nom de catégorie</h2>
       <div className="ads__container">
-        {isMobile ? '' : <SearchFilter type={table[0]} />}
-        {isMobile ? (
-          <button
-            type="button"
-            className="ads__filter__button"
-            onClick={() => {
-              dispatch(adsFilter());
-            }}
-          >
-            Filtrer
-          </button>
-        ) : (
-          ''
-        )}
         <div className="ads">
           {(!isSearchDataLoaded && 'Chargement du résultat...') ||
             (!searchResultData && 'Aucun résultat trouvé') ||
@@ -149,7 +138,6 @@ const SearchResult = () => {
             </Link>
           ))}
       </div>
-      {isFilterOpen && isMobile ? <SearchFilter type={table[1]} /> : ''}
     </div>
   );
 };

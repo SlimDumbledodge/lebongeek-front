@@ -62,7 +62,6 @@
       width: 300px;
       height: 300px;
       margin: 10px;
-      overflow: hidden;
       flex-shrink: 0;
 
       @media screen and (min-width: 375px) {
@@ -90,12 +89,11 @@
       }
 
       &__title{
-        background-color: black;
         margin-top: 10px;
+        background: #e6e6e6;
         margin-bottom: 20px;
         padding: 10px;
         border-radius: 5px;
-        overflow: hidden;
         color: black;
       }
 
