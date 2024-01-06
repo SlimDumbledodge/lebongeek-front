@@ -18,11 +18,17 @@ const Inventory = () => {
     return <div>Chargement...</div>;
   }
 
+  const inventory = parsedUser.product.slice(0, 5);
+
   return isUserLogged ? (
     <section className="home__inventory">
       <h2 className="home__inventory__title">INVENTAIRE</h2>
+      <Link to="/hub" className="home__show__inventory">
+        Voir l'inventaire
+        <FontAwesomeIcon className="wrapper__icons" icon={faAnglesRight} />
+      </Link>
       <div className="home__grid__wrapper">
-        {parsedUser.product.map((currentInventoryItem) => (
+        {inventory.map((currentInventoryItem) => (
           <div key={currentInventoryItem.id}>
             <img
               src={`${baseUrl}/images/product/${currentInventoryItem.picture}`}
@@ -31,11 +37,6 @@ const Inventory = () => {
             />
           </div>
         ))}
-
-        <Link to="/hub">
-          Voir l'inventaire
-          <FontAwesomeIcon className="wrapper__icons" icon={faAnglesRight} />
-        </Link>
       </div>
     </section>
   ) : null;

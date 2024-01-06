@@ -16,7 +16,7 @@ const FooterDesktop = () => {
         <Link to="/faq">
           <div className="footer__item__wrapper">
             <FontAwesomeIcon
-              className="nav__icons"
+              className="nav__icons__footer"
               icon={faClipboardQuestion}
             />
             F.A.Q.
@@ -25,14 +25,17 @@ const FooterDesktop = () => {
 
         <Link to="/contact">
           <div className="footer__item__wrapper">
-            <FontAwesomeIcon className="nav__icons" icon={faEnvelope} />
+            <FontAwesomeIcon className="nav__icons__footer" icon={faEnvelope} />
             Contact
           </div>
         </Link>
 
         <Link to="/mentions-legales">
           <div className="footer__item__wrapper">
-            <FontAwesomeIcon className="nav__icons" icon={faScaleBalanced} />
+            <FontAwesomeIcon
+              className="nav__icons__footer"
+              icon={faScaleBalanced}
+            />
             <span>Mentions</span> <span>légales</span>
           </div>
         </Link>

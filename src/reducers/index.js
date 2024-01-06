@@ -17,6 +17,7 @@ import transformProductInAdReducer from './transformProductInAd';
 import searchReducer from './search';
 import editProductReducer from './editProduct';
 import contactReducer from './contact';
+import popupMessagesReducer from './popupMessages';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   search: searchReducer,
   editProduct: editProductReducer,
   contact: contactReducer,
+  popupMessages: popupMessagesReducer,
 });
 
 export default rootReducer;

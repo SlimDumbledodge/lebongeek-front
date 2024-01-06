@@ -4,6 +4,10 @@ import { ADD_PRODUCT_SEND_REQUEST } from '../actions/addProduct';
 import { setCookieUser } from '../actions/login';
 
 import baseUrl from '../assets/baseUrl';
+import {
+  openFailedMessage,
+  openSuccessFullMessage,
+} from '../actions/popupMessages';
 
 const addProductMiddleware = (store) => (next) => (action) => {
   const formData = store.getState().addProduct.productPhotoValue;
@@ -27,6 +31,7 @@ const addProductMiddleware = (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response);
+          store.dispatch(openSuccessFullMessage());
           const productIdFromBack = response.data.productId;
           axios
             .post(
@@ -63,6 +68,7 @@ const addProductMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+          store.dispatch(openFailedMessage());
         });
       break;
     default:

@@ -3,8 +3,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { DELETE_PRODUCT } from '../actions/deleteProduct';
 import { setCookieUser } from '../actions/login';
-
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
 
 const deleteProductMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

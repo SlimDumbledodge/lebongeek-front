@@ -3,6 +3,10 @@ import Cookies from 'js-cookie';
 import { SEND_ADD_AD_FROM_HOME } from '../actions/addAdFromHome';
 import baseUrl from '../assets/baseUrl';
 import { setCookieUser } from '../actions/login';
+import {
+  openFailedMessage,
+  openSuccessFullMessage,
+} from '../actions/popupMessages';
 
 const addAdFromHomeMiddleware = (store) => (next) => (action) => {
   const formData = store.getState().addAdFromHome.addAdFromHomeProductPhoto;
@@ -83,6 +87,7 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
                     .then((fourthResponse) => {
                       console.log(fourthResponse);
                       store.dispatch(setCookieUser(fourthResponse.data));
+                      store.dispatch(openSuccessFullMessage());
                     })
                     .catch((error) => {
                       console.log(error);
@@ -98,6 +103,7 @@ const addAdFromHomeMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+          store.dispatch(openFailedMessage());
         });
       break;
     default:

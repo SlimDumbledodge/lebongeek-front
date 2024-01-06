@@ -1,4 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import { Button, Form, Input, TextArea } from 'semantic-ui-react';
 import './AddProduct.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +13,10 @@ import {
   changeAddProductTitle,
   changeAddProductYear,
 } from '../../actions/addProduct';
+import {
+  closeFailedMessage,
+  closeSuccessFullMessage,
+} from '../../actions/popupMessages';
 
 const AddProduct = () => {
   const dispatch = useDispatch();
@@ -32,8 +38,42 @@ const AddProduct = () => {
   const addAdCategoryValue = useSelector(
     (state) => state.addProduct.productCategoryValue
   );
+
+  const isSuccessfullMessageOpen = useSelector(
+    (state) => state.popupMessages.isSuccessfullMessageOpen
+  );
+  const isFailedMessageOpen = useSelector(
+    (state) => state.popupMessages.isFailedMessageOpen
+  );
+
   return (
     <div className="add__product__container">
+      {isSuccessfullMessageOpen && (
+        <Stack className="register__popup__container">
+          <Alert
+            id="register__popup__message__success"
+            severity="success"
+            onClose={() => {
+              dispatch(closeSuccessFullMessage());
+            }}
+          >
+            Produit créer avec succès !
+          </Alert>
+        </Stack>
+      )}
+      {isFailedMessageOpen && (
+        <Stack className="register__popup__container">
+          <Alert
+            id="register__popup__message__fail"
+            severity="error"
+            onClose={() => {
+              dispatch(closeFailedMessage());
+            }}
+          >
+            Erreur sur la création du produit
+          </Alert>
+        </Stack>
+      )}
       <h2 className="add__product__title__section">
         Ajouter un produit à l'inventaire
       </h2>

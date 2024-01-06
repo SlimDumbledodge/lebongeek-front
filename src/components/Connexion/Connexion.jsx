@@ -110,7 +110,7 @@ const Connexion = () => {
             <p>Envie de nous rejoindre ?</p>
             <Link
               className="connexion__register__link"
-              to="cree_un_compte"
+              to="/cree_un_compte"
               onClick={() => {
                 dispatch(closeRegisterSuccessfullyPopup());
               }}
