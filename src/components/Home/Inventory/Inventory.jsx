@@ -14,11 +14,14 @@ const Inventory = () => {
   const parsedUser = currentUser ? JSON.parse(currentUser) : null;
   const isDataLoaded = useSelector((state) => state.login.isDataLoaded);
 
+  let inventory = [];
   if (isUserLogged && !isDataLoaded && !currentUser) {
     return <div>Chargement...</div>;
   }
 
-  const inventory = parsedUser.product.slice(0, 5);
+  if (isUserLogged) {
+    inventory = parsedUser.product.slice(0, 5);
+  }
 
   return isUserLogged ? (
     <section className="home__inventory">

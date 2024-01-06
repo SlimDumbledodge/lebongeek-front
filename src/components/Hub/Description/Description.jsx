@@ -14,9 +14,6 @@ const Description = ({ username, avatar, description }) => {
       <div className="hub__description__text">
         {description || 'Modifier votre profil pour ajouter une description'}
       </div>
-      <div className="modify_profile">
-        <FontAwesomeIcon icon={faPenToSquare} />
-      </div>
     </section>
   );
 };

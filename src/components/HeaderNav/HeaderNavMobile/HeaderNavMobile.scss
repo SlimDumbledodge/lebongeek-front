@@ -1,5 +1,9 @@
 @use '../../../styles/variables' as var;
 
+.nav__icons {
+  color: white;
+}
+
 @media screen and (min-width: 412px) {
   .nav__icons {
     font-size: 1.3rem;
@@ -13,7 +17,6 @@
 }
 
 .header__mobile__icons {
-  color: var.$secondColor;
   background-color: var.$mainColor;
 }
 
