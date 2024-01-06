@@ -42,3 +42,26 @@
     }
   }
 }
+
+@media screen and (max-width: 1440px) {
+  .home__grid__wrapper {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media screen and (max-width: 1168px) {
+  .home__grid__wrapper {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .home__grid__wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .home__grid__wrapper {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}

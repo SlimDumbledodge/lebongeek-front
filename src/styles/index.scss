@@ -11,15 +11,6 @@ code {
     monospace;
 }
 
-.nav__icons {
-  cursor: pointer;
-  color: var.$secondColor;
-
-  &:hover {
-    color: black;
-  }
-}
-
 button,
 input {
   border: none;
