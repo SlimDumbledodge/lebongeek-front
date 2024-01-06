@@ -38,7 +38,7 @@ const Ads = () => {
 
   if (isCookieFilled) {
     tableToUse = adsCategory.filter(
-      (item) => item.ad.user.id !== parsedUser.id
+      (item) => item.ad && item.ad.user.id !== parsedUser.id
     );
   }
   if (isCookieFilled !== true) {
