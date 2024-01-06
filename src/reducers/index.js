@@ -18,6 +18,7 @@ import searchReducer from './search';
 import editProductReducer from './editProduct';
 import contactReducer from './contact';
 import popupMessagesReducer from './popupMessages';
+import hubReducer from './hub';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   editProduct: editProductReducer,
   contact: contactReducer,
   popupMessages: popupMessagesReducer,
+  hub: hubReducer,
 });
 
 export default rootReducer;

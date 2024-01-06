@@ -15,7 +15,7 @@ const searchReducer = (state = initialState, action = {}) => {
         searchResult: action.data,
         message: action.message,
         status: action.status,
-        isSearchDataLoaded: !state.isSearchDataLoaded,
+        isSearchDataLoaded: true,
       };
 
     default:

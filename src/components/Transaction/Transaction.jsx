@@ -57,7 +57,7 @@ const Transaction = () => {
                 {ad.title}
               </p>
               <p className="transaction__product__information__price">
-                {(ad?.description && ad.description.substr(1, 75)) || ''}
+                {(ad?.description && ad.description.substr(0, 75)) || ''}
               </p>
               <p className="transaction__product__information__price">
                 {ad.price} €
@@ -75,50 +75,54 @@ const Transaction = () => {
               </p>
             </div>
           </div>
-          <form className="transaction__form">
-            <TransactionAddress />
-            <button
-              type="button"
-              className="transaction__validation__button"
-              onClick={() => {
+          <form
+            className="transaction__form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              dispatch(buy());
+              dispatch(fetchTransaction(id));
+              setTimeout(() => {
+                navigate('/');
                 dispatch(buy());
-                dispatch(fetchTransaction(id));
-                setTimeout(() => {
-                  navigate('/');
-                  dispatch(buy());
-                }, 5000);
-              }}
-            >
+              }, 5000);
+            }}
+          >
+            <TransactionAddress />
+            <div className="transaction__terms__container">
+              <input
+                className="transaction__terms__input"
+                type="checkbox"
+                required
+              />
+              <p className="transaction__terms__text">
+                J'accepte les{' '}
+                <span className="transaction__terms__span">
+                  conditions générales de vente
+                </span>
+              </p>
+            </div>
+            <div className="transaction__footer__container">
+              <div className="transaction__footer__information">
+                <p className="transaction__footer__element">Produits</p>
+                <p className="transaction__footer__element">
+                  {counterValue * ad.price} €
+                </p>
+              </div>
+              <div className="transaction__footer__information">
+                <p className="transaction__footer__element">Livraison</p>
+                <p className="transaction__footer__element">{livraison} €</p>
+              </div>
+            </div>
+            <div className="transaction__total__container">
+              <p className="transaction__total_element">Total</p>
+              <p className="transaction__total_element">
+                {counterValue * ad.price + livraison} €
+              </p>
+            </div>
+            <button type="submit" className="transaction__validation__button">
               Valider ma commande
             </button>
           </form>
-          <div className="transaction__terms__container">
-            <input className="transaction__terms__input" type="checkbox" />
-            <p className="transaction__terms__text">
-              J'accepte les{' '}
-              <span className="transaction__terms__span">
-                conditions générales de vente
-              </span>
-            </p>
-          </div>
-          <div className="transaction__footer__container">
-            <div className="transaction__footer__information">
-              <p className="transaction__footer__element">Produits</p>
-              <p className="transaction__footer__element">
-                {counterValue * ad.price} €
-              </p>
-            </div>
-            <div className="transaction__footer__information">
-              <p className="transaction__footer__element">Livraison</p>
-              <p className="transaction__footer__element">{livraison} €</p>
-            </div>
-          </div>
-          <div className="transaction__total__container">
-            <p className="transaction__total_element">Total</p>
-            <p className="transaction__total_element">
-              {counterValue * ad.price + livraison} €
-            </p>
-          </div>
         </>
       )}
       {isTransactionDone && (

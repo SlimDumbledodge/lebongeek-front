@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchCategories } from '../../actions/category';
+import { getUser } from '../../actions/hub';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
 import Home from '../Home/Home';
@@ -44,6 +45,12 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (isUserLogged) {
+      dispatch(getUser());
+    }
+  });
+
   if (!isCategoriesLoaded) {
     return <div>Chargement...</div>;
   }
@@ -61,13 +68,13 @@ function App() {
             <Route path="/transaction/:id" element={<Transaction />} />
             <Route path="/modifier-mon-profil" element={<EditHub />} />
             <Route path="/ajouter-un-produit" element={<AddProduct />} />
-            <Route path="/products/:id" element={<ProductPage />} />
+            <Route path="/produits/:id" element={<ProductPage />} />
             <Route
               path="/vendre-mon-produit/:id"
               element={<TransformProductInAd />}
             />
             <Route path="/modifier-mon-produit/:id" element={<EditProduct />} />
-            <Route path="cree_un_compte" element={<Home />} />
+            <Route path="/cree_un_compte" element={<Navigate to="/" />} />
             <Route path="/contact" element={<Contact />} />
           </>
         ) : (
@@ -91,7 +98,7 @@ function App() {
               element={<Navigate to="/connexion" />}
             />
             <Route
-              path="/products/:id"
+              path="/produits/:id"
               element={<Navigate to="/connexion" />}
             />
             <Route
@@ -117,7 +124,6 @@ function App() {
 
         <Route path="/hub/:id" element={<ForeignHub />} />
 
-        <Route path="/connexion" element={<Connexion />} />
         <Route path="/categories" element={<Categories />} />
         <Route
           path="/derniere-ventes"

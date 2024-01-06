@@ -9,7 +9,7 @@ import {
   setCookie,
   setCookieUser,
 } from '../actions/login';
-import { saveEdithubUserData } from '../actions/edithub';
+/* import { saveEdithubUserData } from '../actions/edithub'; */
 
 import baseUrl from '../assets/baseUrl';
 
@@ -36,7 +36,7 @@ const loginMiddleware = (store) => (next) => (action) => {
             .then((secondResponse) => {
               console.log(secondResponse);
               store.dispatch(setCookieUser(secondResponse.data));
-              store.dispatch(saveEdithubUserData(secondResponse.data));
+              /* store.dispatch(saveEdithubUserData(secondResponse.data)); */
             })
             .catch((error) => {
               console.log(error);

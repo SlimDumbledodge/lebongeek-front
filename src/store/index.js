@@ -18,6 +18,7 @@ import editProductMiddleware from '../middlewares/editProductMiddleware';
 import transactionMiddleware from '../middlewares/transactionMiddleware';
 import deleteProductMiddleware from '../middlewares/deleteProductMiddleware';
 import contactMiddleware from '../middlewares/contactMiddleware';
+import hubMiddleware from '../middlewares/hubMiddleware';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -35,8 +36,8 @@ const enhancer = composeWithDevTools(
     editProductMiddleware,
     transactionMiddleware,
     deleteProductMiddleware,
-    transactionMiddleware,
-    contactMiddleware
+    contactMiddleware,
+    hubMiddleware
   )
 );
 

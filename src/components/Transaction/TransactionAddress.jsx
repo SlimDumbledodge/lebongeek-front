@@ -7,7 +7,7 @@ const TransactionAddress = () => {
         <label className="transaction__label" htmlFor="countryLabel">
           Pays
         </label>
-        <select name="countrySelect" className="transaction__select">
+        <select name="countrySelect" className="transaction__select" required>
           <option className="transaction__choice" value="">
             Choisissez...
           </option>
@@ -21,7 +21,7 @@ const TransactionAddress = () => {
         <label className="transaction__label" htmlFor="streetLabel">
           Voie
         </label>
-        <select name="streetSelect" className="transaction__select">
+        <select name="streetSelect" className="transaction__select" required>
           <option className="transaction__choice" value="">
             Choisissez...
           </option>
@@ -35,14 +35,24 @@ const TransactionAddress = () => {
         <label className="transaction__label" htmlFor="postalCodeLabel">
           Code postal
         </label>
-        <input className="transaction__input" type="text" placeholder="34000" />
+        <input
+          className="transaction__input"
+          type="text"
+          placeholder="34000"
+          required
+        />
       </div>
 
       <div className="transaction__address__input__container">
         <label className="transaction__label" htmlFor="streetNumberLabel">
           N° de voie
         </label>
-        <input className="transaction__input" type="text" placeholder="85" />
+        <input
+          className="transaction__input"
+          type="text"
+          placeholder="85"
+          required
+        />
       </div>
 
       <div className="transaction__address__input__container">
@@ -53,6 +63,7 @@ const TransactionAddress = () => {
           className="transaction__input"
           type="text"
           placeholder="Saint-Exupéry"
+          required
         />
       </div>
 
@@ -64,6 +75,7 @@ const TransactionAddress = () => {
           className="transaction__input"
           type="text"
           placeholder="Montpellier"
+          required
         />
       </div>
     </div>

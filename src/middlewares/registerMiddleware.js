@@ -16,7 +16,6 @@ const registerMiddleware = (store) => (next) => (action) => {
           username: store.getState().register.RegisterUsername,
           firstname: store.getState().register.RegisterFirstname,
           lastname: store.getState().register.RegisterLastname,
-          avatar: 'http://placehold.it/300x300',
           email: store.getState().register.RegisterEmail,
           phone_number: store.getState().register.RegisterPhone,
           password: store.getState().register.RegisterPassword,

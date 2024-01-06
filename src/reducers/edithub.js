@@ -10,6 +10,7 @@ import {
   SAVE_EDITHUB_USER_DATA,
   CHANGE_EDITHUB_AVATAR,
   CHANGE_EDITHUB_BANNER,
+  SAVE_INITIAL_USER_STATE,
 } from '../actions/edithub';
 
 const currentUser = Cookies.get('user');
@@ -17,17 +18,17 @@ const parsedUser = currentUser ? JSON.parse(currentUser) : '';
 console.log(parsedUser);
 
 const initialState = {
-  id: parsedUser.id,
-  username: parsedUser.username,
-  email: parsedUser.email,
+  id: '',
+  username: '',
+  email: '',
   password: '',
-  phoneNumber: parsedUser.phone_number,
-  firstname: parsedUser.firstname,
-  lastname: parsedUser.lastname,
-  description: parsedUser.description,
-  products: parsedUser.product,
-  avatar: parsedUser.avatar,
-  banner: parsedUser.banner,
+  phoneNumber: '',
+  firstname: '',
+  lastname: '',
+  description: '',
+  product: '',
+  avatar: '',
+  banner: '',
 };
 
 const edithubReducer = (state = initialState, action = {}) => {
@@ -79,6 +80,9 @@ const edithubReducer = (state = initialState, action = {}) => {
         firstname: action.userData.firstname,
         lastname: action.userData.lastname,
         description: action.userData.description,
+        avatar: action.userData.avatar,
+        banner: action.userData.banner,
+        product: action.userData.product,
       };
 
     case CHANGE_EDITHUB_AVATAR: {
