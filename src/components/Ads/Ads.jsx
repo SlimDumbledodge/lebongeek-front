@@ -42,7 +42,7 @@ const Ads = () => {
     );
   }
   if (isCookieFilled !== true) {
-    tableToUse = adsCategory;
+    tableToUse = adsCategory.filter((item) => item.ad);
   }
 
   const handleResize = () => {
@@ -77,21 +77,19 @@ const Ads = () => {
           ''
         )}
         <div className="ads">
-          {tableToUse.map((product) => {
-            if (product.ad === null) {
-              return null;
-            }
-
-            return (
-              <Link to={`/${slug}/${product.ad.id}`} key={product.ad.id}>
-                <Ad
-                  title={product.ad.title}
-                  price={product.ad.price}
-                  image={`${baseUrl}/images/product/${product.picture}`}
-                />
-              </Link>
-            );
-          })}
+          {tableToUse.length === 0
+            ? 'Aucune annonce'
+            : tableToUse.map((product) => {
+                return (
+                  <Link to={`/${slug}/${product.ad.id}`} key={product.ad.id}>
+                    <Ad
+                      title={product.ad.title}
+                      price={product.ad.price}
+                      image={`${baseUrl}/images/product/${product.picture}`}
+                    />
+                  </Link>
+                );
+              })}
         </div>
       </div>
       {isFilterOpen && isMobile ? <AdsFilter type={table[1]} /> : ''}

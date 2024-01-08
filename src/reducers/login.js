@@ -17,7 +17,7 @@ const initialState = {
   LoginPassword: '',
   isSuccessfullyLoginPopupOpen: false,
   isFailedLoginPopupOpen: false,
-  token: Cookies.get('token'),
+  token: '',
   isCookieFilled: document.cookie !== '',
   isDataLoaded: false,
 };

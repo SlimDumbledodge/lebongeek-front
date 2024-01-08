@@ -10,7 +10,7 @@ import {
   SAVE_EDITHUB_USER_DATA,
   CHANGE_EDITHUB_AVATAR,
   CHANGE_EDITHUB_BANNER,
-  SAVE_INITIAL_USER_STATE,
+  PSEUDO_CHANGED,
 } from '../actions/edithub';
 
 const currentUser = Cookies.get('user');
@@ -29,6 +29,7 @@ const initialState = {
   product: '',
   avatar: '',
   banner: '',
+  isUsernameChanged: false,
 };
 
 const edithubReducer = (state = initialState, action = {}) => {
@@ -96,6 +97,13 @@ const edithubReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         banner: action.newValue,
+      };
+    }
+
+    case PSEUDO_CHANGED: {
+      return {
+        ...state,
+        isUsernameChanged: true,
       };
     }
 
