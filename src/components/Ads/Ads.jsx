@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
@@ -24,9 +26,24 @@ const Ads = () => {
   const adsCategory = useSelector((state) => state.ads.listAdsCategories);
   const categoriesList = useSelector((state) => state.category.listCategories);
 
+  const isCookieFilled = useSelector((state) => state.login.isCookieFilled);
+  const currentUser = Cookies.get('user');
+  const parsedUser = currentUser ? JSON.parse(currentUser) : '';
+
   const currentCategory = categoriesList.find(
     (category) => category.slug === slug
   );
+
+  let tableToUse = [];
+
+  if (isCookieFilled) {
+    tableToUse = adsCategory.filter(
+      (item) => item.ad && item.ad.user.id !== parsedUser.id
+    );
+  }
+  if (isCookieFilled !== true) {
+    tableToUse = adsCategory.filter((item) => item.ad);
+  }
 
   const handleResize = () => {
     dispatch(switchScreenResponsive(window.innerWidth < 1024));
@@ -60,21 +77,19 @@ const Ads = () => {
           ''
         )}
         <div className="ads">
-          {adsCategory.map((product) => {
-            if (product.ad === null) {
-              return null;
-            }
-
-            return (
-              <Link to={`/${slug}/${product.ad.id}`} key={product.ad.id}>
-                <Ad
-                  title={product.ad.title}
-                  price={product.ad.price}
-                  image={`${baseUrl}/images/product/${product.picture}`}
-                />
-              </Link>
-            );
-          })}
+          {tableToUse.length === 0
+            ? 'Aucune annonce'
+            : tableToUse.map((product) => {
+                return (
+                  <Link to={`/${slug}/${product.ad.id}`} key={product.ad.id}>
+                    <Ad
+                      title={product.ad.title}
+                      price={product.ad.price}
+                      image={`${baseUrl}/images/product/${product.picture}`}
+                    />
+                  </Link>
+                );
+              })}
         </div>
       </div>
       {isFilterOpen && isMobile ? <AdsFilter type={table[1]} /> : ''}
