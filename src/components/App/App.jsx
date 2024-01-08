@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchCategories } from '../../actions/category';
@@ -41,6 +41,9 @@ function App() {
   );
   const isUserLogged = useSelector((state) => state.login.isCookieFilled);
 
+  const scrollRef = useRef(null);
+  const location = useLocation();
+
   useEffect(() => {
     dispatch(fetchCategories());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,12 +55,18 @@ function App() {
     }
   });
 
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = 0;
+    }
+  }, [location.pathname]);
+
   if (!isCategoriesLoaded) {
     return <Loader />;
   }
 
   return (
-    <div className="App">
+    <div className="App" ref={scrollRef}>
       <HeaderNav />
       <Routes>
         <Route path="/" element={<Home />} />
