@@ -32,6 +32,7 @@ import EditProduct from '../EditProduct/EditProduct';
 import Faq from '../Faq/Faq';
 import Legals from '../Legals/Legals';
 import Contact from '../Contact/Contact';
+import Loader from '../Loader/Loader';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ function App() {
   });
 
   if (!isCategoriesLoaded) {
-    return <div>Chargement...</div>;
+    return <Loader />;
   }
 
   return (
@@ -75,7 +76,6 @@ function App() {
             />
             <Route path="/modifier-mon-produit/:id" element={<EditProduct />} />
             <Route path="/cree_un_compte" element={<Navigate to="/" />} />
-            <Route path="/contact" element={<Contact />} />
           </>
         ) : (
           <>
@@ -88,7 +88,6 @@ function App() {
               path="/transaction/:id"
               element={<Navigate to="/connexion" />}
             />
-            <Route path="/contact" element={<Navigate to="/connexion" />} />
             <Route
               path="/modifier-mon-profil"
               element={<Navigate to="/connexion" />}
@@ -117,6 +116,7 @@ function App() {
         <Route path="/connexion" element={<Connexion />} />
         <Route path="cree_un_compte" element={<Register />} />
         <Route path="/annonces/:slug" element={<Ads />} />
+        <Route path="/contact" element={<Contact />} />
 
         <Route path="/recherche/:input/:page" element={<SearchResult />} />
 

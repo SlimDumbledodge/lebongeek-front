@@ -42,6 +42,7 @@ const EditHub = () => {
         }}
       >
         <Form.Field
+          required="require"
           control={Input}
           label="Pseudo"
           value={usernameValue}
@@ -51,30 +52,10 @@ const EditHub = () => {
           type="text"
           placeholder="LilDinguo"
         />
-        {/* <label htmlFor="file">Avatar :</label>
-        <input
-          type="file"
-          className="input__file"
-          id="input__file__edit__hub"
-        />
-          onChange={(e) => {
-            const selectedFile = e.target.files[0];
-            const formData = new FormData();
-            const fileData = {
-              name: selectedFile.name,
-              size: selectedFile.size,
-              type: selectedFile.type,
-              lastModified: selectedFile.lastModified,
-            };
-            formData.append('avatar', fileData);
-            console.log(fileData);
-            // dispatch(changeUploadedImage(fileData));
 
-            // console.log(dispatch(changeFormData(formData)));
-          }}
-        /> */}
         <Form.Group widths="equal">
           <Form.Field
+            required="require"
             control={Input}
             label="Email"
             value={emailValue}
@@ -86,6 +67,7 @@ const EditHub = () => {
           />
           <Form.Field
             control={Input}
+            required="require"
             label="Téléphone"
             type="number"
             value={phoneNumberValue}
@@ -96,7 +78,9 @@ const EditHub = () => {
           />
           <Form.Field
             control={Input}
+            required="require"
             label="Mot de passe"
+            min="8"
             type="password"
             value={passwordValue}
             onChange={(event, data) => {
@@ -107,6 +91,7 @@ const EditHub = () => {
         </Form.Group>
         <Form.Group widths="equal">
           <Form.Field
+            required="require"
             control={Input}
             value={firstnameValue}
             onChange={(event, data) => {
@@ -117,6 +102,7 @@ const EditHub = () => {
           />
           <Form.Field
             control={Input}
+            required="require"
             value={lastnameValue}
             onChange={(event, data) => {
               dispatch(changeEdithubLastname(data.value));

@@ -6,7 +6,6 @@ import TextAreaAd from './TextAreaAd/TextAreaAd';
 import States from './States/States';
 import Categories from './Categories/Categories';
 import CancelPublishButtons from './CancelPublishButtons/CancelPublishButtons';
-import { uploadImageRequest } from '../../actions/uploadImage';
 import './AddAdFromHome.scss';
 import {
   changeAddAdFromHomeImage,
@@ -32,11 +31,6 @@ const AddAd = () => {
     (state) => state.addAdFromHome.addAdFromHomeProductSerialNumber
   );
 
-  // console.log('File selected:', event.target.files[0].name);
-  // console.log('Selected File:', event.target.files[0]);
-  // console.log('Content of FormData:', formData.get('image'));
-  // console.log('Contenu de FormData :', formData);
-
   return (
     <>
       <h2 className="add__ad__page__title">Déposer une annonce</h2>
@@ -47,11 +41,12 @@ const AddAd = () => {
           }}
         >
           <AdTitle />
-          <Form.Field>
-            <label htmlFor="upload-photo">Parcourir :</label>
+          <Form.Field required="require">
+            <label htmlFor="upload-photo">Photo : </label>
             <input
               type="file"
               id="upload-photo"
+              required
               className="add__ad__button__file"
               onChange={(event) => {
                 const file = event.target.files[0];
@@ -65,6 +60,7 @@ const AddAd = () => {
           <TextAreaAd />
           <Form.Group widths="equal">
             <Form.Input
+              required="require"
               type="number"
               label="Prix :"
               placeholder="30"
@@ -74,6 +70,7 @@ const AddAd = () => {
               }}
             />
             <Form.Input
+              required="require"
               label="Ville :"
               placeholder="Paris"
               value={addAdFromHomeLocationValue}

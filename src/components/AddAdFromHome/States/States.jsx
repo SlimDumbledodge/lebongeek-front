@@ -17,6 +17,7 @@ function States() {
   ];
   return (
     <Form.Field
+      required="require"
       control={Select}
       label="État :"
       placeholder="Neuf"

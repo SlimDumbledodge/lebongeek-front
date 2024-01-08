@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearCookie } from '../../../../actions/login';
 
 import baseUrl from '../../../../assets/baseUrl';
+import Loader from '../../../Loader/Loader';
 
 const DropdownHub = () => {
   const currentUser = Cookies.get('user');
@@ -23,7 +24,7 @@ const DropdownHub = () => {
   const isDataLoaded = useSelector((state) => state.login.isDataLoaded);
 
   if (isUserLogged && !isDataLoaded && !currentUser) {
-    return <div>Chargement...</div>;
+    return <Loader />;
   }
 
   return (

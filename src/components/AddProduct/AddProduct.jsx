@@ -84,6 +84,7 @@ const AddProduct = () => {
         }}
       >
         <Form.Field
+          required="require"
           control={Input}
           label="Nom du produit"
           type="text"
@@ -97,7 +98,9 @@ const AddProduct = () => {
           <Form.Field
             control={Input}
             label="Année de sortie :"
-            type="text"
+            type="number"
+            min="1900"
+            max="2024"
             placeholder="1988"
             value={productYearValue}
             onChange={(event, data) => {
@@ -115,6 +118,7 @@ const AddProduct = () => {
           />
         </Form.Group>
         <Form.Select
+          required="require"
           label="Catégorie :"
           placeholder="Figurine"
           options={categoriesOptions}
@@ -128,9 +132,10 @@ const AddProduct = () => {
           }}
         />
 
-        <Form.Field>
+        <Form.Field required="require">
           <label htmlFor="upload-photo">Parcourir :</label>
           <input
+            required
             type="file"
             id="upload-photo"
             className="add__product__piture__button"

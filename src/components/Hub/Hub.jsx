@@ -10,6 +10,7 @@ import Inventory from './Inventory/Inventory';
 import './Hub.scss';
 
 import baseUrl from '../../assets/baseUrl';
+import Loader from '../Loader/Loader';
 
 const Hub = () => {
   const currentUser = Cookies.get('user');
@@ -17,7 +18,7 @@ const Hub = () => {
   const isUserDataLoaded = useSelector((state) => state.hub.isUserDataLoaded);
 
   if (!isUserDataLoaded) {
-    return <div>Petit chargement...</div>;
+    return <Loader />;
   }
 
   return (
@@ -42,6 +43,9 @@ const Hub = () => {
       </div>
 
       <Inventory product={parsedUser.product} />
+      <div id="hub__delete__account__container">
+        <Button id="hub__delete__account">Supprimer mon profil</Button>
+      </div>
     </>
   );
 };

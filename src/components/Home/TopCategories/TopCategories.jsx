@@ -6,12 +6,13 @@ import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 
 import './TopCategories.scss';
+import Loader from '../../Loader/Loader';
 
 const TopCategories = () => {
   const categoriesList = useSelector((state) => state.category.listCategories);
 
   if (!categoriesList) {
-    return <div>Chargement...</div>;
+    return <Loader />;
   }
 
   return (

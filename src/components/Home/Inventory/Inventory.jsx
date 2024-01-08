@@ -32,13 +32,18 @@ const Inventory = () => {
       </Link>
       <div className="home__grid__wrapper">
         {inventory.map((currentInventoryItem) => (
-          <div key={currentInventoryItem.id}>
-            <img
-              src={`${baseUrl}/images/product/${currentInventoryItem.picture}`}
-              alt={currentInventoryItem.title}
-              className="home__inventory__item"
-            />
-          </div>
+          <Link
+            to={`/produits/${currentInventoryItem.id}`}
+            key={currentInventoryItem.id}
+          >
+            <div>
+              <img
+                src={`${baseUrl}/images/product/${currentInventoryItem.picture}`}
+                alt={currentInventoryItem.title}
+                className="home__inventory__item"
+              />
+            </div>
+          </Link>
         ))}
       </div>
     </section>

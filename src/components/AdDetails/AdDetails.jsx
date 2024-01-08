@@ -11,6 +11,7 @@ import baseUrl from '../../assets/baseUrl';
 import { fetchAd } from '../../actions/ads';
 
 import './AdDetails.scss';
+import Loader from '../Loader/Loader';
 
 const AdDetails = () => {
   const dispatch = useDispatch();
@@ -38,35 +39,46 @@ const AdDetails = () => {
   }, [id]);
 
   return !adLoaded && ad && user && currentState ? (
-      ad.products.map((product) => (
-        <div key={ad.id} className="ad__details__container">
-          <h2 className="ad__details__title">{product.title}</h2>
-          <Image src={`${baseUrl}/images/user/avatar/${user.avatar}`} size="mini" circular inline />
-          <span className="ad__details__pseudo">{user.username}</span>
-          <Button className="ad__details__button__profil" size="mini">
-            <Link to={`/hub/${user.id}`} className="profil_link">
-              Voir le profil
-            </Link>
-          </Button>
-          <img src={`${baseUrl}/images/product/${product.picture}`} alt="" className="ad__details__picture" />
-          <Label content={user.email} icon="mail" id="ad__details__mail" />
-          <Label content={user.phone_number} icon="phone" />
-          <section>
-            <p className="ad__details__description">
-              {ad.description === null
-                ? 'Description non disponible'
-                : ad.description}
-            </p>
-          </section>
-          <Label id="ad__details__state__tag">{currentState.text}</Label>
-          <Link to={`/transaction/${ad.id}`}>
-            <Button size="mini" className="ad__details__button__buy">
-              Acheter
-            </Button>
+    ad.products.map((product) => (
+      <div key={ad.id} className="ad__details__container">
+        <h2 className="ad__details__title">{product.title}</h2>
+        <Image
+          src={`${baseUrl}/images/user/avatar/${user.avatar}`}
+          size="mini"
+          circular
+          inline
+        />
+        <span className="ad__details__pseudo">{user.username}</span>
+        <Button className="ad__details__button__profil" size="mini">
+          <Link to={`/hub/${user.id}`} className="profil_link">
+            Voir le profil
           </Link>
-        </div>
-      ))
-    ) : 'Chargement...';
+        </Button>
+        <img
+          src={`${baseUrl}/images/product/${product.picture}`}
+          alt=""
+          className="ad__details__picture"
+        />
+        <Label content={user.email} icon="mail" id="ad__details__mail" />
+        <Label content={user.phone_number} icon="phone" />
+        <section>
+          <p className="ad__details__description">
+            {ad.description === null
+              ? 'Description non disponible'
+              : ad.description}
+          </p>
+        </section>
+        <Label id="ad__details__state__tag">{currentState.text}</Label>
+        <Link to={`/transaction/${ad.id}`}>
+          <Button size="mini" className="ad__details__button__buy">
+            Acheter
+          </Button>
+        </Link>
+      </div>
+    ))
+  ) : (
+    <Loader />
+  );
 };
 
 export default AdDetails;

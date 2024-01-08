@@ -15,12 +15,15 @@ const Inventory = ({ product }) => {
           product.map((currentProduct) => (
             <Link to={`/produits/${currentProduct.id}`} key={currentProduct.id}>
               <div>
-                <img
-                  src={`${baseUrl}/images/product/${currentProduct.picture}`}
-                  alt={currentProduct.title}
-                  className="hub__inventory__item"
-                />
-                {currentProduct.ad === null ? '' : <p>En vente</p>}
+                <div className="hub__item__container">
+                  <img
+                    src={`${baseUrl}/images/product/${currentProduct.picture}`}
+                    alt={currentProduct.title}
+                    className="hub__inventory__item"
+                  />
+                  {currentProduct.ad === null ? '' : <p>En vente</p>}
+                </div>
+
                 <p>{currentProduct.title}</p>
               </div>
             </Link>

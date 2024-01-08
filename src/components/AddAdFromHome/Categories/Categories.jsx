@@ -21,6 +21,7 @@ const Categories = () => {
 
   return (
     <Form.Field
+      required="require"
       control={Select}
       label="Catégorie :"
       placeholder="Figurine"

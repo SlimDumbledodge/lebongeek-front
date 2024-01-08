@@ -56,6 +56,7 @@ const TransformProductInAd = () => {
         }}
       >
         <Form.Field
+          required="require"
           control={Input}
           label="Titre de l'annonce"
           type="text"
@@ -68,6 +69,7 @@ const TransformProductInAd = () => {
 
         <Form.Group widths="equal">
           <Form.Field
+            required="require"
             control={Input}
             label="Ville :"
             type="text"
@@ -78,6 +80,7 @@ const TransformProductInAd = () => {
             }}
           />
           <Form.Field
+            required="require"
             control={Input}
             label="Prix :"
             type="number"
@@ -90,6 +93,7 @@ const TransformProductInAd = () => {
         </Form.Group>
 
         <Form.Field
+          required="require"
           control={Select}
           label="État :"
           placeholder="Neuf"

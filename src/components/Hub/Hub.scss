@@ -3,7 +3,6 @@
 .hub__wrapper__buttons {
   margin-top: 15px;
   margin: 0 auto;
-  
 }
 
 #hub__edit__hub {
@@ -13,4 +12,17 @@
 
 #hub__add__product {
   width: 100%;
+}
+
+#hub__delete__account__container {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  #hub__delete__account {
+    position: absolute;
+    right: 0;
+    // background-color: red;
+    color: white;
+    transition: all 0.2s;
+  }
 }

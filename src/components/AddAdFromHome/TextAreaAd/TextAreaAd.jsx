@@ -11,6 +11,7 @@ function TextAreaAd() {
   return (
     <Form.TextArea
       label="Description :"
+      required="require"
       placeholder="Entrez une description du produit..."
       value={addAdDescription}
       onChange={(event) => {

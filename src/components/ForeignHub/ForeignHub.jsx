@@ -13,6 +13,7 @@ import Description from './Description/Description';
 import Inventory from './Inventory/Inventory';
 
 import './ForeignHub.scss';
+import Loader from '../Loader/Loader';
 
 const ForeignHub = () => {
   const { id } = useParams();
@@ -30,7 +31,7 @@ const ForeignHub = () => {
   }, [id]);
 
   if (!isForeignUserLoaded) {
-    return <div>Petit chargement...</div>;
+    return <Loader />;
   }
 
   return (

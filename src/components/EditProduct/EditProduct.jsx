@@ -65,6 +65,7 @@ const EditProduct = () => {
       >
         <Form.Field
           control={Input}
+          required="require"
           label="Nom du produit"
           type="text"
           placeholder="Figurine SpiderMan - 1988"
@@ -75,6 +76,8 @@ const EditProduct = () => {
         />
         <Form.Group widths="equal">
           <Form.Field
+            min="1900"
+            max="2024"
             control={Input}
             label="Année de sortie :"
             type="text"
@@ -95,6 +98,7 @@ const EditProduct = () => {
           />
         </Form.Group>
         <Form.Select
+          required="require"
           label="Catégorie :"
           placeholder="Figurine"
           options={categoriesOptions}
@@ -109,9 +113,10 @@ const EditProduct = () => {
           }}
         />
 
-        <Form.Field>
+        <Form.Field required="require">
           <label htmlFor="upload-photo">Parcourir :</label>
           <input
+            required
             type="file"
             id="upload-photo"
             className="add__ad__button__file"

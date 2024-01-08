@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useDispatch, useSelector } from 'react-redux';
 import './AdTitle.scss';
-import { Form } from 'semantic-ui-react';
+import { FormField, Input } from 'semantic-ui-react';
 import { changeAddAdFromHomeProductTitle } from '../../../actions/addAdFromHome';
 
 function AdTitle() {
@@ -11,17 +11,17 @@ function AdTitle() {
   );
 
   return (
-    <Form.Field>
-      <label htmlFor="ad-title">Titre de l'annonce :</label>
-      <input
-        type="text"
-        placeholder="Figurine SpiderMan"
-        value={addAdTitle}
-        onChange={(event) => {
-          dispatch(changeAddAdFromHomeProductTitle(event.target.value));
-        }}
-      />
-    </Form.Field>
+    <FormField
+      id="form-input-control-error-email"
+      required="require"
+      control={Input}
+      label="Titre de l'annonce"
+      placeholder="Figurine SpiderMan"
+      value={addAdTitle}
+      onChange={(event) => {
+        dispatch(changeAddAdFromHomeProductTitle(event.target.value));
+      }}
+    />
   );
 }
 
