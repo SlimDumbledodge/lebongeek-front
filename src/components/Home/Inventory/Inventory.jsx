@@ -37,11 +37,22 @@ const Inventory = () => {
             key={currentInventoryItem.id}
           >
             <div>
-              <img
-                src={`${baseUrl}/images/product/${currentInventoryItem.picture}`}
-                alt={currentInventoryItem.title}
-                className="home__inventory__item"
-              />
+              <div className="home__inventory__img__container">
+                <img
+                  src={`${baseUrl}/images/product/${currentInventoryItem.picture}`}
+                  alt={currentInventoryItem.title}
+                  className="home__inventory__item"
+                />
+                {currentInventoryItem.ad === null ? (
+                  ''
+                ) : (
+                  <>
+                    <p className="home__inventory__selltext">En vente</p>
+                    <div className="home__inventory__opacity" />
+                  </>
+                )}
+              </div>
+              <p>{currentInventoryItem.title}</p>
             </div>
           </Link>
         ))}

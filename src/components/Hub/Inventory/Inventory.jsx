@@ -10,31 +10,28 @@ const Inventory = ({ product }) => {
     <section className="hub__inventory">
       <h2 className="hub__inventory__title">INVENTAIRE</h2>
       <div className="hub__grid__wrapper">
-        {
-          /* {parsedUser.product && */
-          product.map((currentProduct) => (
-            <Link to={`/produits/${currentProduct.id}`} key={currentProduct.id}>
-              <div>
-                <div className="hub__inventory__img__container">
-                  <img
-                    src={`${baseUrl}/images/product/${currentProduct.picture}`}
-                    alt={currentProduct.title}
-                    className="hub__inventory__item"
-                  />
-                  {currentProduct.ad === null ? (
-                    ''
-                  ) : (
-                    <>
-                      <p className="hub__inventory__selltext">En vente</p>
-                      <div className="hub__inventory__opacity" />
-                    </>
-                  )}
-                </div>
-                <p>{currentProduct.title}</p>
+        {product.map((currentProduct) => (
+          <Link to={`/produits/${currentProduct.id}`} key={currentProduct.id}>
+            <div>
+              <div className="hub__inventory__img__container">
+                <img
+                  src={`${baseUrl}/images/product/${currentProduct.picture}`}
+                  alt={currentProduct.title}
+                  className="hub__inventory__item"
+                />
+                {currentProduct.ad === null ? (
+                  ''
+                ) : (
+                  <>
+                    <p className="hub__inventory__selltext">En vente</p>
+                    <div className="hub__inventory__opacity" />
+                  </>
+                )}
               </div>
-            </Link>
-          ))
-        }
+              <p>{currentProduct.title}</p>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   );

@@ -49,7 +49,7 @@ const AdDetails = () => {
           inline
         />
         <span className="ad__details__pseudo">{user.username}</span>
-        <Button className="ad__details__button__profil" size="mini">
+        <Button className="ad__details__button__profil" size="medium">
           <Link to={`/hub/${user.id}`} className="profil_link">
             Voir le profil
           </Link>
@@ -70,7 +70,7 @@ const AdDetails = () => {
         </section>
         <Label id="ad__details__state__tag">{currentState.text}</Label>
         <Link to={`/transaction/${ad.id}`}>
-          <Button size="mini" className="ad__details__button__buy">
+          <Button size="medium" className="ad__details__button__buy">
             Acheter
           </Button>
         </Link>
