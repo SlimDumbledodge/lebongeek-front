@@ -36,10 +36,11 @@ const ProductPage = () => {
           dispatch(deleteProduct(id));
         }}
       >
-        <img
+        <Image
           src={`${baseUrl}/images/user/avatar/${parsedUser.avatar}`}
-          alt=""
-          className="avatar"
+          size="mini"
+          circular
+          inline
         />
         <Button
           size="medium"
@@ -71,7 +72,7 @@ const ProductPage = () => {
             </Button>
           </Link>
         ) : (
-          <Link to={`/${currentProduct.category.name}/${currentProduct.ad.id}`}>
+          <Link to={`/${currentProduct.category.slug}/${currentProduct.ad.id}`}>
             <Button size="medium" className="ad__details__button__buy">
               Voir mon annonce
             </Button>
