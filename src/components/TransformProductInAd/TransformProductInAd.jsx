@@ -1,4 +1,6 @@
 import { Button, Form, Input, Select } from 'semantic-ui-react';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import { useParams } from 'react-router-dom';
 import './TransformProductInAd.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +12,7 @@ import {
   changeTransformProductInAdState,
   requestTransformProductInAd,
 } from '../../actions/transformProductInAd';
+import { closeSuccessFullMessage } from '../../actions/popupMessages';
 
 const TransformProductInAd = () => {
   const dispatch = useDispatch();
@@ -33,6 +36,10 @@ const TransformProductInAd = () => {
     (state) => state.transformProductInAd.transformProductInAdState
   );
 
+  const isSuccessfullMessageOpen = useSelector(
+    (state) => state.popupMessages.isSuccessfullMessageOpen
+  );
+
   const statesOptions = [
     { key: 1, text: 'Neuf', value: 1 },
     { key: 2, text: 'Très bon', value: 2 },
@@ -45,6 +52,19 @@ const TransformProductInAd = () => {
 
   return (
     <div className="transform__product__ad__container">
+      {isSuccessfullMessageOpen && (
+        <Stack className="register__popup__container">
+          <Alert
+            id="register__popup__message__success"
+            severity="success"
+            onClose={() => {
+              dispatch(closeSuccessFullMessage());
+            }}
+          >
+            Annonce créer avec succès !
+          </Alert>
+        </Stack>
+      )}
       <h2 className="transform__product__ad__title__section">
         Vendre mon produit
       </h2>

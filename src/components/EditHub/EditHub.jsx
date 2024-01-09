@@ -63,6 +63,7 @@ const EditHub = () => {
           }}
         >
           <Form.Field
+            required="require"
             control={Input}
             label="Pseudo"
             value={usernameValue}
@@ -72,30 +73,10 @@ const EditHub = () => {
             type="text"
             placeholder="LilDinguo"
           />
-          {/* <label htmlFor="file">Avatar :</label>
-          <input
-            type="file"
-            className="input__file"
-            id="input__file__edit__hub"
-          />
-            onChange={(e) => {
-              const selectedFile = e.target.files[0];
-              const formData = new FormData();
-              const fileData = {
-                name: selectedFile.name,
-                size: selectedFile.size,
-                type: selectedFile.type,
-                lastModified: selectedFile.lastModified,
-              };
-              formData.append('avatar', fileData);
-              console.log(fileData);
-              // dispatch(changeUploadedImage(fileData));
 
-              // console.log(dispatch(changeFormData(formData)));
-            }}
-          /> */}
           <Form.Group widths="equal">
             <Form.Field
+              required="require"
               control={Input}
               label="Email"
               value={emailValue}
@@ -106,6 +87,7 @@ const EditHub = () => {
               placeholder="joe@schmoe.com"
             />
             <Form.Field
+              required="require"
               control={Input}
               label="Téléphone"
               type="number"
@@ -128,6 +110,7 @@ const EditHub = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Field
+              required="require"
               control={Input}
               value={firstnameValue}
               onChange={(event, data) => {
@@ -137,6 +120,7 @@ const EditHub = () => {
               placeholder="Jean"
             />
             <Form.Field
+              required="require"
               control={Input}
               value={lastnameValue}
               onChange={(event, data) => {
@@ -207,9 +191,19 @@ const EditHub = () => {
               }}
             />
           </Form.Field>
-          <Form.Button className="edithub__confirm__button" type="submit">
-            Confirmer
-          </Form.Button>
+          <Form.Group className="add__ad__wrapper__cancel__publish__buttons">
+            <Form.Button
+              id="add__ad__cancel__button"
+              onClick={() => {
+                navigate('/hub');
+              }}
+            >
+              Annuler
+            </Form.Button>
+            <Form.Button className="edithub__confirm__button" type="submit">
+              Confirmer
+            </Form.Button>
+          </Form.Group>
         </Form>
       </div>
       {isUsernameChanged && (

@@ -19,10 +19,15 @@
   width: 80%;
   margin: 0 auto;
   #hub__delete__account {
+    padding: 15px 25px;
+    font-weight: bold;
+    border-radius: 5px;
     position: absolute;
     right: 0;
-    // background-color: red;
+    background-color: red;
     color: white;
-    transition: all 0.2s;
+  }
+  #hub__delete__account:hover {
+    background-color: rgb(230, 0, 0);
   }
 }

@@ -3,7 +3,7 @@
 import Cookies from 'js-cookie';
 import { Button, Form, Input } from 'semantic-ui-react';
 import './EditProduct.scss';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -18,6 +18,7 @@ import {
 
 const EditProduct = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const categories = useSelector((state) => state.category.listCategories);
   const categoriesOptions = categories.map((category) => ({
     key: category.id,
@@ -47,8 +48,6 @@ const EditProduct = () => {
   const editProductCategoryValue = useSelector(
     (state) => state.editProduct.editProductCategoryValue
   );
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentProduct) {
@@ -119,10 +118,9 @@ const EditProduct = () => {
           }}
         />
 
-        <Form.Field required>
+        <Form.Field>
           <label htmlFor="upload-photo">Parcourir :</label>
           <input
-            required
             type="file"
             id="upload-photo"
             className="add__ad__button__file"
@@ -134,9 +132,19 @@ const EditProduct = () => {
             }}
           />
         </Form.Field>
-        <Button id="edit__product__confirm__button" type="submit">
-          Confirmer
-        </Button>
+        <Form.Group className="add__ad__wrapper__cancel__publish__buttons">
+          <Form.Button
+            id="add__ad__cancel__button"
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            Annuler
+          </Form.Button>
+          <Form.Button className="edithub__confirm__button" type="submit">
+            Confirmer
+          </Form.Button>
+        </Form.Group>
       </Form>
     </div>
   );

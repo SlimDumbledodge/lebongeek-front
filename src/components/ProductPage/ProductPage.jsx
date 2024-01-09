@@ -1,7 +1,7 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import { Button, Form, Image, Label } from 'semantic-ui-react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteProduct } from '../../actions/deleteProduct';
 
@@ -9,6 +9,7 @@ import baseUrl from '../../assets/baseUrl';
 
 const ProductPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let { id } = useParams();
   id = parseInt(id, 10);
   const currentUser = Cookies.get('user');

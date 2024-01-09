@@ -1,27 +1,24 @@
-/* eslint-disable no-console */
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { DELETE_PRODUCT } from '../actions/deleteProduct';
-import { setCookieUser } from '../actions/login';
+import { DELETE_ACCOUNT } from '../actions/deleteAccount';
 import baseUrl from '../assets/baseUrl';
+import { clearCookie } from '../actions/login';
 
-const deleteProductMiddleware = (store) => (next) => (action) => {
+const deleteAccountMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case DELETE_PRODUCT:
+    case DELETE_ACCOUNT: {
       axios
-        .delete(`${baseUrl}/api/${action.productId * 1}/products`, {
+        .delete(`${baseUrl}/api/${store.getState().edithub.id}/users`, {
           headers: { Authorization: `Bearer ${Cookies.get('token')}` },
         })
         .then((response) => {
-          window.location.href = '/hub';
           console.log(response);
-          window.location.href = '/hub';
         })
         .catch((error) => {
           console.warn(error);
         });
       break;
-
+    }
     default:
       break;
   }
@@ -29,4 +26,4 @@ const deleteProductMiddleware = (store) => (next) => (action) => {
   next(action);
 };
 
-export default deleteProductMiddleware;
+export default deleteAccountMiddleware;

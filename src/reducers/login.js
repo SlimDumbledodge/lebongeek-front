@@ -65,6 +65,8 @@ const loginReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isCookieFilled: false,
+        isSuccessfullyLoginPopupOpen: false,
+        isFailedLoginPopupOpen: false,
       };
 
     case OPEN_LOGIN_SUCCESSFULLY_POPUP:

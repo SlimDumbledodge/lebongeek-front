@@ -15,6 +15,7 @@ export const CHANGE_ADD_AD_FROM_HOME_PRODUCT_SERIAL_NUMBER =
 export const CHANGE_ADD_AD_FROM_HOME_IMAGE = 'CHANGE_ADD_AD_FROM_HOME_IMAGE';
 
 export const SEND_ADD_AD_FROM_HOME = 'SEND_ADD_AD_FROM_HOME';
+export const SET_ADD_AD_FROM_HOME_STATUS = 'SET_ADD_AD_FROM_HOME_STATUS';
 
 export const changeAddAdFromHomeImage = (newValue) => ({
   type: CHANGE_ADD_AD_FROM_HOME_IMAGE,
@@ -68,4 +69,8 @@ export const changeAddAdFromHomeProductSerialNumber = (newValue) => ({
 
 export const sendAddAdFromHome = () => ({
   type: SEND_ADD_AD_FROM_HOME,
+});
+
+export const setAddAdFromHomeStatus = () => ({
+  type: SET_ADD_AD_FROM_HOME_STATUS,
 });

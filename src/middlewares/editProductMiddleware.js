@@ -47,6 +47,7 @@ const editProductMiddleware = (store) => (next) => (action) => {
               }
             )
             .then((secondResponse) => {
+              window.location.href = '/hub';
               console.log(secondResponse);
               axios
                 .get(

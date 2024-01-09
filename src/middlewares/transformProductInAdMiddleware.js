@@ -4,6 +4,7 @@ import { REQUEST_TRANSFORM_PRODUCT_IN_AD } from '../actions/transformProductInAd
 import { setCookieUser } from '../actions/login';
 
 import baseUrl from '../assets/baseUrl';
+import { openSuccessFullMessage } from '../actions/popupMessages';
 
 const currentUser = Cookies.get('user');
 const parsedUser = currentUser ? JSON.parse(currentUser) : null;
@@ -37,6 +38,7 @@ const transformProductInAdMiddleware = (store) => (next) => (action) => {
           }
         )
         .then((response) => {
+          store.dispatch(openSuccessFullMessage());
           console.log(response);
           axios
             .get(`${baseUrl}/api/get_user`, {

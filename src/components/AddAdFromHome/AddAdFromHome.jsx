@@ -1,5 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Form } from 'semantic-ui-react';
+import { useNavigate } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import { useDispatch, useSelector } from 'react-redux';
 import AdTitle from './AdTitle/AdTitle';
 import TextAreaAd from './TextAreaAd/TextAreaAd';
@@ -14,10 +17,21 @@ import {
   changeAddAdFromHomeProductSerialNumber,
   changeAddAdFromHomeProductYear,
   sendAddAdFromHome,
+  setAddAdFromHomeStatus,
 } from '../../actions/addAdFromHome';
+import {
+  closeFailedMessage,
+  closeSuccessFullMessage,
+} from '../../actions/popupMessages';
 
 const AddAd = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const isaddAdFromHomeSucceed = useSelector(
+    (state) => state.addAdFromHome.isaddAdFromHomeSucceed
+  );
+
   const addAdFromHomePriceValue = useSelector(
     (state) => state.addAdFromHome.addAdFromHomePrice
   );
@@ -31,17 +45,40 @@ const AddAd = () => {
     (state) => state.addAdFromHome.addAdFromHomeProductSerialNumber
   );
 
+  const isFailedMessageOpen = useSelector(
+    (state) => state.popupMessages.isFailedMessageOpen
+  );
+
+  if (isaddAdFromHomeSucceed) {
+    navigate('/hub');
+    dispatch(setAddAdFromHomeStatus());
+  }
+
   return (
     <>
+      {isFailedMessageOpen && (
+        <Stack className="register__popup__container">
+          <Alert
+            id="register__popup__message__fail"
+            severity="error"
+            onClose={() => {
+              dispatch(closeFailedMessage());
+            }}
+          >
+            Erreur sur la création de l'annonce
+          </Alert>
+        </Stack>
+      )}
       <h2 className="add__ad__page__title">Déposer une annonce</h2>
       <section className="add__ad__container">
         <Form
+          id="add_ad_from_home_form"
           onSubmit={() => {
             dispatch(sendAddAdFromHome());
           }}
         >
           <AdTitle />
-          <Form.Field required="require">
+          <Form.Field>
             <label htmlFor="upload-photo">Photo : </label>
             <input
               type="file"
@@ -82,6 +119,8 @@ const AddAd = () => {
           <Form.Group widths="equal">
             <Form.Input
               label="Année de sortie :"
+              min="1900"
+              max="2024"
               placeholder="1988"
               type="number"
               value={addAdFromHomeProductYearValue}
