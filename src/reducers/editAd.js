@@ -97,20 +97,22 @@ const editAdReducer = (state = initialState, action = {}) => {
     }
 
     case SAVE_EDITAD_DATA:
-      return {
-        ...state,
-        editAdTitle: action.currentAd.title,
-        editAdDescription: action.currentAd.description,
-        editAdState: action.currentAd.state,
-        editAdCategory: action.currentProduct.category.id,
-        editAdCategoryValue: action.currentProduct.category.name,
-        editAdPrice: action.currentAd.price,
-        editAdLocation: action.currentAd.location,
-        editAdYear: action.currentProduct.year,
-        editAdSerialNumber: action.currentProduct.serial_number,
-        editAdImage: action.currentProduct.picture,
-        editAdProductTitle: action.currentProduct.title,
-      };
+      return action.currentAd
+        ? {
+            ...state,
+            editAdTitle: action.currentAd.title,
+            editAdDescription: action.currentAd.description,
+            editAdState: action.currentAd.state,
+            editAdCategory: action.currentProduct.category.id,
+            editAdCategoryValue: action.currentProduct.category.name,
+            editAdPrice: action.currentAd.price,
+            editAdLocation: action.currentAd.location,
+            editAdYear: action.currentProduct.year,
+            editAdSerialNumber: action.currentProduct.serial_number,
+            editAdImage: action.currentProduct.picture,
+            editAdProductTitle: action.currentProduct.title,
+          }
+        : state;
 
     default:
       return state;
