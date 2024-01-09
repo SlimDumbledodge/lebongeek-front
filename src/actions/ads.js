@@ -4,6 +4,7 @@ export const SAVE_ADS_CATEGORIES = 'SAVE_ADS_CATEGORIES';
 export const FETCH_AD = 'FETCH_AD';
 export const SAVE_AD = 'SAVE_AD';
 export const AD_LOADED = 'AD_LOADED';
+export const DELETE_AD = 'DELETE_AD';
 
 export const adsFilter = () => ({
   type: ADS_FILTER,
@@ -31,4 +32,9 @@ export const saveAd = (ad) => ({
 
 export const adLoaded = () => ({
   type: AD_LOADED,
+});
+
+export const deleteAd = (id) => ({
+  type: DELETE_AD,
+  id,
 });

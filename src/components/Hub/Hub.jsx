@@ -16,10 +16,7 @@ const Hub = () => {
   const currentUser = Cookies.get('user');
   const parsedUser = currentUser ? JSON.parse(currentUser) : null;
   const isUserDataLoaded = useSelector((state) => state.hub.isUserDataLoaded);
-
-  if (!isUserDataLoaded) {
-    return <Loader />;
-  }
+  const isUserLogged = useSelector((state) => state.login.isCookieFilled);
 
   return (
     <>

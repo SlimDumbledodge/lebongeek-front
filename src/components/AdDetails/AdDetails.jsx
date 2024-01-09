@@ -1,14 +1,14 @@
-/* eslint-disable prettier/prettier */
+import Cookies from 'js-cookie';
 
 import { useEffect } from 'react';
-import { Button, Image, Label } from 'semantic-ui-react';
+import { Button, Image, Label, Form } from 'semantic-ui-react';
 import { Link, useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
 import baseUrl from '../../assets/baseUrl';
 
-import { fetchAd } from '../../actions/ads';
+import { deleteAd, fetchAd } from '../../actions/ads';
 
 import './AdDetails.scss';
 import Loader from '../Loader/Loader';
@@ -20,6 +20,9 @@ const AdDetails = () => {
 
   const ad = useSelector((state) => state.ads.oneAd);
   const adLoaded = useSelector((state) => state.ads.adLoaded);
+
+  const currentUser = Cookies.get('user');
+  const parsedUser = currentUser ? JSON.parse(currentUser) : '';
 
   const { user } = ad;
 
@@ -41,7 +44,7 @@ const AdDetails = () => {
   return !adLoaded && ad && user && currentState ? (
     ad.products.map((product) => (
       <div key={ad.id} className="ad__details__container">
-        <h2 className="ad__details__title">{product.title}</h2>
+        <h2 className="ad__details__title">{ad.title}</h2>
         <Image
           src={`${baseUrl}/images/user/avatar/${user.avatar}`}
           size="mini"
@@ -49,11 +52,19 @@ const AdDetails = () => {
           inline
         />
         <span className="ad__details__pseudo">{user.username}</span>
-        <Button className="ad__details__button__profil" size="medium">
-          <Link to={`/hub/${user.id}`} className="profil_link">
-            Voir le profil
+        {user.id === parsedUser.id ? (
+          <Link to={`/modifier-mon-annonce/${id}`}>
+            <Button size="medium" className="ad__details__button__buy">
+              Modifier mon annonce
+            </Button>
           </Link>
-        </Button>
+        ) : (
+          <Button className="ad__details__button__profil" size="medium">
+            <Link to={`/hub/${user.id}`} className="profil_link">
+              Voir le profil
+            </Link>
+          </Button>
+        )}
         <img
           src={`${baseUrl}/images/product/${product.picture}`}
           alt=""
@@ -69,11 +80,27 @@ const AdDetails = () => {
           </p>
         </section>
         <Label id="ad__details__state__tag">{currentState.text}</Label>
-        <Link to={`/transaction/${ad.id}`}>
-          <Button size="medium" className="ad__details__button__buy">
-            Acheter
-          </Button>
-        </Link>
+        {user.id === parsedUser.id ? (
+          <Form
+            onSubmit={() => {
+              dispatch(deleteAd(id));
+            }}
+          >
+            <Button
+              size="medium"
+              type="submit"
+              className="ad__details__button__buy"
+            >
+              Supprimer mon annonce
+            </Button>
+          </Form>
+        ) : (
+          <Link to={`/transaction/${ad.id}`}>
+            <Button size="medium" className="ad__details__button__buy">
+              Acheter
+            </Button>
+          </Link>
+        )}
       </div>
     ))
   ) : (

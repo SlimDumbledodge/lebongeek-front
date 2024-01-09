@@ -32,7 +32,7 @@ const transformProductInAdMiddleware = (store) => (next) => (action) => {
           },
           {
             headers: {
-              Authorization: `Bearer ${store.getState().login.token}`,
+              Authorization: `Bearer ${Cookies.get('token')}`,
             },
           }
         )

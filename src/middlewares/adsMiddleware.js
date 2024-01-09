@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import Cookies from 'js-cookie';
 import axios from 'axios';
 import {
   FETCH_ADS_CATEGORIES,
@@ -6,11 +7,10 @@ import {
   FETCH_AD,
   saveAd,
   adLoaded,
+  DELETE_AD,
 } from '../actions/ads';
 
-
 import baseUrl from '../assets/baseUrl';
-
 
 const adsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -39,6 +39,22 @@ const adsMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn('Erreur FETCH_AD: ', error);
+        });
+      break;
+    }
+
+    case DELETE_AD: {
+      const { id } = action;
+      axios
+        .delete(`${baseUrl}/api/${id}/ads`, {
+          headers: { Authorization: `Bearer ${Cookies.get('token')}` },
+        })
+        .then((response) => {
+          console.log(response);
+          window.location.href = '/hub';
+        })
+        .catch((error) => {
+          console.warn(error);
         });
       break;
     }

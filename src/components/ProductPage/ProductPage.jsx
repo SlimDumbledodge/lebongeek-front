@@ -41,13 +41,19 @@ const ProductPage = () => {
           circular
           inline
         />
-        <Button
-          size="medium"
-          type="submit"
-          className="ad__details__button__buy"
-        >
-          Supprimer mon produit
-        </Button>
+        {currentProduct.ad === null ? (
+          <Link to={`/vendre-mon-produit/${id}`}>
+            <Button size="medium" className="ad__details__button__buy">
+              Vendre mon produit
+            </Button>
+          </Link>
+        ) : (
+          <Link to={`/${currentProduct.category.slug}/${currentProduct.ad.id}`}>
+            <Button size="medium" className="ad__details__button__buy">
+              Voir mon annonce
+            </Button>
+          </Link>
+        )}
         <span className="ad__details__pseudo">{parsedUser.username}</span>
 
         <img
@@ -64,19 +70,13 @@ const ProductPage = () => {
         <Label id="ad__details__state__tag">
           Année de sortie : {currentProduct.year}
         </Label>
-        {currentProduct.ad === null ? (
-          <Link to={`/vendre-mon-produit/${id}`}>
-            <Button size="medium" className="ad__details__button__buy">
-              Vendre mon produit
-            </Button>
-          </Link>
-        ) : (
-          <Link to={`/${currentProduct.category.slug}/${currentProduct.ad.id}`}>
-            <Button size="medium" className="ad__details__button__buy">
-              Voir mon annonce
-            </Button>
-          </Link>
-        )}
+        <Button
+          size="medium"
+          type="submit"
+          className="ad__details__button__buy"
+        >
+          Supprimer mon produit
+        </Button>
         <Link to={`/modifier-mon-produit/${id}`}>
           <Button size="medium" className="ad__details__button__buy">
             Modifier mon produit

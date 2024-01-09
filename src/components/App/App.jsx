@@ -29,6 +29,7 @@ import ProductPage from '../ProductPage/ProductPage';
 import TransformProductInAd from '../TransformProductInAd/TransformProductInAd';
 import SearchResult from '../SearchResult/SearchResult';
 import EditProduct from '../EditProduct/EditProduct';
+import EditAd from '../EditAd/EditAd';
 import Faq from '../Faq/Faq';
 import Legals from '../Legals/Legals';
 import Contact from '../Contact/Contact';
@@ -84,6 +85,7 @@ function App() {
               element={<TransformProductInAd />}
             />
             <Route path="/modifier-mon-produit/:id" element={<EditProduct />} />
+            <Route path="/modifier-mon-annonce/:id" element={<EditAd />} />
             <Route path="/cree_un_compte" element={<Navigate to="/" />} />
           </>
         ) : (
@@ -115,6 +117,10 @@ function App() {
             />
             <Route
               path="/modifier-mon-produit/:id"
+              element={<Navigate to="/connexion" />}
+            />
+            <Route
+              path="/modifier-mon-annonce/:id"
               element={<Navigate to="/connexion" />}
             />
           </>

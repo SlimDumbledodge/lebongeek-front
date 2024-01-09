@@ -14,19 +14,7 @@ const deleteProductMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           console.log(response);
-          axios
-            .get(`${baseUrl}/api/get_user`, {
-              headers: {
-                Authorization: `Bearer ${Cookies.get('token')}`,
-              },
-            })
-            .then((secondResponse) => {
-              console.log(secondResponse);
-              store.dispatch(setCookieUser(secondResponse.data));
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+          window.location.href = '/hub';
         })
         .catch((error) => {
           console.warn(error);

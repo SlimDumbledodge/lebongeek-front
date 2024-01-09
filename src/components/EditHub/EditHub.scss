@@ -1,31 +1,31 @@
-.edithubcontainer {
+.edithub__container {
   width: 80%;
   margin: auto;
   position: relative;
 
-  .edithubform {
+  .edithub__form {
     margin-top: 50px;
   }
 
-  .edithubtitlesection {
+  .edithub__title__section {
     margin-top: 25px;
     text-align: center;
     font-size: 2em;
     font-weight: bold;
   }
-  .edithubconfirmbutton {
+  .edithub__confirm__button {
     margin-top: 25px;
     float: right;
   }
 
-  #inputfileedithub {
+  #input__file__edit__hub {
     margin-bottom: 15px;
   }
 }
 
-.edithubpopup {
+.edithub__popup{
   background: white;
-  z-index: 3;
+  z-index: 3; 
   position: absolute;
   top: 50%;
   left: 50%;
@@ -50,7 +50,7 @@
     line-height: 160%;
   }
 
-  & span {
+  & span{
     font-size: 12px;
     display: flex;
     justify-content: center;
@@ -59,12 +59,12 @@
   }
 }
 
-.edithub__opacity {
-  z-index: 2;
+.edithub__opacity{
+  z-index: 2; 
   position: absolute;
   top: 0;
-  left: 0;
-  height: 100%;
+  left: 0; 
+  height: 100%; 
   width: 100%;
   opacity: 0.6;
   background-color: black;

@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import { GET_USER, setUser } from '../actions/hub';
 
 import { saveEdithubUserData } from '../actions/edithub';
+import { saveEditadData } from '../actions/editAd';
 
 import baseUrl from '../assets/baseUrl';
 
@@ -20,6 +21,7 @@ const hubMiddleware = (store) => (next) => (action) => {
           console.log('OK GET_USER : ', response);
           store.dispatch(setUser(response.data));
           store.dispatch(saveEdithubUserData(response.data));
+          store.dispatch(saveEditadData(response.data));
         })
         .catch((error) => {
           console.warn('Erreur GET_USER : ', error);

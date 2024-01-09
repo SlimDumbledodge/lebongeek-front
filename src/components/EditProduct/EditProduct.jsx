@@ -3,7 +3,7 @@
 import Cookies from 'js-cookie';
 import { Button, Form, Input } from 'semantic-ui-react';
 import './EditProduct.scss';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -48,10 +48,16 @@ const EditProduct = () => {
     (state) => state.editProduct.editProductCategoryValue
   );
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    dispatch(changeEditProductName(currentProduct.title));
-    dispatch(changeEditProductYear(currentProduct.year));
-    dispatch(changeEditProductSerialNumber(currentProduct.serial_number));
+    if (currentProduct) {
+      dispatch(changeEditProductName(currentProduct.title));
+      dispatch(changeEditProductYear(currentProduct.year));
+      dispatch(changeEditProductSerialNumber(currentProduct.serial_number));
+    } else {
+      navigate('/');
+    }
   }, []);
 
   return (
@@ -65,7 +71,7 @@ const EditProduct = () => {
       >
         <Form.Field
           control={Input}
-          required="require"
+          required
           label="Nom du produit"
           type="text"
           placeholder="Figurine SpiderMan - 1988"
@@ -98,7 +104,7 @@ const EditProduct = () => {
           />
         </Form.Group>
         <Form.Select
-          required="require"
+          required
           label="Catégorie :"
           placeholder="Figurine"
           options={categoriesOptions}
@@ -113,7 +119,7 @@ const EditProduct = () => {
           }}
         />
 
-        <Form.Field required="require">
+        <Form.Field required>
           <label htmlFor="upload-photo">Parcourir :</label>
           <input
             required

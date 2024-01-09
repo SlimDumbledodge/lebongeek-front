@@ -19,6 +19,7 @@ import editProductReducer from './editProduct';
 import contactReducer from './contact';
 import popupMessagesReducer from './popupMessages';
 import hubReducer from './hub';
+import editAdReducer from './editAd';
 
 const rootReducer = combineReducers({
   responsive: responsiveReducer,
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
   contact: contactReducer,
   popupMessages: popupMessagesReducer,
   hub: hubReducer,
+  editAd: editAdReducer,
 });
 
 export default rootReducer;
