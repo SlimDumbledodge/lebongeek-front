@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, TextArea } from 'semantic-ui-react';
 import './AddProduct.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,6 +21,7 @@ import {
 
 const AddProduct = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const productTitleValue = useSelector(
     (state) => state.addProduct.productTitle
   );
@@ -132,10 +134,9 @@ const AddProduct = () => {
           }}
         />
 
-        <Form.Field required="require">
-          <label htmlFor="upload-photo">Parcourir :</label>
+        <Form.Field>
+          <label htmlFor="upload-photo">Photo :</label>
           <input
-            required
             type="file"
             id="upload-photo"
             className="add__product__piture__button"
@@ -148,10 +149,19 @@ const AddProduct = () => {
             }}
           />
         </Form.Field>
-
-        <Button id="add__product__confirm__button" type="submit">
-          Confirmer
-        </Button>
+        <Form.Group className="add__ad__wrapper__cancel__publish__buttons">
+          <Form.Button
+            id="add__ad__cancel__button"
+            onClick={() => {
+              navigate('/hub');
+            }}
+          >
+            Annuler
+          </Form.Button>
+          <Form.Button className="edithub__confirm__button" type="submit">
+            Confirmer
+          </Form.Button>
+        </Form.Group>
       </Form>
     </div>
   );

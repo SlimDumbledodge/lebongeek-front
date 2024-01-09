@@ -1,29 +1,29 @@
-.edithubcontainer {
+.edithub__container {
   width: 80%;
   margin: auto;
   position: relative;
 
-  .edithubform {
+  .edithub__form {
     margin-top: 50px;
   }
 
-  .edithubtitlesection {
+  .edithub__title__section {
     margin-top: 25px;
     text-align: center;
     font-size: 2em;
     font-weight: bold;
   }
-  .edithubconfirmbutton {
+  .edithub__confirm__button {
     margin-top: 25px;
     float: right;
   }
 
-  #inputfileedithub {
+  #input__file__edithub {
     margin-bottom: 15px;
   }
 }
 
-.edithubpopup {
+.edithub__popup {
   background: white;
   z-index: 3;
   position: absolute;

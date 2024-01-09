@@ -13,6 +13,7 @@ const deleteProductMiddleware = (store) => (next) => (action) => {
           headers: { Authorization: `Bearer ${Cookies.get('token')}` },
         })
         .then((response) => {
+          window.location.href = '/hub';
           console.log(response);
           axios
             .get(`${baseUrl}/api/get_user`, {

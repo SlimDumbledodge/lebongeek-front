@@ -19,6 +19,7 @@ import transactionMiddleware from '../middlewares/transactionMiddleware';
 import deleteProductMiddleware from '../middlewares/deleteProductMiddleware';
 import contactMiddleware from '../middlewares/contactMiddleware';
 import hubMiddleware from '../middlewares/hubMiddleware';
+import deleteAccountMiddleware from '../middlewares/deleteAccount';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -37,7 +38,8 @@ const enhancer = composeWithDevTools(
     transactionMiddleware,
     deleteProductMiddleware,
     contactMiddleware,
-    hubMiddleware
+    hubMiddleware,
+    deleteAccountMiddleware
   )
 );
 

@@ -6,7 +6,7 @@ import {
 } from '../actions/editProduct';
 import { setCookieUser } from '../actions/login';
 
-const baseUrl = `http://amgad-gaafr.vpnuser.lan:8080`;
+import baseUrl from '../assets/baseUrl';
 
 const editProductMiddleware = (store) => (next) => (action) => {
   const formData = store.getState().editProduct.editProductImage;
@@ -47,6 +47,7 @@ const editProductMiddleware = (store) => (next) => (action) => {
               }
             )
             .then((secondResponse) => {
+              window.location.href = '/hub';
               console.log(secondResponse);
               axios
                 .get(
