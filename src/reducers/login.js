@@ -18,7 +18,7 @@ const initialState = {
   isSuccessfullyLoginPopupOpen: false,
   isFailedLoginPopupOpen: false,
   token: '',
-  isCookieFilled: document.cookie !== '',
+  isCookieFilled: document.cookie.includes('token='),
   isDataLoaded: false,
 };
 
