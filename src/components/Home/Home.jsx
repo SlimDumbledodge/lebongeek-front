@@ -4,6 +4,8 @@ import Inventory from './Inventory/Inventory';
 import TopCategories from './TopCategories/TopCategories';
 import './Home.scss';
 
+// Mise en page générale de la page d'accueil/Home
+
 const Home = () => {
   return (
     <div>
