@@ -1,21 +1,25 @@
 @use '../../styles/variables' as var;
-
-// Titre de la page d'accueil
-.home__title {
-  font-size: 20px;
-  color: var.$titlesColor;
-  margin-top: 20px;
-  text-align: center;
+//home
+.home__container {
+  background-color: white;
 }
 
 .home__description__container {
-  width: 80%;
-  margin: 30px auto 30px auto;
+  // width: 80%;
+  margin: 0px auto 30px auto;
   padding: 20px;
-  background-color: #fff;
-  font-size: 15px;
-  color: #666;
+  background-color: var.$mainColor;
+  font-size: 20px;
+  color: white;
   line-height: 2;
-  border-radius: 8px;
+  // border-radius: 30px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.home__description__title {
+  font-size: 50px;
+  color: white;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
 }

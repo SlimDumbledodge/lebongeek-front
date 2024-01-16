@@ -1,47 +1,64 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import './Inventory.scss';
 
+import baseUrl from '../../../assets/baseUrl';
+
 const Inventory = () => {
-  return (
+  const isUserLogged = useSelector((state) => state.login.isCookieFilled);
+  const currentUser = Cookies.get('user');
+  const parsedUser = currentUser ? JSON.parse(currentUser) : null;
+  const isDataLoaded = useSelector((state) => state.login.isDataLoaded);
+
+  let inventory = [];
+  if (isUserLogged && !isDataLoaded && !currentUser) {
+    return <div>Chargement...</div>;
+  }
+
+  if (isUserLogged) {
+    inventory = parsedUser.product.slice(0, 5);
+  }
+
+  return isUserLogged ? (
     <section className="home__inventory">
       <h2 className="home__inventory__title">INVENTAIRE</h2>
+      <Link to="/hub" className="home__show__inventory">
+        Voir l'inventaire
+        <FontAwesomeIcon className="wrapper__icons" icon={faAnglesRight} />
+      </Link>
       <div className="home__grid__wrapper">
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="home__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="home__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="home__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="home__inventory__item"
-        />
-
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="home__inventory__item"
-        />
-        <Link to="/hub">
-          Voir l'inventaire
-          <FontAwesomeIcon className="wrapper__icons" icon={faAnglesRight} />
-        </Link>
+        {inventory.map((currentInventoryItem) => (
+          <Link
+            to={`/produits/${currentInventoryItem.id}`}
+            key={currentInventoryItem.id}
+          >
+            <div>
+              <div className="home__inventory__img__container">
+                <img
+                  src={`${baseUrl}/images/product/${currentInventoryItem.picture}`}
+                  alt={currentInventoryItem.title}
+                  className="home__inventory__item"
+                />
+                {currentInventoryItem.ad === null ? (
+                  ''
+                ) : (
+                  <>
+                    <p className="home__inventory__selltext">En vente</p>
+                    <div className="home__inventory__opacity" />
+                  </>
+                )}
+              </div>
+              <p>{currentInventoryItem.title}</p>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
-  );
+  ) : null;
 };
 
 export default Inventory;

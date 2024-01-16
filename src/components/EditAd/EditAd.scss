@@ -1,0 +1,19 @@
+.edit__product__container {
+  width: 80%;
+  margin: auto;
+
+  .edit__product__form {
+    margin-top: 25px;
+  }
+
+  .edit__product__title__section {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  #edit__product__confirm__button {
+    float: right;
+  }
+}

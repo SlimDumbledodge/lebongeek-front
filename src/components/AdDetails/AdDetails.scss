@@ -6,17 +6,67 @@
   width: 85%;
   margin: 0 auto;
   padding: 15px;
+  margin-top: 30px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
 
-@media screen and (min-width: 320px) {
-  .ad__details__container {
+  @media screen and (min-width: 320px) {
     width: 95%;
   }
-}
+  
+  @media screen and (min-width: 768px) {
+      width: 700px;
+  }
 
-@media screen and (min-width: 768px) {
-  .ad__details__container {
-    width: 700px;
+  .ad__details__title {
+    text-align: center;
+    margin: 35px 0;
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .ad__details__pseudo {
+    margin-left: 10px;
+  }
+
+  .ad__details__button__profil{
+    float: right;
+  }
+
+  .ad__details__picture {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    object-fit: contain;
+  }
+
+  #ad__details__mail {
+    margin-bottom: 10px;
+  }
+
+  .ad__details__description {
+    padding: 20px 0;
+  }
+
+  #ad__details__state__tag {
+    margin-top: 0;
+  }
+
+  .ad__details__button__buy {
+    float: right;
+  }
+
+  .ui.label {
+    margin-top: 15px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+

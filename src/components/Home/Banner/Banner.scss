@@ -1,4 +1,61 @@
 .home__banner {
-  height: 200px;
+  display: block;
+  margin: 0 auto;
+  height: 300px;
   width: 100%;
+  object-fit: cover;
+  
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  
+}
+/* Pour 320px (Téléphone mobile en portrait) */
+@media (max-width: 320px) {
+  .home__banner {
+    width: 110%;
+    height: auto;
+  }
+}
+
+/* Pour 375px (Téléphone mobile en paysage ou grand téléphone) */
+@media (min-width: 375px) {
+  .home__banner {
+    width: 110%;
+    height: auto;
+  }
+}
+
+/* Pour 425px (Téléphone mobile en mode paysage) */
+@media (min-width: 425px) {
+  .home__banner {
+    width: 110%;
+    height: auto;
+  }
+}
+
+/* Pour 768px (Tablette) */
+@media (min-width: 768px) {
+  .home__banner {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Pour 1024px (Petits ordinateurs portables et tablettes en mode paysage) */
+@media (min-width: 1024px) {
+  .home__banner {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Pour 1440px (Ordinateurs de bureau et grands ordinateurs portables) */
+@media (min-width: 1440px) {
+  .home__banner {
+    width: 100%;
+    height: 400px;
+  }
 }

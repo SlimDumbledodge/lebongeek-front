@@ -1,5 +1,6 @@
+import { Link, useNavigate } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -7,20 +8,58 @@ import {
   faArrowRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
-function DropdownHub() {
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCookie } from '../../../../actions/login';
+
+import baseUrl from '../../../../assets/baseUrl';
+import Loader from '../../../Loader/Loader';
+
+const DropdownHub = () => {
+  const currentUser = Cookies.get('user');
+  const parsedUser = currentUser ? JSON.parse(currentUser) : null;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isUserLogged = useSelector((state) => state.login.isCookieFilled);
+  const isDataLoaded = useSelector((state) => state.login.isDataLoaded);
+
+  if (isUserLogged && !isDataLoaded && !currentUser) {
+    return <Loader />;
+  }
+
   return (
     <Dropdown
-      text={<FontAwesomeIcon className="nav__icons" icon={faCircleUser} />}
+      text={
+        isUserLogged ? (
+          <img
+            src={`${baseUrl}/images/user/avatar/${parsedUser.avatar}`}
+            alt=""
+            className="avatar"
+          />
+        ) : (
+          <FontAwesomeIcon className="nav__icons" icon={faCircleUser} />
+        )
+      }
     >
-      <Dropdown.Menu id="header__mobile__dropdown__hub">
-      <Dropdown.Item text="Se connecter" as={Link} to="/connexion" />
-        <Dropdown.Item text="Hub" as={Link} to="/hub" />
-        <Dropdown.Item>
-          Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
-        </Dropdown.Item>
+      <Dropdown.Menu id="header__desktop__dropdown__hub">
+        {!isUserLogged && (
+          <Dropdown.Item text="Se connecter" as={Link} to="/connexion" />
+        )}
+        {isUserLogged && <Dropdown.Item text="Hub" as={Link} to="/hub" />}
+        {isUserLogged && (
+          <Dropdown.Item
+            onClick={() => {
+              dispatch(clearCookie());
+              navigate('/connexion');
+              window.location.reload();
+            }}
+          >
+            Se déconnecter <FontAwesomeIcon icon={faArrowRightToBracket} />
+          </Dropdown.Item>
+        )}
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+};
 
 export default DropdownHub;

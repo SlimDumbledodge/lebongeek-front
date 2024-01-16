@@ -1,3 +1,7 @@
 .App {
-  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  height: 100dvh;
+  overflow-y: scroll
 }

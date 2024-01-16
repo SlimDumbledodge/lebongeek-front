@@ -1,68 +1,50 @@
-import './Inventory.scss';
+import PropTypes from 'prop-types';
 
-const Inventory = () => {
+import './Inventory.scss';
+import { Link } from 'react-router-dom';
+
+import baseUrl from '../../../assets/baseUrl';
+
+const Inventory = ({ product }) => {
   return (
     <section className="hub__inventory">
       <h2 className="hub__inventory__title">INVENTAIRE</h2>
       <div className="hub__grid__wrapper">
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
-        <img
-          src="https://www.freewebheaders.com/wp-content/gallery/abstract-size-800x200/red-blue-yellow-smoke-abstract-header-800x200.jpg"
-          alt=""
-          className="hub__inventory__item"
-        />
+        {product.map((currentProduct) => (
+          <Link to={`/produits/${currentProduct.id}`} key={currentProduct.id}>
+            <div>
+              <div className="hub__inventory__img__container">
+                <img
+                  src={`${baseUrl}/images/product/${currentProduct.picture}`}
+                  alt={currentProduct.title}
+                  className="hub__inventory__item"
+                />
+                {currentProduct.ad === null ? (
+                  ''
+                ) : (
+                  <>
+                    <p className="hub__inventory__selltext">En vente</p>
+                    <div className="hub__inventory__opacity" />
+                  </>
+                )}
+              </div>
+              <p>{currentProduct.title}</p>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   );
+};
+
+Inventory.propTypes = {
+  product: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      picture: PropTypes.string,
+      title: PropTypes.string,
+    }).isRequired
+  ).isRequired,
 };
 
 export default Inventory;

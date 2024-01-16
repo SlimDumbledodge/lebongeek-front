@@ -1,0 +1,59 @@
+@use '../../styles/variables' as var;
+
+.hub__foreign__grid__wrapper {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
+  .hub__foreign__inventory__item {
+    width: 100%;
+    height: 100px;
+  }
+}
+
+.hub__foreign__wrapper__buttons {
+  margin-top: 15px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 300px) {
+  .hub__foreign__grid__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .hub__foreign__grid__wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hub__description__container {
+    padding: 15px 105px;
+  }
+  .hub__foreign__grid__wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .description__container {
+    padding: 15px 105px;
+  }
+  .hub__foreign__grid__wrapper {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .description__container {
+    padding: 15px 105px;
+  }
+  .grid__wrapper {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

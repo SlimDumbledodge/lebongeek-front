@@ -1,0 +1,15 @@
+@use '../../styles/variables' as var;
+
+.add__ad__container {
+  width: 80%;
+  padding: 35px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.add__ad__page__title {
+  text-align: center;
+  margin: 35px 0;
+  font-size: 2em;
+  font-weight: bold;
+}

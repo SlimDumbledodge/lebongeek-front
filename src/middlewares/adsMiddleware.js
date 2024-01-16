@@ -1,0 +1,69 @@
+/* eslint-disable no-console */
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import {
+  FETCH_ADS_CATEGORIES,
+  saveAdsCategories,
+  FETCH_AD,
+  saveAd,
+  adLoaded,
+  DELETE_AD,
+} from '../actions/ads';
+
+import baseUrl from '../assets/baseUrl';
+
+const adsMiddleware = (store) => (next) => (action) => {
+  switch (action.type) {
+    case FETCH_ADS_CATEGORIES: {
+      const { id } = action;
+      axios
+        .get(`${baseUrl}/api/${id}/categories`)
+        .then((response) => {
+          console.log('OK FETCH_ADS_CATEGORIES : ', response);
+          store.dispatch(saveAdsCategories(response.data.product));
+        })
+        .catch((error) => {
+          console.warn('Erreur FETCH_ADS_CATEGORIES : ', error);
+        });
+      break;
+    }
+
+    case FETCH_AD: {
+      const { id } = action;
+      axios
+        .get(`${baseUrl}/api/${id}/ads`)
+        .then((response) => {
+          console.log('OK FETCH_ADS : ', response);
+          store.dispatch(saveAd(response.data));
+          store.dispatch(adLoaded());
+        })
+        .catch((error) => {
+          console.warn('Erreur FETCH_AD: ', error);
+        });
+      break;
+    }
+
+    case DELETE_AD: {
+      const { id } = action;
+      axios
+        .delete(`${baseUrl}/api/${id}/ads`, {
+          headers: { Authorization: `Bearer ${Cookies.get('token')}` },
+        })
+        .then((response) => {
+          console.log(response);
+          window.location.href = '/hub';
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      break;
+    }
+
+    default:
+      break;
+  }
+
+  next(action);
+};
+
+export default adsMiddleware;

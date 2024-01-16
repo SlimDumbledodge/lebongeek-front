@@ -1,22 +1,31 @@
-import './Description.scss';
+import PropTypes from 'prop-types';
 
-const Description = () => {
+import './Description.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+
+const Description = ({ username, avatar, description }) => {
   return (
     <section className="hub__description__container">
       <div className="hub__avatar__pseudo">
-        <h2 className="hub__pseudo">PSEUDO</h2>
-        <img
-          src="https://cdn.icon-icons.com/icons2/2859/PNG/512/avatar_face_girl_female_woman_profile_smiley_happy_people_icon_181662.png"
-          alt=""
-          className="hub__avatar"
-        />
+        <h2 className="hub__pseudo">{username}</h2>
+        <img src={avatar} alt="" className="hub__avatar" />
       </div>
-      <p className="hub__description__text">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem cum
-        tempora incidunt eum consectet
-      </p>
+      <div className="hub__description__text">
+        {description || 'Modifier votre profil pour ajouter une description'}
+      </div>
     </section>
   );
+};
+
+Description.propTypes = {
+  username: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  description: PropTypes.string,
+};
+
+Description.defaultProps = {
+  description: null,
 };
 
 export default Description;

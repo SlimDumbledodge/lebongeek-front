@@ -1,24 +1,69 @@
-import { Dropdown } from 'semantic-ui-react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable no-console */
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import {
+  changeInputValue,
+  resetInputValue,
+  searchToggleCategories,
+} from '../../../../actions/input';
 
 function Form() {
-  const categoriesOptions = [
-    { key: 'jv', value: 'jv', text: 'Jeux-vidéo' },
-    { key: 'jdr', value: 'jdr', text: 'JDR' },
-    { key: 'fig', value: 'fig', text: 'Figurine' },
-  ];
+  const navigate = useNavigate();
+
+  const inputSearch = useSelector((state) => state.input.inputSearch);
+  const isSearchListOpen = useSelector((state) => state.input.isSearchListOpen);
+  const categoriesListFromState = useSelector(
+    (state) => state.category.listCategories
+  );
+  const isCategoriesLoaded = useSelector(
+    (state) => state.category.isCategoriesLoaded
+  );
+
+  const dispatch = useDispatch();
+
   return (
-    <form action="">
-      <Dropdown
-        clearable
-        fluid
-        search
-        selection
-        icon="search"
-        id="header__mobile__dropdown__search"
-        options={categoriesOptions}
-        placeholder="Select Country"
-      />
-    </form>
+    <div
+      onMouseLeave={() => {
+        dispatch(searchToggleCategories());
+      }}
+      className="parentList"
+    >
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          navigate(`/recherche/${inputSearch}/1`);
+          dispatch(resetInputValue());
+        }}
+      >
+        <input
+          type="text"
+          value={inputSearch}
+          onChange={(event) => {
+            dispatch(changeInputValue(event.target.value));
+          }}
+          placeholder="Rechercher..."
+          onMouseEnter={() => {
+            dispatch(searchToggleCategories());
+          }}
+          className="theInput"
+        />
+      </form>
+      {isSearchListOpen && isCategoriesLoaded && inputSearch === '' && (
+        <ul className="list">
+          {categoriesListFromState.map((category) => (
+            <Link to={`/annonces/${category.slug}`} key={category.id}>
+              <li>
+                {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
+              </li>
+            </Link>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 

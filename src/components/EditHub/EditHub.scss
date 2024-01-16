@@ -1,0 +1,71 @@
+.edithub__container {
+  width: 80%;
+  margin: auto;
+  position: relative;
+
+  .edithub__form {
+    margin-top: 50px;
+  }
+
+  .edithub__title__section {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .edithub__confirm__button {
+    margin-top: 25px;
+    float: right;
+  }
+
+  #input__file__edithub {
+    margin-bottom: 15px;
+  }
+}
+
+.edithub__popup {
+  background: white;
+  z-index: 3; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  text-align: justify;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 20px;
+  line-height: 150%;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 10px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 12px;
+    line-height: 160%;
+  }
+
+  & span{
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+    padding-top: 10px;
+  }
+}
+
+.edithub__opacity{
+  z-index: 2; 
+  position: absolute;
+  top: 0;
+  left: 0; 
+  height: 100%; 
+  width: 100%;
+  opacity: 0.6;
+  background-color: black;
+}

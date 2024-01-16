@@ -1,28 +1,27 @@
 @use '../../styles/variables' as var;
 
 .footer {
-  position: sticky;
+  position: relative;
   bottom: 0;
-  margin-top: 200px;
-  background-color: var.$thirdColor;
+  background-color: var.$mainColor;
   width: 100%;
+
   padding: 10px 40px;
+  margin: auto;
+  margin-top: 100px !important;
+
   box-sizing: border-box;
+  margin: 0 auto;
+  color: white;
 
   .footer__wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-
-  .footer__item__wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex: 1;
-  }
 }
+
+/* Media Queries */
 
 @media screen and (min-width: 768px) {
   .footer .footer__wrapper {

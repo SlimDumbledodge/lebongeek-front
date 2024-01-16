@@ -1,0 +1,22 @@
+.faq__container{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  margin-top: 50px;
+
+  .faq__title{
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .faq__little__title{
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  .faq__senteces__container{
+    width: 60%;
+  }
+}
+
