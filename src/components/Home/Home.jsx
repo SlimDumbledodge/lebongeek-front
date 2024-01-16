@@ -8,18 +8,19 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <h1 className="home__title">Bienvenue sur LeBonGeek</h1>
-
-      <div className="home__description__container">
-        <p>
-          Achetez et vendez vos cartes, jeux-vidéo, figurines facilement ! Tous
-          vos articles favoris sont sur leBonGeek ! Accédez à des milliers
-          d'annonces et gérez vos collections dans votre inventaire. Avec
-          LeBonGeek, trouver la perle rare n'a jamais été aussi simple !
-        </p>
+      <div className="home__container">
+        <div className="home__description__container">
+          {/* <h1 className="home__description__title">LE BON GEEK</h1> */}
+          <p>
+            Achetez et vendez vos cartes, jeux-vidéo, figurines facilement !
+            Tous vos articles favoris sont sur LE BON GEEK ! Accédez à des
+            milliers d'annonces et gérez vos collections dans votre inventaire.
+            Avec LeBonGeek, trouver la perle rare n'a jamais été aussi simple !
+          </p>
+        </div>
+        <Inventory />
+        <TopCategories />
       </div>
-      <Inventory />
-      <TopCategories />
     </div>
   );
 };
