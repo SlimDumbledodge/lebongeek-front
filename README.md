@@ -102,4 +102,3 @@ If you want, I can also:
 - fix the merge conflicts noted in `package.json`
 
 Created by GitHub Copilot on request.
-# Frontend - LeBonGeek
