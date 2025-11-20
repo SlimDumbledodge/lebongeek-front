@@ -1,4 +1,5 @@
 import axios from 'axios';
+import baseUrl from '../assets/baseUrl';
 import {
   LOGIN_USER,
   CREATE_USER,
@@ -9,7 +10,7 @@ const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case CREATE_USER:
       axios
-        .post('http://amgad-gaafr.vpnuser.lan:8080/api/users', {
+        .post(`${baseUrl}/api/users`, {
           username: 'DSdsdsqqddhsqdQ',
           firstname: 'DSQdsdsdskqdqqDQ',
           lastname: 'DSQDdsdsdsqkqdqsqQS',
@@ -24,7 +25,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
     case LOGIN_USER:
       axios
-        .post('http://amgad-gaafr.vpnuser.lan:8080/api/login_check', {
+        .post(`${baseUrl}/api/login_check`, {
           username: 'DSdsqdQ',
           password: 'password',
         })
@@ -34,7 +35,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
     case LOGOUT_USER:
       axios
-        .post('http://amgad-gaafr.vpnuser.lan:8080/api/logout', {})
+        .post(`${baseUrl}/api/logout`, {})
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
       break;
