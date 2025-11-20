@@ -1,4 +1,5 @@
 import axios from 'axios';
+import baseUrl from '../assets/baseUrl';
 import {
   UPLOAD_IMAGE_REQUEST,
   uploadImageSuccess,
@@ -14,7 +15,7 @@ const imageUploadMiddleware = (store) => (next) => async (action) => {
       console.log(formData);
       console.log('Contenu de FormData :', formData);
       const response = await axios.post(
-        'http://amgad-gaafr.vpnuser.lan:8080',
+        baseUrl,
         formData.get('image'),
         {
           headers: {
