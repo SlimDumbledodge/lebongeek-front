@@ -24,13 +24,8 @@
 		"react": "^18.2.0",
 		"react-devtools": "^4.28.5",
 		"react-dom": "^18.2.0",
-<<<<<<< HEAD
 		"react-redux": "^9.0.2",
 		"react-router-dom": "^6.20.0",
-=======
-		"react-redux": "^8.1.3",
-		"react-router-dom": "^6.20.1",
->>>>>>> dad99668b3b5c1278c2e171fc813c5891e013b39
 		"redux": "^5.0.0",
 		"semantic-ui-css": "^2.5.0",
 		"semantic-ui-react": "^2.1.4"

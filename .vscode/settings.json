@@ -32,7 +32,7 @@
     "markdown": "html",
     "ejs": "html"
   },
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "icons",
   "cSpell.words": [
     "airbnb"
   ],
