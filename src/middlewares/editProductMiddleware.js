@@ -5,7 +5,6 @@ import {
   REQUEST_EDIT_PRODUCT,
 } from '../actions/editProduct';
 import { setCookieUser } from '../actions/login';
-
 import baseUrl from '../assets/baseUrl';
 
 const editProductMiddleware = (store) => (next) => (action) => {
@@ -15,6 +14,7 @@ const editProductMiddleware = (store) => (next) => (action) => {
     case REQUEST_EDIT_PRODUCT:
       console.log(action.productId);
       console.log(store.getState().editProduct);
+
       axios
         .put(
           `${baseUrl}/api/${action.productId}/products`,
@@ -33,50 +33,51 @@ const editProductMiddleware = (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response);
-          axios
-            .post(
-              `${baseUrl}/api/${action.productId}/product/picture`,
-              {
-                picture: formData,
-              },
-              {
-                headers: {
-                  'Content-Type': 'multipart/form-data',
-                  Authorization: `Bearer ${Cookies.get('token')}`,
-                },
-              }
-            )
-            .then((secondResponse) => {
-              window.location.href = '/hub';
-              console.log(secondResponse);
-              axios
-                .get(
-                  `${baseUrl}/api/get_user`,
 
-                  {
+          if (formData) {
+            axios
+              .post(
+                `${baseUrl}/api/${action.productId}/product/picture`,
+                formData,
+                {
+                  headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${Cookies.get('token')}`,
+                  },
+                }
+              )
+              .then((secondResponse) => {
+                console.log(secondResponse);
+                window.location.href = '/hub';
+                axios
+                  .get(`${baseUrl}/api/get_user`, {
                     headers: {
                       Authorization: `Bearer ${Cookies.get('token')}`,
                     },
-                  }
-                )
-                .then((thirdResponse) => {
-                  console.log(thirdResponse);
-                  store.dispatch(setCookieUser(thirdResponse.data));
-                })
-                .catch((error) => {
-                  console.warn(error);
-                });
-            })
-            .catch((error) => {
-              console.warn(error);
-            });
+                  })
+                  .then((thirdResponse) => {
+                    store.dispatch(setCookieUser(thirdResponse.data));
+                  })
+                  .catch((error) => {
+                    console.warn(error);
+                  });
+              })
+              .catch((error) => {
+                console.warn(error);
+              });
+          } else {
+            // Si pas d’image → on redirige directement
+            window.location.href = '/hub';
+          }
         })
         .catch((error) => {
           console.warn(error);
         });
       break;
+
     default:
   }
+
   next(action);
 };
 
