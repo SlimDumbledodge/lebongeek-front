@@ -26,7 +26,7 @@ const edithubMiddleware = (store) => (next) => (action) => {
             phone_number: store.getState().edithub.phoneNumber,
             password: store.getState().edithub.password
               ? store.getState().edithub.password
-              : 'jeneveuxpaschangermonmotdepasse1234',
+              : '',
             description: store.getState().edithub.description,
           },
           {
