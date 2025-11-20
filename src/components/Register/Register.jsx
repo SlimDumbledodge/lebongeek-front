@@ -21,11 +21,11 @@ const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const usernameValue = useSelector((state) => state.register.registerUsername);
-  const emailValue = useSelector((state) => state.register.registerEmail);
-  const passwordValue = useSelector((state) => state.register.registerPassword);
+  const usernameValue = useSelector((state) => state.register.RegisterUsername);
+  const emailValue = useSelector((state) => state.register.RegisterEmail);
+  const passwordValue = useSelector((state) => state.register.RegisterPassword);
   const firstnameValue = useSelector(
-    (state) => state.register.registerFirstname
+    (state) => state.register.RegisterFirstname
   );
   const lastnameValue = useSelector((state) => state.register.RegisterLastname);
   const phoneValue = useSelector((state) => state.register.RegisterPhone);
